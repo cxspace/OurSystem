@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!--禁用动态方法调用-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+    <!--配置成开发模式-->
+    <constant name="struts.devMode" value="true"/>
+
+    <!--把猪蹄配置成simple-->
+    <constant name="struts.ui.theme" value="simple"/>
+
+
+
+    <!--&lt;!&ndash;配置全局结果及异常映射&ndash;&gt;-->
+    <!--<package name="base-default" extends="struts-default">-->
+
+        <!--&lt;!&ndash;返回结果类型&ndash;&gt;-->
+        <!--<result-types>-->
+            <!--<result-type name="error" class="com.cx.core.action.SysResultSupport"></result-type>-->
+        <!--</result-types>-->
+
+        <!--&lt;!&ndash;全局结果&ndash;&gt;-->
+        <!--<global-results>-->
+            <!--<result name="error" type="error">/WEB-INF/jsp/error.jsp</result>-->
+            <!--<result name="sysError">/WEB-INF/jsp/error.jsp</result>-->
+            <!--<result name="input">/WEB-INF/jsp/error.jsp</result>-->
+        <!--</global-results>-->
+
+        <!--&lt;!&ndash;全局异常&ndash;&gt;-->
+        <!--<global-exception-mappings>-->
+            <!--<exception-mapping exception="com.cx.core.exception.SysException" result="sysError"></exception-mapping>-->
+            <!--<exception-mapping exception="java.lang.Exception" result="input"></exception-mapping>-->
+        <!--</global-exception-mappings>-->
+    <!--</package>-->
+
+    <!--包含测试struts配置文件-->
+    <include file="com/cx/test/conf/struts-test.xml"></include>
+
+    <!--主页-->
+    <include file="com/cx/home/conf/struts-home.xml"></include>
+
+    <!--用户管理-->
+
+    <include file="com/cx/sys/user/conf/struts-user.xml"></include>
+
+</struts>
