@@ -1,5 +1,9 @@
 package com.cx.sys.project.entity;
 
+import com.cx.sys.prj_doc.entity.PrjDoc;
+
+import java.util.List;
+
 /**
  * Created by cxspace on 16-11-13.
  */

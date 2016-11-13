@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -36,6 +37,26 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+
+
+        function doDelete(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_project_delete.action?project.id="+id;
+            document.forms[0].submit();
+        }
+
+        function doDeleteAll() {
+            document.forms[0].action="${pageContext.request.contextPath}/system_project_deleteSelected.action";
+            document.forms[0].submit();
+        }
+
+        function doEdit(id) {
+            document.forms[0].action = "${pageContext.request.contextPath}/system_project_editUI.action?project.id="+id;
+            document.forms[0].submit();
+        }
+
+
+    </script>
 
 </head>
 
@@ -408,13 +429,14 @@
 
         <h3>项目列表</h3>
 
+
+        <form name="form1" method="post" action="">
+
         <table class="table table-bordered table-striped datatable" id="table-2">
             <thead>
             <tr>
                 <th>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk">
-                    </div>
+
                 </th>
                 <th>项目名</th>
                 <th>发布时间</th>
@@ -423,12 +445,12 @@
                 <th>项目期限</th>
 
                 <th>
-                    <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                    <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
                         <i class="entypo-cancel"></i>
                         删除所选
                     </a>
 
-                    <a href="addUI.html" class="btn btn-info btn-sm btn-icon icon-left">
+                    <a href="${pageContext.request.contextPath}/system_project_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
                         <i class="entypo-info"></i>
                         新增
                     </a>
@@ -441,26 +463,35 @@
 
             <tbody>
 
+            <s:iterator value="projectList" status="st">
             <tr>
                 <td>
                     <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3">
+                        <input type="checkbox" name="selectedRow" value="<s:property value="id"></s:property>" id="chk-3">
                     </div>
                 </td>
-                <td>神通录</td>
-                <td>2016-09-19</td>
-                <td>6</td>
+                <td>
+                    <s:property value="name"></s:property>
+                </td>
+                <td>
+                    <s:property value="createTime"></s:property>
+                </td>
+                <td>
+                    <s:property value="join_number"></s:property>
+                </td>
 
-                <td>2016-12-10</td>
+                <td>
+                    <s:property value="deadline"></s:property>
+                </td>
 
                 <td>
 
-                    <a href="editUI.html" class="btn btn-default btn-sm btn-icon icon-left">
+                    <a href="javascript:doEdit('<s:property value="id"></s:property>')" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-pencil"></i>
                         编辑
                     </a>
 
-                    <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                    <a href="javascript:doDelete('<s:property value="id"></s:property>')" class="btn btn-danger btn-sm btn-icon icon-left">
                         <i class="entypo-cancel"></i>
                         删除
                     </a>
@@ -471,10 +502,12 @@
 
             </tr>
 
+            </s:iterator>
 
             </tbody>
         </table>
 
+        </form>
 
 
 

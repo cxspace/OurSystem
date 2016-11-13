@@ -60,7 +60,7 @@
                 <value>classpath:com/cx/sys/user/entity/User.hbm.xml</value>
                 <value>classpath:com/cx/sys/inform/entity/Inform.hbm.xml</value>
                 <value>classpath:com/cx/sys/project/entity/Project.hbm.xml</value>
-
+                <value>classpath:com/cx/sys/prj_doc/entity/PrjDoc.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -105,4 +105,7 @@
     <import resource="classpath:com/cx/sys/inform/conf/spring-inform.xml"/>
 
     <import resource="classpath:com/cx/sys/project/conf/spring-project.xml"/>
+
+    <import resource="classpath:com/cx/sys/prj_doc/conf/spring-prj_doc.xml"/>
+
 </beans>

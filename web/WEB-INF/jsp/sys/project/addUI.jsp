@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -407,13 +408,13 @@
         <h3>新增项目</h3>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="listUI.html">
+        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_project_add.action">
 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label">项目名</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" placeholder="请输入项目名">
+                    <input type="text" class="form-control" name="project.name" id="field-1" placeholder="请输入项目名">
                 </div>
             </div>
 
@@ -422,7 +423,7 @@
                 <label class="col-sm-3 control-label">发布日期</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" data-start-view="2">
+                    <input type="text" name="project.createTime" class="form-control datepicker" data-start-view="2" readonly>
                 </div>
             </div>
 
@@ -430,13 +431,12 @@
                 <label class="col-sm-3 control-label">计划完成日期</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" data-start-view="2">
+                    <input type="text" name="project.deadline" class="form-control datepicker" data-start-view="2" readonly>
                 </div>
             </div>
 
-
-
-
+            <%--默认参与人数是0--%>
+            <s:hidden name="project.join_number" value="0"></s:hidden>
 
             <div class="form-group">
 

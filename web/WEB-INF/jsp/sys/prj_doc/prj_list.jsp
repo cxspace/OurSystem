@@ -1,4 +1,3 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -145,7 +144,6 @@
                         <span class="title">项目大厅</span>
                     </a>
 
-
                 </li>
                 <li>
                     <a href="#">
@@ -185,6 +183,7 @@
                     </ul>
                 </li>
 
+
                 <li>
                     <a>
                         <i class="entypo-tools"></i>
@@ -192,86 +191,85 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/user/listUI.html">
+                            <a href="../user/listUI.html">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="listUI.html">
+                            <a href="../project/listUI.html">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/prj_task/listUI.html">
+                            <a href="../prj_task/listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/prj_doc/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/learn_route/listUI.html">
+                            <a href="../learn_route/listUI.html">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/learn_site/listUI.html">
+                            <a href="../learn_site/listUI.html">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/res_link/listUI.html">
+                            <a href="../res_link/listUI.html">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/experience/listUI.html">
+                            <a href="../experience/listUI.html">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/note_class/listUI.html">
+                            <a href="../note_class/listUI.html">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/note/listUI.html">
+                            <a href="../note/listUI.html">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/competition/listUI.html">
+                            <a href="../competition/listUI.html">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/current_competion/listUI.html">
+                            <a href="../current_competion/listUI.html">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/inform/listUI.html">
+                            <a href="../inform/listUI.html">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
 
             </ul>
 
@@ -401,63 +399,64 @@
             </li>
             <li class="active">
 
-                <strong>编辑</strong>
+                <strong>项目列表</strong>
             </li>
         </ol>
 
-        <h3>新增项目</h3>
+        <h3>项目列表</h3>
+
+        <table class="table table-bordered table-striped datatable" id="table-2">
+            <thead>
+            <tr>
+                <th>
+                    <div class="checkbox checkbox-replace">
+                        <input type="checkbox" id="chk">
+                    </div>
+                </th>
+                <th>项目名</th>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_project_edit.action">
+                <th>
 
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">项目名</label>
-
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" placeholder="请输入项目名" name="project.name" value="<s:property value="project.name"></s:property>">
-                </div>
-            </div>
+                </th>
 
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
+            </tr>
+            </thead>
 
-                <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" name="project.createTime" value="<s:property value="project.createTime"></s:property>" data-start-view="2">
-                </div>
-            </div>
+            <tbody>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label">计划完成日期</label>
-
-                <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" name="project.deadline" value="<s:property value="project.deadline"></s:property>" data-start-view="2">
-                </div>
-            </div>
-
-            <s:hidden value="%{project.id}" name="project.id"></s:hidden>
-
-            <s:hidden value="%{project.join_number}" name="project.join_number"></s:hidden>
+            <tr>
+                <td>
+                    <div class="checkbox checkbox-replace">
+                        <input type="checkbox" id="chk-3">
+                    </div>
+                </td>
+                <td>神通录</td>
 
 
-            <div class="form-group">
+                <td>
 
-                <div class="col-sm-offset-5 col-sm-5">
+                    <a href="listUI.html" class="btn btn-default btn-sm btn-icon icon-left">
+                        <i class="entypo-search"></i>
+                        查看文档
+                    </a>
 
-                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
-
-                    <button type="submit" class="btn btn-default">提交</button>
-
-                </div>
-            </div>
+                </td>
 
 
+            </tr>
 
-        </form>
 
+            </tbody>
+        </table>
 
 
 
+
+
+        <br>
+        <br>
 
         <br>
         <br>
@@ -502,7 +501,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>

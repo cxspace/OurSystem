@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.cx.sys.prj_doc.entity.PrjDoc" table="t_prj_doc">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32"/>
+            <generator class="uuid.hex"/>
+        </id>
+        <property name="name" type="java.lang.String">
+           <column name="user_name" length="50" not-null="true"/>
+        </property>
+
+        <property name="createTime" type="java.lang.String">
+            <column name="create_time" length="26" not-null="true"/>
+        </property>
+
+        <property name="content" type="text">
+            <column name="content"></column>
+        </property>
+
+        <property name="create_person" type="java.lang.String">
+            <column name="create_person" length="20"></column>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

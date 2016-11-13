@@ -1,5 +1,6 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +22,17 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-theme.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
+
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script>
+        window.UEDITOR_HOME_URL = "${pageContext.request.contextPath}/assets/js/ueditor/";
+        var ue = UE.getEditor('editor');
+    </script>
+
+
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
@@ -145,7 +157,6 @@
                         <span class="title">项目大厅</span>
                     </a>
 
-
                 </li>
                 <li>
                     <a href="#">
@@ -192,80 +203,80 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/user/listUI.html">
+                            <a href="../user/listUI.html">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="listUI.html">
+                            <a href="../project/listUI.html">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/prj_task/listUI.html">
+                            <a href="../prj_task/listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/prj_doc/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/learn_route/listUI.html">
+                            <a href="../learn_route/listUI.html">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/learn_site/listUI.html">
+                            <a href="../learn_site/listUI.html">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/res_link/listUI.html">
+                            <a href="../res_link/listUI.html">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/experience/listUI.html">
+                            <a href="../experience/listUI.html">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/note_class/listUI.html">
+                            <a href="../note_class/listUI.html">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/note/listUI.html">
+                            <a href="../note/listUI.html">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/competition/listUI.html">
+                            <a href="../competition/listUI.html">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/current_competion/listUI.html">
+                            <a href="../current_competion/listUI.html">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/inform/listUI.html">
+                            <a href="../inform/listUI.html">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
@@ -401,20 +412,32 @@
             </li>
             <li class="active">
 
-                <strong>编辑</strong>
+                <strong>新增</strong>
             </li>
         </ol>
 
-        <h3>新增项目</h3>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_project_edit.action">
+        <h3>新增项目文档</h3>
+
+
+        <form role="form" class="form-horizontal form-groups-bordered" action="listUI.html">
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">项目名</label>
+                <label for="field-1" class="col-sm-3 control-label">文档名</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" placeholder="请输入项目名" name="project.name" value="<s:property value="project.name"></s:property>">
+                    <input type="text" class="form-control" id="field-1" placeholder="请输入任务名">
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">发布人</label>
+
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" placeholder="请输入您的姓名">
                 </div>
             </div>
 
@@ -423,21 +446,22 @@
                 <label class="col-sm-3 control-label">发布日期</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" name="project.createTime" value="<s:property value="project.createTime"></s:property>" data-start-view="2">
+                    <input type="text" class="form-control datepicker" data-start-view="2">
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label">计划完成日期</label>
 
-                <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" name="project.deadline" value="<s:property value="project.deadline"></s:property>" data-start-view="2">
-                </div>
-            </div>
 
-            <s:hidden value="%{project.id}" name="project.id"></s:hidden>
 
-            <s:hidden value="%{project.join_number}" name="project.join_number"></s:hidden>
+
+            <br><br>
+
+            <textarea id="editor" style="width: 100%;height: 360px">
+
+            </textarea>
+
+
+
 
 
             <div class="form-group">
@@ -446,7 +470,7 @@
 
                     <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
 
-                    <button type="submit" class="btn btn-default">提交</button>
+                    <button type="submit" class="btn btn-default">添加</button>
 
                 </div>
             </div>
@@ -454,6 +478,7 @@
 
 
         </form>
+
 
 
 
