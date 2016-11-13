@@ -5,22 +5,34 @@
 
 <struts>
 
-    <package name="user-action" namespace="/sys" extends="struts-default">
+    <package name="user-action" namespace="/" extends="struts-default">
+
 
         <!--class 可以从spring拿 , 也可以-->
-        <action name="user_*" class="com.cx.sys.user.action.UserAction" method="{1}">
+        <action name="system_user_*" class="com.cx.sys.user.action.UserSysAction" method="{1}">
 
 
             <!--视图跳转-->
             <result name="{1}">/WEB-INF/jsp/sys/user/{1}.jsp</result>
 
-            <!--重定向到列表-->
 
+            <result name="addUI">/WEB-INF/jsp/sys/user/addUI.jsp</result>
+
+            <!--重定向到列表-->
             <result name="list" type="redirectAction">
-                <param name="actionName">user_listUI</param>
+                <param name="actionName">system_user_listUI</param>
             </result>
 
         </action>
+
+        <action name="front_user_*" class="com.cx.sys.user.action.UserFrontAction" method="{1}">
+
+            <result name="{1}">
+                /WEB-INF/jsp/front/personal/{1}.jsp
+            </result>
+
+        </action>
+
 
     </package>
 

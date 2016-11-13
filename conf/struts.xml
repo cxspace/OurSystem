@@ -48,4 +48,11 @@
 
     <include file="com/cx/sys/user/conf/struts-user.xml"></include>
 
+    <!--通知公告模块-->
+
+    <include file="com/cx/sys/inform/conf/struts-inform.xml"></include>
+
+    <!--项目管理模块-->
+    <include file="com/cx/sys/project/conf/struts-project.xml"></include>
+
 </struts>

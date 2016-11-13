@@ -1,13 +1,5 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: cxspace
-  Date: 16-11-10
-  Time: 下午12:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="" />
 
-    <title>OUR_SYS | 用户列表</title>
+    <title>OUR_SYS | INDEX</title>
 
-    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
@@ -41,30 +34,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-    <script type="text/javascript">
-
-        function doDelete(id){
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_delete.action?user.id="+id;
-            document.forms[0].submit();
-
-        }
-
-        function doDeleteAll() {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_deleteSelected.action";
-            document.forms[0].submit();
-        }
-
-
-        function doEdit(id) {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_editUI.action?user.id="+id;
-            document.forms[0].submit();
-        }
-
-    </script>
 
 </head>
 
@@ -222,85 +191,86 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="listUI.html">
+                            <a href="${pageContext.request.contextPath}/user/listUI.html">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../project/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../prj_task/listUI.html">
+                            <a href="${pageContext.request.contextPath}/prj_task/listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../prj_doc/listUI.html">
+                            <a href="${pageContext.request.contextPath}/prj_doc/listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../learn_route/listUI.html">
+                            <a href="${pageContext.request.contextPath}/learn_route/listUI.html">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../learn_site/listUI.html">
+                            <a href="${pageContext.request.contextPath}/learn_site/listUI.html">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../res_link/listUI.html">
+                            <a href="${pageContext.request.contextPath}/res_link/listUI.html">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../experience/listUI.html">
+                            <a href="${pageContext.request.contextPath}/experience/listUI.html">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../note_class/listUI.html">
+                            <a href="${pageContext.request.contextPath}/note_class/listUI.html">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../note/listUI.html">
+                            <a href="${pageContext.request.contextPath}/note/listUI.html">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="../competition/listUI.html">
+                            <a href="${pageContext.request.contextPath}/competition/listUI.html">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="../current_competion/listUI.html">
+                            <a href="${pageContext.request.contextPath}/current_competion/listUI.html">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../inform/listUI.html">
+                            <a href="${pageContext.request.contextPath}/inform/listUI.html">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+
 
             </ul>
 
@@ -321,11 +291,7 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                        <s:if test="%{user.headImg != null && user.headImg != ''}">
-                            <img src="${pageContext.request.contextPath}/upload/<s:property value="user.head_img"/>" alt="" class="img-circle" width="44" />
-                           <s:hidden name="user.head_img"/>
-                        </s:if>
+                            <img src="${pageContext.request.contextPath}/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
                             张三
                         </a>
 
@@ -351,7 +317,7 @@
                     |
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/login.html">
+                        <a href="login.html">
                             注销 <i class="entypo-logout right"></i>
                         </a>
                     </li>
@@ -385,7 +351,7 @@
                 }, 3000);
 
 
-            });
+            }
 
         </script>
 
@@ -430,118 +396,66 @@
 
 
             <li>
-                <a>用户管理</a>
+                <a>项目管理</a>
             </li>
             <li class="active">
 
-                <strong>用户列表</strong>
+                <strong>新增</strong>
             </li>
         </ol>
 
-        <h3>用户列表</h3>
+        <h3>新增项目</h3>
 
 
-        <form action="" method="post" name="form1" enctype="multipart/form-data">
+        <form role="form" class="form-horizontal form-groups-bordered" action="listUI.html">
 
-        <table class="table table-bordered table-striped datatable" id="table-2">
-            <thead>
-            <tr>
-                <th>
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">项目名</label>
 
-                </th>
-                <th>用户名</th>
-                <th>账号</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>性别</th>
-                <th>生日</th>
-                <th>积分</th>
-                <th>角色</th>
-
-                <th>
-                    <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        删除所选
-                    </a>
-
-                    <a href="${pageContext.request.contextPath}/system_user_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
-                        <i class="entypo-info"></i>
-                        新增
-                    </a>
-
-                </th>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="field-1" placeholder="请输入项目名">
+                </div>
+            </div>
 
 
-            </tr>
-            </thead>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">发布日期</label>
 
-            <tbody>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control datepicker" data-start-view="2">
+                </div>
+            </div>
 
+            <div class="form-group">
+                <label class="col-sm-3 control-label">计划完成日期</label>
 
-            <s:iterator value="userList" status="st">
-
-            <tr>
-                <td>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3" name="selectedRow" value="<s:property value="id"/>">
-                    </div>
-                </td>
-                <td>
-                    <s:property value="user_name"/>
-                </td>
-                <td>
-                    <s:property value="account" />
-                </td>
-                <td>
-                    <s:property value="phone" />
-                </td>
-                <td>
-                    <s:property value="email" />
-                </td>
-                <td>
-                    <s:property value="gender== 1?'男':'女'" />
-                </td>
-                <td>
-                    <s:property value="birthday"/>
-                </td>
-                <td>
-                        <s:property value="score"/>
-                </td>
-                <td>
-                        <s:property value="role == 1?'管理员':'一般用户'"/>
-                </td>
-                <td>
-
-                    <a href="javascript:doEdit('<s:property value="id"/>')" class="btn btn-default btn-sm btn-icon icon-left">
-                        <i class="entypo-pencil"></i>
-                        编辑
-                    </a>
-
-                    <a href="javascript:doDelete('<s:property value="id"/>')" class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        删除
-                    </a>
-
-
-                </td>
-
-
-            </tr>
-
-            </s:iterator>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control datepicker" data-start-view="2">
+                </div>
+            </div>
 
 
 
 
-            </tbody>
-        </table>
+
+            <div class="form-group">
+
+                <div class="col-sm-offset-5 col-sm-5">
+
+                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
+
+                    <button type="submit" class="btn btn-default">添加</button>
+
+                </div>
+            </div>
+
+
 
         </form>
 
 
 
-        <br>
-        <br>
+
 
         <br>
         <br>
@@ -586,6 +500,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>

@@ -1,13 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: cxspace
-  Date: 16-11-10
-  Time: 下午12:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="" />
 
-    <title>OUR_SYS | 用户列表</title>
+    <title>OUR_SYS | INDEX</title>
 
-    
+
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
@@ -30,7 +26,16 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
-    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
+    <%--<%--%>
+        <%--String path = request.getContextPath();--%>
+        <%--String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";--%>
+        <%--request.setAttribute("ctx", basePath);--%>
+    <%--%>--%>
+
+    <script src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.10.2.min.js"></script>
+
+    <script src="${pageContext.request.contextPath}/assets/js/ajax.js"></script>
+
     <script>$.noConflict();</script>
 
     <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -41,28 +46,91 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
     <script type="text/javascript">
-
-        function doDelete(id){
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_delete.action?user.id="+id;
+        
+        function doEdit(id) {
+            document.forms[0].action = "${pageContext.request.contextPath}/system_inform_editUI.action?inform.id="+id;
             document.forms[0].submit();
-
         }
 
         function doDeleteAll() {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_deleteSelected.action";
+            document.forms[0].action = "${pageContext.request.contextPath}/system_inform_deleteAll.action";
             document.forms[0].submit();
         }
 
-
-        function doEdit(id) {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_editUI.action?user.id="+id;
+        function doDelete(id) {
+            document.forms[0].action = "${pageContext.request.contextPath}/system_inform_delete.action?inform.id="+id;
             document.forms[0].submit();
         }
+
+        // 异步处理通知状态
+        function doPublic(informId , state) {
+
+            var stateCode = state;
+            var ajax = createAJAX();
+            var method = "POST";
+            var url = "${pageContext.request.contextPath}/system_inform_publicInform.action?inform.id="+informId;
+
+            ajax.open(method,url);
+
+            ajax.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            var content = "inform.state="+state;
+
+            ajax.send(content);
+
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState == 4){
+                    if (ajax.status == 200){
+
+                        if (ajax.responseText == "ok"){
+
+                            if(state == 1){
+
+                                document.getElementById("show_"+informId).innerHTML = "发布";
+
+                            }else {
+
+                                document.getElementById("show_"+informId).innerHTML = "停用";
+
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+            <%--$.ajax({--%>
+                <%--url:"${basePath}system_inform_publicInform.action",--%>
+                <%--data:{"inform.id":informId,"inform.state":state},--%>
+                <%--type:"post",--%>
+                <%--success:function (msg) {--%>
+
+                    <%--if ("resetOK"==msg){--%>
+
+                        <%--if (state == 1){--%>
+                            <%--//说明信息已经改成发布--%>
+                            <%--$("#show_"+informId).html("发布");--%>
+
+                        <%--}else {--%>
+                            <%--$("#show_"+informId).html("停用");--%>
+                        <%--}--%>
+
+                    <%--}else {--%>
+                        <%--alert("更新失败！");--%>
+                    <%--}--%>
+
+                <%--},--%>
+                <%--error:function () {--%>
+                    <%--alert("更新失败！");--%>
+                <%--}--%>
+
+            <%--});--%>
+
+        }
+
+
 
     </script>
 
@@ -222,7 +290,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="listUI.html">
+                            <a href="../user/listUI.html">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
@@ -295,12 +363,13 @@
                         </li>
 
                         <li>
-                            <a href="../inform/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+
 
             </ul>
 
@@ -321,11 +390,7 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                        <s:if test="%{user.headImg != null && user.headImg != ''}">
-                            <img src="${pageContext.request.contextPath}/upload/<s:property value="user.head_img"/>" alt="" class="img-circle" width="44" />
-                           <s:hidden name="user.head_img"/>
-                        </s:if>
+                            <img src="${pageContext.request.contextPath}/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
                             张三
                         </a>
 
@@ -351,7 +416,7 @@
                     |
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/login.html">
+                        <a href="login.html">
                             注销 <i class="entypo-logout right"></i>
                         </a>
                     </li>
@@ -385,7 +450,12 @@
                 }, 3000);
 
 
+
+
+
             });
+
+
 
         </script>
 
@@ -430,33 +500,35 @@
 
 
             <li>
-                <a>用户管理</a>
+                <a>通知公告管理</a>
             </li>
             <li class="active">
 
-                <strong>用户列表</strong>
+                <strong>通知公告</strong>
             </li>
         </ol>
 
-        <h3>用户列表</h3>
+        <h3>通知公告列表</h3>
 
-
-        <form action="" method="post" name="form1" enctype="multipart/form-data">
-
+        <form name="form1" action="" method="post">
         <table class="table table-bordered table-striped datatable" id="table-2">
             <thead>
             <tr>
                 <th>
 
                 </th>
-                <th>用户名</th>
-                <th>账号</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>性别</th>
-                <th>生日</th>
-                <th>积分</th>
-                <th>角色</th>
+                <th>标题</th>
+                <th>发布时间</th>
+
+                <th>状态</th>
+
+
+                <th>
+
+                  状态操作
+
+                </th>
+
 
                 <th>
                     <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
@@ -464,7 +536,7 @@
                         删除所选
                     </a>
 
-                    <a href="${pageContext.request.contextPath}/system_user_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
+                    <a href="${pageContext.request.contextPath}/system_inform_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
                         <i class="entypo-info"></i>
                         新增
                     </a>
@@ -477,51 +549,52 @@
 
             <tbody>
 
-
-            <s:iterator value="userList" status="st">
+            <s:iterator value="informList" status="st">
 
             <tr>
                 <td>
                     <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3" name="selectedRow" value="<s:property value="id"/>">
+                        <input type="checkbox" name="selectedRow" value="<s:property value="id"></s:property>">
                     </div>
                 </td>
                 <td>
-                    <s:property value="user_name"/>
+                    <s:property value="title"></s:property>
                 </td>
+
                 <td>
-                    <s:property value="account" />
+                    <s:property value="createTime"></s:property>
                 </td>
-                <td>
-                    <s:property value="phone" />
+
+                <td id="show_<s:property value="id"></s:property>">
+
+                    <s:property value="state == 1?'发布':'停用'"></s:property>
                 </td>
-                <td>
-                    <s:property value="email" />
-                </td>
-                <td>
-                    <s:property value="gender== 1?'男':'女'" />
-                </td>
-                <td>
-                    <s:property value="birthday"/>
-                </td>
-                <td>
-                        <s:property value="score"/>
-                </td>
-                <td>
-                        <s:property value="role == 1?'管理员':'一般用户'"/>
-                </td>
+
                 <td>
 
-                    <a href="javascript:doEdit('<s:property value="id"/>')" class="btn btn-default btn-sm btn-icon icon-left">
+                    <a href="javascript:doPublic('<s:property value="id"></s:property>',0)" class="btn btn-danger btn-sm btn-icon icon-left">
+                        <i class="entypo-cancel"></i>
+                        停用
+                    </a>
+
+                    <a href="javascript:doPublic('<s:property value="id"></s:property>',1)" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-info"></i>
+                        发布
+                    </a>
+
+                </td>
+
+                <td>
+
+                    <a href="javascript:doEdit('<s:property value="id"></s:property>')" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-pencil"></i>
                         编辑
                     </a>
 
-                    <a href="javascript:doDelete('<s:property value="id"/>')" class="btn btn-danger btn-sm btn-icon icon-left">
+                    <a href="javascript:doDelete('<s:property value="id"></s:property>')" class="btn btn-danger btn-sm btn-icon icon-left">
                         <i class="entypo-cancel"></i>
                         删除
                     </a>
-
 
                 </td>
 
@@ -530,13 +603,11 @@
 
             </s:iterator>
 
-
-
-
             </tbody>
         </table>
 
         </form>
+
 
 
 

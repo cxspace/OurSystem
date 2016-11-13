@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="inform-action" namespace="/" extends="struts-default">
+
+
+        <!--class 可以从spring拿 , 也可以-->
+        <action name="system_inform_*" class="com.cx.sys.inform.action.InformSysAction" method="{1}">
+
+
+            <!--视图跳转-->
+            <result name="{1}">/WEB-INF/jsp/sys/inform/{1}.jsp</result>
+
+            <result name="addUI">/WEB-INF/jsp/sys/inform/addUI.jsp</result>
+
+            <!--重定向到列表-->
+            <result name="list" type="redirectAction">
+                <param name="actionName">system_inform_listUI</param>
+            </result>
+
+        </action>
+
+        <action name="front_inform_*" class="com.cx.sys.inform.action.InformFrontAction" method="{1}">
+
+            <result name="infoList">
+                /WEB-INF/jsp/front/personal/info.jsp
+            </result>
+
+        </action>
+
+
+    </package>
+
+</struts>

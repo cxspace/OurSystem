@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.cx.sys.project.entity.Project" table="t_project">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32"/>
+            <generator class="uuid.hex"/>
+        </id>
+        <property name="name" type="java.lang.String">
+           <column name="user_name" length="50" not-null="true"/>
+        </property>
+
+        <property name="createTime" type="java.lang.String">
+            <column name="create_time" length="26" not-null="true"/>
+        </property>
+
+        <property name="deadline" type="java.lang.String">
+            <column name="deadline" length="26" not-null="true"/>
+        </property>
+
+        <property name="join_number" type="java.lang.Integer">
+            <column name="join_number"/>
+        </property>
+
+
+    </class>
+
+</hibernate-mapping>

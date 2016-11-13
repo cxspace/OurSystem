@@ -1,13 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: cxspace
-  Date: 16-11-10
-  Time: 下午12:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="" />
 
-    <title>OUR_SYS | 用户列表</title>
+    <title>OUR_SYS | INDEX</title>
 
-    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
@@ -33,6 +28,16 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
     <script>$.noConflict();</script>
 
+
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script>
+        window.UEDITOR_HOME_URL = "${pageContext.request.contextPath}/assets/js/ueditor/";
+        var ue = UE.getEditor('editor');
+    </script>
+
     <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,30 +46,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-    <script type="text/javascript">
-
-        function doDelete(id){
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_delete.action?user.id="+id;
-            document.forms[0].submit();
-
-        }
-
-        function doDeleteAll() {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_deleteSelected.action";
-            document.forms[0].submit();
-        }
-
-
-        function doEdit(id) {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_editUI.action?user.id="+id;
-            document.forms[0].submit();
-        }
-
-    </script>
 
 </head>
 
@@ -222,7 +203,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="listUI.html">
+                            <a href="../user/listUI.html">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
@@ -295,7 +276,7 @@
                         </li>
 
                         <li>
-                            <a href="../inform/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
@@ -321,11 +302,7 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                        <s:if test="%{user.headImg != null && user.headImg != ''}">
-                            <img src="${pageContext.request.contextPath}/upload/<s:property value="user.head_img"/>" alt="" class="img-circle" width="44" />
-                           <s:hidden name="user.head_img"/>
-                        </s:if>
+                            <img src="${pageContext.request.contextPath}/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
                             张三
                         </a>
 
@@ -351,7 +328,7 @@
                     |
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/login.html">
+                        <a href="login.html">
                             注销 <i class="entypo-logout right"></i>
                         </a>
                     </li>
@@ -430,127 +407,66 @@
 
 
             <li>
-                <a>用户管理</a>
+                <a>通知公告管理</a>
             </li>
             <li class="active">
 
-                <strong>用户列表</strong>
+                <strong>编辑</strong>
             </li>
         </ol>
 
-        <h3>用户列表</h3>
+        <h3>编辑通知公告</h3>
 
 
-        <form action="" method="post" name="form1" enctype="multipart/form-data">
+        <form role="form" class="form-horizontal form-groups-bordered" method="post" action="${pageContext.request.contextPath}/system_inform_edit.action">
 
-        <table class="table table-bordered table-striped datatable" id="table-2">
-            <thead>
-            <tr>
-                <th>
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">通知公告标题</label>
 
-                </th>
-                <th>用户名</th>
-                <th>账号</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>性别</th>
-                <th>生日</th>
-                <th>积分</th>
-                <th>角色</th>
+                <div class="col-sm-5">
+                    <input type="text" name="inform.title" class="form-control" id="field-1" value="<s:property value="inform.title"></s:property> ">
+                </div>
+            </div>
 
-                <th>
-                    <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        删除所选
-                    </a>
+            <br>
 
-                    <a href="${pageContext.request.contextPath}/system_user_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
-                        <i class="entypo-info"></i>
-                        新增
-                    </a>
+            <label class="control-label">通知公告内容</label>
 
-                </th>
+            <br><br>
+
+            <textarea id="editor" name="inform.content" style="width: 100%;height: 360px;">
+                <s:property value="inform.content"></s:property>
+            </textarea>
+
+            <br>
+            <br>
+            <hr>
 
 
-            </tr>
-            </thead>
+            <s:hidden name="inform.createTime" value="%{inform.createTime}"></s:hidden>
 
-            <tbody>
+            <s:hidden name="inform.state" value="%{inform.state}"></s:hidden>
 
+            <s:hidden name="inform.id" value="%{inform.id}"></s:hidden>
 
-            <s:iterator value="userList" status="st">
+            <div class="form-group">
 
-            <tr>
-                <td>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3" name="selectedRow" value="<s:property value="id"/>">
-                    </div>
-                </td>
-                <td>
-                    <s:property value="user_name"/>
-                </td>
-                <td>
-                    <s:property value="account" />
-                </td>
-                <td>
-                    <s:property value="phone" />
-                </td>
-                <td>
-                    <s:property value="email" />
-                </td>
-                <td>
-                    <s:property value="gender== 1?'男':'女'" />
-                </td>
-                <td>
-                    <s:property value="birthday"/>
-                </td>
-                <td>
-                        <s:property value="score"/>
-                </td>
-                <td>
-                        <s:property value="role == 1?'管理员':'一般用户'"/>
-                </td>
-                <td>
+                <div class="col-sm-offset-5 col-sm-5">
 
-                    <a href="javascript:doEdit('<s:property value="id"/>')" class="btn btn-default btn-sm btn-icon icon-left">
-                        <i class="entypo-pencil"></i>
-                        编辑
-                    </a>
+                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
 
-                    <a href="javascript:doDelete('<s:property value="id"/>')" class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        删除
-                    </a>
+                    <button type="submit" class="btn btn-default">提交</button>
 
-
-                </td>
-
-
-            </tr>
-
-            </s:iterator>
-
-
-
-
-            </tbody>
-        </table>
-
+                </div>
+            </div>
         </form>
 
-
-
-        <br>
-        <br>
-
         <br>
         <br>
         <br>
         <br>
         <br>
         <br>
-
-
         <br>
         <br>
         <br>
@@ -586,6 +502,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>

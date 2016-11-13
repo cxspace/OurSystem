@@ -1,13 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: cxspace
-  Date: 16-11-10
-  Time: 下午12:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="" />
 
-    <title>OUR_SYS | 用户列表</title>
+    <title>OUR_SYS | INDEX</title>
 
-    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
@@ -41,30 +35,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-    <script type="text/javascript">
-
-        function doDelete(id){
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_delete.action?user.id="+id;
-            document.forms[0].submit();
-
-        }
-
-        function doDeleteAll() {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_deleteSelected.action";
-            document.forms[0].submit();
-        }
-
-
-        function doEdit(id) {
-
-            document.forms[0].action = "${pageContext.request.contextPath}/system_user_editUI.action?user.id="+id;
-            document.forms[0].submit();
-        }
-
-    </script>
 
 </head>
 
@@ -302,6 +272,7 @@
                     </ul>
                 </li>
 
+
             </ul>
 
         </div>
@@ -321,11 +292,7 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                        <s:if test="%{user.headImg != null && user.headImg != ''}">
-                            <img src="${pageContext.request.contextPath}/upload/<s:property value="user.head_img"/>" alt="" class="img-circle" width="44" />
-                           <s:hidden name="user.head_img"/>
-                        </s:if>
+                            <img src="${pageContext.request.contextPath}/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
                             张三
                         </a>
 
@@ -385,7 +352,7 @@
                 }, 3000);
 
 
-            });
+            }
 
         </script>
 
@@ -434,114 +401,162 @@
             </li>
             <li class="active">
 
-                <strong>用户列表</strong>
+                <strong>编辑</strong>
             </li>
         </ol>
 
-        <h3>用户列表</h3>
+        <h3>编辑用户</h3>
 
 
-        <form action="" method="post" name="form1" enctype="multipart/form-data">
+        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_user_edit.action">
 
-        <table class="table table-bordered table-striped datatable" id="table-2">
-            <thead>
-            <tr>
-                <th>
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">用户名</label>
 
-                </th>
-                <th>用户名</th>
-                <th>账号</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>性别</th>
-                <th>生日</th>
-                <th>积分</th>
-                <th>角色</th>
-
-                <th>
-                    <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        删除所选
-                    </a>
-
-                    <a href="${pageContext.request.contextPath}/system_user_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
-                        <i class="entypo-info"></i>
-                        新增
-                    </a>
-
-                </th>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="user.user_name" value="<s:property value="user.user_name"></s:property>">
+                </div>
+            </div>
 
 
-            </tr>
-            </thead>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">账号</label>
 
-            <tbody>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="user.account" value="<s:property value="user.account"></s:property>">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">邮箱</label>
+
+                <div class="col-sm-5">
+                    <input type="text" name="user.email" class="form-control" value="<s:property value="user.email"></s:property>">
+                </div>
+            </div>
 
 
-            <s:iterator value="userList" status="st">
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-5">
 
-            <tr>
-                <td>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3" name="selectedRow" value="<s:property value="id"/>">
+                    <s:if test="%{user.gender == 1}">
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="user.gender"  value="1" checked>男
+                        </label>
                     </div>
-                </td>
-                <td>
-                    <s:property value="user_name"/>
-                </td>
-                <td>
-                    <s:property value="account" />
-                </td>
-                <td>
-                    <s:property value="phone" />
-                </td>
-                <td>
-                    <s:property value="email" />
-                </td>
-                <td>
-                    <s:property value="gender== 1?'男':'女'" />
-                </td>
-                <td>
-                    <s:property value="birthday"/>
-                </td>
-                <td>
-                        <s:property value="score"/>
-                </td>
-                <td>
-                        <s:property value="role == 1?'管理员':'一般用户'"/>
-                </td>
-                <td>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="user.gender"  value="0">女
+                        </label>
+                    </div>
 
-                    <a href="javascript:doEdit('<s:property value="id"/>')" class="btn btn-default btn-sm btn-icon icon-left">
-                        <i class="entypo-pencil"></i>
-                        编辑
-                    </a>
-
-                    <a href="javascript:doDelete('<s:property value="id"/>')" class="btn btn-danger btn-sm btn-icon icon-left">
-                        <i class="entypo-cancel"></i>
-                        删除
-                    </a>
+                    </s:if>
+                    <s:else>
 
 
-                </td>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="user.gender"  value="1">男
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="user.gender"  value="0"  checked>女
+                            </label>
+                        </div>
+
+                    </s:else>
 
 
-            </tr>
+                </div>
+            </div>
 
-            </s:iterator>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">电话</label>
+
+                <div class="col-sm-5">
+                    <input type="number" name="user.phone" class="form-control" value="<s:property value="user.phone"></s:property>">
+                </div>
+            </div>
 
 
 
+            <div class="form-group">
 
-            </tbody>
-        </table>
+                <s:if test="%{user.role == 1}">
+
+
+                <div class="col-sm-offset-3 col-sm-5">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="user.role" value="1" checked>管理员
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="user.role" value="0">一般用户
+                        </label>
+                    </div>
+                </div>
+
+                </s:if>
+
+                <s:else>
+                    <div class="col-sm-offset-3 col-sm-5">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="user.role" value="1">管理员
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="user.role" value="0" checked>一般用户
+                            </label>
+                        </div>
+                    </div>
+
+                </s:else>
+
+
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">积分</label>
+
+                <div class="col-sm-5">
+                    <input type="number" name="user.score" class="form-control" value="<s:property value="user.score"></s:property>">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-sm-offset-5 col-sm-5">
+
+                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
+
+                    <button type="submit" class="btn btn-default">提交</button>
+
+                </div>
+            </div>
+
+            <s:hidden value="%{user.id}" name="user.id"></s:hidden>
+
+            <s:hidden value="%{user.head_img}" name="user.head_img"></s:hidden>
+
+            <s:hidden value="%{user.password}" name="user.password"></s:hidden>
 
         </form>
 
 
 
-        <br>
-        <br>
+
 
         <br>
         <br>
