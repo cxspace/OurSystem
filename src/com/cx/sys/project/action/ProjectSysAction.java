@@ -126,4 +126,5 @@ public class ProjectSysAction extends ActionSupport {
     public void setSelectedRow(String[] selectedRow) {
         this.selectedRow = selectedRow;
     }
+
 }

@@ -22,17 +22,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
 
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
-
-    <script>
-        window.UEDITOR_HOME_URL = "${pageContext.request.contextPath}/assets/js/ueditor/";
-        var ue = UE.getEditor('editor');
-    </script>
-
-
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
@@ -46,6 +35,38 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+
+        function doEdit(id){
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_task_editUI.action?prjTask.id="+id;
+            document.forms[0].submit();
+        }
+
+        function doDelete(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_task_delete.action?prjTask.id="+id;
+            document.forms[0].submit();
+        }
+        function doVerifyOk(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_task_verifyOK.action?prjTask.id="+id;
+            document.forms[0].submit();
+        }
+
+        function doReset(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_doc_delete.action?prjTask.id="+id;
+            document.forms[0].submit();
+        }
+
+        function doDeleteAll() {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_task_deleteSelected.action";
+            document.forms[0].submit();
+        }
+
+        function doAdd(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_task_addUI.action?project.id="+id;
+            document.forms[0].submit();
+        }
+
+    </script>
 
 </head>
 
@@ -156,6 +177,7 @@
                         <span class="title">项目大厅</span>
                     </a>
 
+
                 </li>
                 <li>
                     <a href="#">
@@ -213,13 +235,13 @@
                         </li>
 
                         <li>
-                            <a href="../prj_task/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="listUI.html">
+                            <a href="../prj_doc/listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
@@ -411,76 +433,127 @@
             </li>
             <li class="active">
 
-                <strong>新增</strong>
+                <strong>任务</strong>
             </li>
         </ol>
 
+        <h3>神通录任务列表</h3>
+
+        <form name="form1" action="" method="post">
+
+        <table class="table table-bordered table-striped datatable" id="table-2">
+            <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>任务名</th>
+                <th>发布时间</th>
+                <th>任务期限</th>
+                <th>负责人</th>
+
+                <th>任务积分</th>
+
+                <th>任务状态</th>
 
 
-        <h3>新增项目文档</h3>
+                <th>
+
+                    <a href="javascript:doAdd('<s:property value="project.id"></s:property>')" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-info"></i>
+                        新增任务
+                    </a>
+
+                    <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
+                        <i class="entypo-cancel"></i>
+                        删除选中
+                    </a>
+
+                </th>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_prj_doc_add.action" method="post">
+            </tr>
+            </thead>
 
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">文档名</label>
+            <tbody>
 
-                <div class="col-sm-5">
-                    <input type="text" name="prjDoc.name" class="form-control" id="field-1" placeholder="请输入文档名">
-                </div>
-            </div>
+            <s:iterator value="prjTaskList" status="st">
+
+            <tr>
+                <td>
+                    <div class="checkbox checkbox-replace">
+                        <input type="checkbox" name="selectedRow" value="<s:property value="id"></s:property>" id="chk-3">
+                    </div>
+                </td>
+                <td><s:property value="name"></s:property></td>
+                <td><s:property value="createTime"></s:property></td>
+                <td><s:property value="dead_line"></s:property></td>
+                <td><s:property value="select_person"></s:property></td>
+                <td><s:property value="score"></s:property></td>
+
+                <td>
+                    <s:if test="state == 0">
+                        未选中
+                    </s:if>
+                    <s:elseif test="state == 1">
+                        未完成
+                    </s:elseif>
+                    <s:elseif test="state == 2">
+                        已提交
+                    </s:elseif>
+                    <s:elseif test="state == 3">
+                        确认完成
+                    </s:elseif>
+                </td>
+
+                <td>
+
+                    <a href="javascript:doEdit('<s:property value="id"></s:property>')" class="btn btn-default btn-sm btn-icon icon-left">
+                        <i class="entypo-pencil"></i>
+                        编辑
+                    </a>
+
+                    <a href="javascript:doReset('<s:property value="id"></s:property>')" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-record"></i>
+                        重置
+                    </a>
+
+                    <a href="javascript:doDelete('<s:property value="id"></s:property>')" class="btn btn-danger btn-sm btn-icon icon-left">
+                        <i class="entypo-cancel"></i>
+                        删除
+                    </a>
+
+                    <a href="javascript:doVerifyOk('<s:property value="id"></s:property>')" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-star"></i>
+                        确认完成
+                    </a>
+
+                </td>
 
 
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">发布人</label>
-
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="prjDoc.create_person" placeholder="请输入您的姓名">
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
-
-                <div class="col-sm-3">
-                    <input type="text" name="prjDoc.createTime" class="form-control datepicker" data-start-view="2" readonly>
-                </div>
-            </div>
+            </tr>
 
 
 
-
-
-            <br><br>
-
-            <textarea id="editor" name="prjDoc.content" style="width: 100%;height: 560px">
-
-            </textarea>
+            </s:iterator>
 
 
 
-
-
-            <div class="form-group">
-
-                <div class="col-sm-offset-5 col-sm-5">
-
-                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
-
-                    <button type="submit" class="btn btn-default">添加</button>
-
-                </div>
-            </div>
-
-
+            </tbody>
+        </table>
 
         </form>
 
 
+        <br>
+        <br>
 
 
+        <div class="col-sm-offset-5 col-sm-5">
 
+            <a href="${pageContext.request.contextPath}/system_prj_task_prj_list.action" class="btn btn-default">返回项目列表</a>
+
+        </div>
 
         <br>
         <br>
@@ -525,7 +598,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>

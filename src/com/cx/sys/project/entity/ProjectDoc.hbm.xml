@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.cx.sys.project.entity.ProjectDoc" table="t_r_prj_doc">
+
+        <composite-id name="id"  class="com.cx.sys.project.entity.ProjectDocId">
+            <key-many-to-one name="prjDoc" lazy="false" class="com.cx.sys.prj_doc.entity.PrjDoc">
+                <column name="doc_id"></column>
+            </key-many-to-one>
+
+            <key-property name="prj_id" type="java.lang.String">
+                <column name="prj_id" length="32"></column>
+            </key-property>
+
+        </composite-id>
+
+
+    </class>
+
+</hibernate-mapping>

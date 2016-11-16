@@ -11,6 +11,8 @@
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
 
+    
+    
     <title>OUR_SYS | INDEX</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
@@ -21,17 +23,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-theme.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
-
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
-
-    <script>
-        window.UEDITOR_HOME_URL = "${pageContext.request.contextPath}/assets/js/ueditor/";
-        var ue = UE.getEditor('editor');
-    </script>
-
-
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
@@ -46,6 +37,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+
+        function toDocListUI(id) {
+
+            document.forms[0].action = "${pageContext.request.contextPath}/system_prj_task_listUI.action?project.id="+id;
+            document.forms[0].submit();
+
+        }
+
+    </script>
 
 </head>
 
@@ -156,6 +157,7 @@
                         <span class="title">项目大厅</span>
                     </a>
 
+
                 </li>
                 <li>
                     <a href="#">
@@ -213,13 +215,13 @@
                         </li>
 
                         <li>
-                            <a href="../prj_task/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="listUI.html">
+                            <a href="../prj_doc/listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
@@ -411,76 +413,64 @@
             </li>
             <li class="active">
 
-                <strong>新增</strong>
+                <strong>项目列表</strong>
             </li>
         </ol>
 
+        <h3>项目列表</h3>
+
+        <form name="form1" method="post" action="">
+
+        <table class="table table-bordered table-striped datatable" id="table-2">
+            <thead>
+            <tr>
+
+                <th>项目名</th>
 
 
-        <h3>新增项目文档</h3>
+                <th>
+
+                </th>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_prj_doc_add.action" method="post">
+            </tr>
+            </thead>
 
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">文档名</label>
-
-                <div class="col-sm-5">
-                    <input type="text" name="prjDoc.name" class="form-control" id="field-1" placeholder="请输入文档名">
-                </div>
-            </div>
+            <tbody>
 
 
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">发布人</label>
+            <s:iterator value="projectList" status="st">
 
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="prjDoc.create_person" placeholder="请输入您的姓名">
-                </div>
-            </div>
+            <tr>
 
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
-
-                <div class="col-sm-3">
-                    <input type="text" name="prjDoc.createTime" class="form-control datepicker" data-start-view="2" readonly>
-                </div>
-            </div>
+                <td>
+                    <s:property value="name"></s:property>
+                </td>
 
 
+                <td>
+
+                    <a href="javascript:toDocListUI('<s:property value="id"></s:property>')" class="btn btn-default btn-sm btn-icon icon-left">
+                        <i class="entypo-search"></i>
+                        查看任务
+                    </a>
+
+                </td>
 
 
+            </tr>
+            </s:iterator>
 
-            <br><br>
-
-            <textarea id="editor" name="prjDoc.content" style="width: 100%;height: 560px">
-
-            </textarea>
-
-
-
-
-
-            <div class="form-group">
-
-                <div class="col-sm-offset-5 col-sm-5">
-
-                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
-
-                    <button type="submit" class="btn btn-default">添加</button>
-
-                </div>
-            </div>
-
-
+            </tbody>
+        </table>
 
         </form>
 
 
 
 
-
+        <br>
+        <br>
 
         <br>
         <br>
@@ -525,7 +515,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>

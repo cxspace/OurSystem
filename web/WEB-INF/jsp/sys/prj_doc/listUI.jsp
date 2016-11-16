@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -34,6 +35,31 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <script type="text/javascript">
+
+        function doEdit(id){
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_doc_editUI.action?prjDoc.id="+id;
+            document.forms[0].submit();
+        }
+
+        function doDelete(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_doc_delete.action?prjDoc.id="+id;
+            document.forms[0].submit();
+        }
+
+        function doDeleteAll() {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_doc_deleteSelected.action";
+            document.forms[0].submit();
+        }
+
+        function doAdd(id) {
+            document.forms[0].action="${pageContext.request.contextPath}/system_prj_doc_addUI.action?project.id="+id;
+            document.forms[0].submit();
+        }
+
+    </script>
 
 
 </head>
@@ -407,13 +433,14 @@
 
         <h3>神通录文档列表</h3>
 
+        <form name="form1" method="post" action="">
+
+
         <table class="table table-bordered table-striped datatable" id="table-2">
             <thead>
             <tr>
                 <th>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk">
-                    </div>
+
                 </th>
                 <th>文档名</th>
                 <th>发布时间</th>
@@ -422,12 +449,12 @@
 
                 <th>
 
-                    <a href="addUI.html" class="btn btn-info btn-sm btn-icon icon-left">
+                    <a href="javascript:doAdd('<s:property value="project.id"></s:property>')" class="btn btn-info btn-sm btn-icon icon-left">
                         <i class="entypo-info"></i>
                         新增文档
                     </a>
 
-                    <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                    <a href="javascript:doDeleteAll()" class="btn btn-danger btn-sm btn-icon icon-left">
                         <i class="entypo-cancel"></i>
                         删除选中
                     </a>
@@ -440,29 +467,34 @@
 
             <tbody>
 
+
+            <s:iterator value="prjDocList" status="st">
+
             <tr>
                 <td>
                     <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3">
+                        <input type="checkbox" name="selectedRow" value="<s:property value="id"></s:property>" id="chk-3">
                     </div>
                 </td>
-                <td>神通录前端页面设计稿</td>
-                <td>2016-09-19</td>
-
-                <td>李四</td>
+                <td>
+                    <s:property value="name"></s:property>
+                </td>
+                <td>
+                    <s:property value="createTime"></s:property>
+                </td>
 
                 <td>
-                    <a href="editUI.html" class="btn btn-default btn-sm btn-icon icon-left">
+                    <s:property value="create_person"></s:property>
+                </td>
+
+                <td>
+                    <a href="javascript:doEdit('<s:property value="id"></s:property>')" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-pencil"></i>
                         编辑
                     </a>
 
-                    <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-                        <i class="entypo-record"></i>
-                        重置
-                    </a>
 
-                    <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                    <a href="javascript:doDelete('<s:property value="id"></s:property>')" class="btn btn-danger btn-sm btn-icon icon-left">
                         <i class="entypo-cancel"></i>
                         删除
                     </a>
@@ -472,10 +504,13 @@
 
             </tr>
 
+            </s:iterator>
+
 
             </tbody>
         </table>
 
+        </form>
 
 
 
@@ -486,7 +521,7 @@
 
         <div class="col-sm-offset-5 col-sm-5">
 
-            <a href="prj_list.html" class="btn btn-default">返回项目列表</a>
+            <a href="${pageContext.request.contextPath}/system_prj_doc_prj_list.action" class="btn btn-default">返回项目列表</a>
 
         </div>
 

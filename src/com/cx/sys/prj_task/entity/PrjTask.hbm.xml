@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.cx.sys.project.entity.Project" table="t_project">
+    <class name="com.cx.sys.prj_task.entity.PrjTask" table="t_prj_task">
         <id name="id" type="java.lang.String">
             <column name="id" length="32"/>
             <generator class="uuid.hex"/>
@@ -21,10 +21,20 @@
             <column name="deadline" length="26" not-null="true"/>
         </property>
 
-        <property name="join_number" type="java.lang.Integer">
-            <column name="join_number"/>
+        <property name="select_person" type="java.lang.String">
+            <column name="select_person" length="10"></column>
         </property>
 
-    </class>
+        <property name="score" type="java.lang.Integer">
+            <column name="score"></column>
+        </property>
 
+        <property name="state" type="java.lang.Integer">
+            <column name="state"></column>
+        </property>
+
+        <property name="content" type="text">
+            <column name="content"></column>
+        </property>
+    </class>
 </hibernate-mapping>

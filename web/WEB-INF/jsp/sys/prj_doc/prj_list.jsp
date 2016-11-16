@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -34,6 +35,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+
+        function toDocListUI(id) {
+
+            document.forms[0].action = "${pageContext.request.contextPath}/system_prj_doc_listUI.action?project.id="+id;
+            document.forms[0].submit();
+
+        }
+
+    </script>
 
 </head>
 
@@ -405,14 +416,12 @@
 
         <h3>项目列表</h3>
 
+        <form action="" method="post" name="form1">
+
         <table class="table table-bordered table-striped datatable" id="table-2">
             <thead>
             <tr>
-                <th>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk">
-                    </div>
-                </th>
+
                 <th>项目名</th>
 
 
@@ -426,18 +435,19 @@
 
             <tbody>
 
+
+            <s:iterator value="projectList" status="st">
+
             <tr>
+
                 <td>
-                    <div class="checkbox checkbox-replace">
-                        <input type="checkbox" id="chk-3">
-                    </div>
+                    <s:property value="name"></s:property>
                 </td>
-                <td>神通录</td>
 
 
                 <td>
 
-                    <a href="listUI.html" class="btn btn-default btn-sm btn-icon icon-left">
+                    <a href="javascript:toDocListUI('<s:property value="id"></s:property>')" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-search"></i>
                         查看文档
                     </a>
@@ -447,11 +457,11 @@
 
             </tr>
 
-
+            </s:iterator>
             </tbody>
         </table>
 
-
+        </form>
 
 
 

@@ -5,30 +5,30 @@
 
 <struts>
 
-    <package name="prj_doc-action" namespace="/" extends="struts-default">
+    <package name="prj_task-action" namespace="/" extends="struts-default">
 
 
         <!--class 可以从spring拿 , 也可以-->
-        <action name="system_prj_doc_*" class="com.cx.sys.prj_doc.action.PrjDocSysAction" method="{1}">
+        <action name="system_prj_task_*" class="com.cx.sys.prj_task.action.PrjTaskSysAction" method="{1}">
 
             <!--视图跳转-->
-            <result name="{1}">/WEB-INF/jsp/sys/prj_doc/{1}.jsp</result>
+            <result name="{1}">/WEB-INF/jsp/sys/prj_task/{1}.jsp</result>
 
-            <result name="addUI">/WEB-INF/jsp/sys/prj_doc/addUI.jsp</result>
+            <result name="addUI">/WEB-INF/jsp/sys/prj_task/addUI.jsp</result>
 
-            <result name="listUI">/WEB-INF/jsp/sys/prj_doc/listUI.jsp</result>
+            <result name="listUI">/WEB-INF/jsp/sys/prj_task/listUI.jsp</result>
 
             <!--重定向到列表-->
             <result name="list" type="redirectAction">
-                <param name="actionName">system_prj_doc_listUI</param>
+                <param name="actionName">system_prj_task_listUI</param>
             </result>
 
             <result name="list_back" type="redirectAction">
-                <param name="actionName">system_prj_doc_listBack</param>
+                <param name="actionName">system_prj_task_listBack</param>
             </result>
 
-        </action>
 
+        </action>
 
         <!--<action name="front_inform_*" class="com.cx.sys.inform.action.InformFrontAction" method="{1}">-->
 
@@ -37,7 +37,6 @@
             <!--</result>-->
 
         <!--</action>-->
-
 
     </package>
 

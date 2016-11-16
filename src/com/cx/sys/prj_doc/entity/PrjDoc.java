@@ -55,6 +55,9 @@ public class PrjDoc {
         this.name = name;
     }
 
+    public PrjDoc(String id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {

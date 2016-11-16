@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -419,13 +420,13 @@
         <h3>编辑项目文档</h3>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="listUI.html">
+        <form role="form" method="post" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_prj_doc_edit.action">
 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label">文档名</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" >
+                    <input type="text" name="prjDoc.name" value="<s:property value="prjDoc.name"></s:property>" class="form-control" id="field-1" >
                 </div>
             </div>
 
@@ -435,7 +436,7 @@
                 <label for="field-1" class="col-sm-3 control-label">发布人</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" >
+                    <input type="text" name="prjDoc.create_person" value="<s:property value="prjDoc.create_person"></s:property>" class="form-control" >
                 </div>
             </div>
 
@@ -444,7 +445,7 @@
                 <label class="col-sm-3 control-label">发布日期</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" data-start-view="2">
+                    <input type="text" name="prjDoc.createTime" value="<s:property value="prjDoc.createTime"></s:property>" class="form-control datepicker" data-start-view="2">
                 </div>
             </div>
 
@@ -454,12 +455,11 @@
 
             <br><br>
 
-            <textarea id="editor" style="width: 100%;height: 360px">
-
+            <textarea name="prjDoc.content" id="editor"style="width: 100%;height: 560px">
+                <s:property value="prjDoc.content"></s:property>
             </textarea>
 
-
-
+            <s:hidden value="%{prjDoc.id}" name="prjDoc.id"></s:hidden>
 
 
             <div class="form-group">

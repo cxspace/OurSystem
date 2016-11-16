@@ -156,6 +156,7 @@
                         <span class="title">项目大厅</span>
                     </a>
 
+
                 </li>
                 <li>
                     <a href="#">
@@ -195,6 +196,8 @@
                     </ul>
                 </li>
 
+
+
                 <li>
                     <a>
                         <i class="entypo-tools"></i>
@@ -213,13 +216,13 @@
                         </li>
 
                         <li>
-                            <a href="../prj_task/listUI.html">
+                            <a href="listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="listUI.html">
+                            <a href="../prj_doc/listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
@@ -411,31 +414,20 @@
             </li>
             <li class="active">
 
-                <strong>新增</strong>
+                <strong>编辑</strong>
             </li>
         </ol>
 
+        <h3>编辑任务</h3>
 
 
-        <h3>新增项目文档</h3>
-
-
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_prj_doc_add.action" method="post">
+        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_prj_task_edit.action">
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">文档名</label>
+                <label for="field-1" class="col-sm-3 control-label">任务名</label>
 
                 <div class="col-sm-5">
-                    <input type="text" name="prjDoc.name" class="form-control" id="field-1" placeholder="请输入文档名">
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">发布人</label>
-
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="prjDoc.create_person" placeholder="请输入您的姓名">
+                    <input type="text" class="form-control" name="prjTask.name" value="<s:property value="prjTask.name"></s:property>" id="field-1">
                 </div>
             </div>
 
@@ -444,21 +436,40 @@
                 <label class="col-sm-3 control-label">发布日期</label>
 
                 <div class="col-sm-3">
-                    <input type="text" name="prjDoc.createTime" class="form-control datepicker" data-start-view="2" readonly>
+                    <input type="text" class="form-control datepicker"  name="prjTask.createTime" value="<s:property value="prjTask.createTime"></s:property>" data-start-view="2" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">任务期限</label>
+
+                <div class="col-sm-3">
+                    <input type="text" class="form-control datepicker" name="prjTask.deadline" value="<s:property value="prjTask.deadline"></s:property>" data-start-view="2" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">任务积分</label>
+
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" name="prjTask.score" value="<s:property value="prjTask.score"></s:property>">
                 </div>
             </div>
 
 
+            <br>
 
-
+            <label class="control-label">任务要求</label>
 
             <br><br>
 
-            <textarea id="editor" name="prjDoc.content" style="width: 100%;height: 560px">
-
+            <textarea name="prjTask.content" id="editor" style="width: 100%;height: 360px">
+                <s:property value="prjTask.content"></s:property>
             </textarea>
 
 
+
+            <s:hidden value="%{prjTask.id}" name="prjTask.id"></s:hidden>
 
 
 
@@ -468,7 +479,7 @@
 
                     <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
 
-                    <button type="submit" class="btn btn-default">添加</button>
+                    <button type="submit" class="btn btn-default">提交</button>
 
                 </div>
             </div>
@@ -476,7 +487,6 @@
 
 
         </form>
-
 
 
 

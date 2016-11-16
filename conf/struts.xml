@@ -58,4 +58,7 @@
     <!--项目文档管理模块-->
     <include file="com/cx/sys/prj_doc/conf/struts-prj_doc.xml"></include>
 
+    <!--项目任务模块-->
+    <include file="com/cx/sys/prj_task/conf/struts-prj_task.xml"></include>
+
 </struts>
