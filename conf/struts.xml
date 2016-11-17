@@ -40,25 +40,34 @@
 
     <!--包含测试struts配置文件-->
     <include file="com/cx/test/conf/struts-test.xml"></include>
-
     <!--主页-->
     <include file="com/cx/home/conf/struts-home.xml"></include>
-
     <!--用户管理-->
-
     <include file="com/cx/sys/user/conf/struts-user.xml"></include>
-
     <!--通知公告模块-->
-
     <include file="com/cx/sys/inform/conf/struts-inform.xml"></include>
-
     <!--项目管理模块-->
     <include file="com/cx/sys/project/conf/struts-project.xml"></include>
-
     <!--项目文档管理模块-->
     <include file="com/cx/sys/prj_doc/conf/struts-prj_doc.xml"></include>
-
     <!--项目任务模块-->
     <include file="com/cx/sys/prj_task/conf/struts-prj_task.xml"></include>
-
+    <!--学习路线模块-->
+    <include file="com/cx/sys/learn_route/conf/struts-learn_route.xml"></include>
+    <!--用户登录模块-->
+    <include file="com/cx/login/conf/struts-login.xml"></include>
+    <!--学习站点模块-->
+    <include file="com/cx/sys/learn_site/conf/struts-learn_site.xml"></include>
+    <!--资料链接模块-->
+    <include file="com/cx/sys/res_link/conf/struts-res_link.xml"></include>
+    <!--经验分享模块-->
+    <include file="com/cx/sys/experience/conf/struts-experience.xml"></include>
+    <!--竞赛介绍模块-->
+    <include file="com/cx/sys/competition/conf/struts-competition.xml"></include>
+    <!--最近比赛-->
+    <include file="com/cx/sys/current_competition/conf/struts-current_competition.xml"></include>
+    <!--笔记分类-->
+    <include file="com/cx/sys/note_class/conf/struts-note_class.xml"></include>
+    <!--笔记-->
+    <include file="com/cx/sys/note/conf/struts-note.xml"></include>
 </struts>

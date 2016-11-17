@@ -192,80 +192,80 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/user/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_user_listUI.action">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_project_listUI.action">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/prj_task/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_prj_task_prj_list.action">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/prj_doc/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_prj_doc_prj_list.action">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/learn_route/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_learn_route_listUI.action">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/learn_site/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_learn_site_listUI.action">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/res_link/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_res_link_listUI.action">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/experience/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_experience_listUI.action">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/note_class/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_note_class_listUI.action">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/note/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_note_listUI.action">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/competition/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_competition_listUI.action">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/current_competion/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_current_competition_listUI.action">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/inform/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_inform_listUI.action">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>

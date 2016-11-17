@@ -64,6 +64,14 @@
                 <value>classpath:com/cx/sys/prj_task/entity/PrjTask.hbm.xml</value>
                 <value>classpath:com/cx/sys/project/entity/ProjectDoc.hbm.xml</value>
                 <value>classpath:com/cx/sys/project/entity/ProjectTask.hbm.xml</value>
+                <value>classpath:com/cx/sys/learn_route/entity/LearnRoute.hbm.xml</value>
+                <value>classpath:com/cx/sys/learn_site/entity/LearnSite.hbm.xml</value>
+                <value>classpath:com/cx/sys/res_link/entity/ResLink.hbm.xml</value>
+                <value>classpath:com/cx/sys/experience/entity/Experience.hbm.xml</value>
+                <value>classpath:com/cx/sys/competition/entity/Competition.hbm.xml</value>
+                <value>classpath:com/cx/sys/current_competition/entity/CurrentCompetition.hbm.xml</value>
+                <value>classpath:com/cx/sys/note_class/entity/NoteClass.hbm.xml</value>
+                <value>classpath:com/cx/sys/note/entity/Note.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -112,5 +120,21 @@
     <import resource="classpath:com/cx/sys/prj_doc/conf/spring-prj_doc.xml"/>
 
     <import resource="classpath:com/cx/sys/prj_task/conf/spring-prj_task.xml"/>
+
+    <import resource="classpath:com/cx/sys/learn_route/conf/spring-learn_route.xml"/>
+
+    <import resource="classpath:com/cx/sys/learn_site/conf/spring-learn_site.xml"/>
+
+    <import resource="classpath:com/cx/sys/res_link/conf/spring-res_link.xml"/>
+
+    <import resource="classpath:com/cx/sys/experience/conf/spring-experience.xml"/>
+
+    <import resource="classpath:com/cx/sys/competition/conf/spring-competition.xml"/>
+
+    <import resource="classpath:com/cx/sys/current_competition/conf/spring-current_competition.xml"/>
+
+    <import resource="classpath:com/cx/sys/note_class/conf/spring-note_class.xml"/>
+
+    <import resource="classpath:com/cx/sys/note/conf/spring-note.xml"/>
 
 </beans>

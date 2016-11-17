@@ -1,5 +1,8 @@
 package com.cx.core.service;
 
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,4 +21,5 @@ public interface BaseService <T>{
 
     public List<T> findObjects();
 
+    PageResult getPageResult(QueryHelper queryHelper, int pageNo, int pageSize);
 }

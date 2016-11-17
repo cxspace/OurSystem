@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.cx.sys.res_link.entity.ResLink" table="t_res_link">
+        <id name="id" type="java.lang.String">
+            <column name="id" length="32"/>
+            <generator class="uuid.hex"/>
+        </id>
+        <property name="name" type="java.lang.String">
+           <column name="name" length="50" not-null="true"/>
+        </property>
+
+        <property name="time" type="timestamp">
+            <column name="create_time"/>
+        </property>
+
+        <property name="create_person" type="java.lang.String">
+            <column name="create_person" length="20"/>
+        </property>
+
+        <property name="content" type="text">
+            <column name="content"/>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,7 +1,9 @@
 package com.cx.core.service.impl;
 
 import com.cx.core.dao.BaseDao;
+import com.cx.core.page.PageResult;
 import com.cx.core.service.BaseService;
+import com.cx.core.utils.QueryHelper;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,5 +42,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     @Override
     public List<T> findObjects() {
         return baseDao.findObjects();
+    }
+
+    @Override
+    public PageResult getPageResult(QueryHelper queryHelper, int pageNo, int pageSize) {
+        return baseDao.getPageResult(queryHelper,pageNo,pageSize);
     }
 }

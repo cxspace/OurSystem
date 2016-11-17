@@ -1,5 +1,8 @@
 package com.cx.core.dao;
 
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,5 +22,8 @@ public interface BaseDao <T>{
     public T findObjectById(Serializable id);
 
     public List<T> findObjects();
+
+    //分页查询实体列表
+    public PageResult getPageResult(QueryHelper queryHelper , int pageNo ,int pageSize);
 
 }

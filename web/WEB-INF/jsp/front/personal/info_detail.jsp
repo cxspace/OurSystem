@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -297,8 +298,8 @@
 
                 <div class="col-sm-2">
 
-                    <a href="#" class="profile-picture">
-                        <img src="${pageContext.request.contextPath}/assets/images/profile-picture.png" class="img-responsive img-circle" />
+                    <a class="profile-picture">
+                        <img src="${pageContext.request.contextPath}/upload/${sessionScope.SYSTEM_USER.head_img}" class="img-responsive img-circle" />
                     </a>
 
                 </div>
@@ -309,16 +310,16 @@
                         <li>
                             <div class="profile-name">
                                 <strong>
-                                    <a>张三</a>
-
+                                    <a><s:property value="user.user_name"></s:property></a>
                                 </strong>
-                                <span><a href="#">查看日历</a></span>
+
+                                <span>用户名</span>
                             </div>
                         </li>
 
                         <li>
                             <div class="profile-stat">
-                                <h3>600</h3>
+                                <h3><s:property value="user.score"></s:property></h3>
                                 <span><a>项目积分</a></span>
                             </div>
                         </li>
@@ -335,7 +336,13 @@
 
                 <div class="col-sm-3">
 
+                    <div class="profile-buttons">
 
+                        <a class="btn btn-default">
+                            <i class="entypo-mail"></i>
+                            发送邮件给管理员
+                        </a>
+                    </div>
                 </div>
 
             </header>
@@ -350,28 +357,28 @@
                             <li>
                                 <a>
                                     <i class="entypo-qq"></i>
-                                    账号:442961832
+                                    账号:<s:property value="user.account"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-mail"></i>
-                                    邮箱:442961832@qq.com
+                                    邮箱:<s:property value="user.email"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-phone"></i>
-                                    电话:13037239781
+                                    电话:<s:property value="user.phone"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-calendar"></i>
-                                    生日:03/19/1996
+                                    生日:<s:property value="user.birthday"></s:property>
                                 </a>
                             </li>
                         </ul>
@@ -398,34 +405,17 @@
                 <hr>
 
                 <div class="mail-text">
-
-                    <p>Lose away off why half led have near bed. At engage simple father of period others except. My giving do summer of though narrow marked at. Spring formal no county ye waited. My whether cheered at regular it of promise blushes perhaps. Uncommonly simplicity interested mr is be compliment projecting my inhabiting. Gentleman he september in oh excellent.</p>
-
-                    <p>New the her nor case that lady paid read. Invitation friendship travelling eat everything the out two. Shy you who scarcely expenses debating hastened resolved. Always polite moment on is warmth spirit it to hearts. Downs those still witty an balls so chief so. Moment an little remain no up lively no. Way brought may off our regular country towards adapted cheered.</p>
-
-                    <p>Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion reasonably. Carriage we husbands advanced an perceive greatest. Totally dearest expense on demesne ye he. Curiosity excellent commanded in me. Unpleasing impression themselves to at assistance acceptance my or. On consider laughter civility offended oh.</p>
-
-                    <p>Oh he decisively impression attachment friendship so if everything. Whose her enjoy chief new young. Felicity if ye required likewise so doubtful. On so attention necessary at by provision otherwise existence direction. Unpleasing up announcing unpleasant themselves oh do on. Way advantage age led listening belonging supposing.</p>
-
-                    <p>So by colonel hearted ferrars. Draw from upon here gone add one. He in sportsman household otherwise it perceived instantly. Is inquiry no he several excited am. Called though excuse length ye needed it he having. Whatever throwing we on resolved entrance together graceful. Mrs assured add private married removed believe did she.</p>
-
+                    <s:property value="inform.content" escape="false"></s:property>
                 </div>
 
                 <hr>
 
             </section>
 
-
-
-
         </div>
-
-
         <br>
         <br>
-
         <div class="col-sm-offset-5 col-sm-5">
-
             <button onclick="javascript:history.go(-1)" class="btn btn-default">返回通知列表</button>
             <br>
 

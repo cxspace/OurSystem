@@ -18,6 +18,7 @@
 
             <result name="addUI">/WEB-INF/jsp/sys/user/addUI.jsp</result>
 
+
             <!--重定向到列表-->
             <result name="list" type="redirectAction">
                 <param name="actionName">system_user_listUI</param>
@@ -30,6 +31,8 @@
             <result name="{1}">
                 /WEB-INF/jsp/front/personal/{1}.jsp
             </result>
+
+            <result name="change_information">/WEB-INF/jsp/front/personal/change_information.jsp</result>
 
         </action>
 

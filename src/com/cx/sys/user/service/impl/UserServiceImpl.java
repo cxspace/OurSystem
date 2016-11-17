@@ -8,6 +8,7 @@ import com.cx.sys.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by cxspace on 16-11-11.
@@ -22,5 +23,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     public void setUserDao(UserDao userDao) {
         super.setBaseDao(userDao);
         this.userDao = userDao;
+    }
+
+    @Override
+    public List<User> findUserByAccountAndPwd(String account, String pwd) {
+        return userDao.findUserByAccountAndPwd(account,pwd);
     }
 }

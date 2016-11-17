@@ -5,9 +5,7 @@ package com.cx.core.constant;
  */
 public class Constant {
 
-    private static String COMMON_USER = "C_U";
-
-    private static String ADMIN_USER = "A_U";
+    public static String USER = "SYSTEM_USER";
 
 
 }

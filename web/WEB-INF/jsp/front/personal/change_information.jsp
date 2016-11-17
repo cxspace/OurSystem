@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -294,12 +295,13 @@
 
         <div class="profile-env">
 
+
             <header class="row">
 
                 <div class="col-sm-2">
 
-                    <a href="#" class="profile-picture">
-                        <img src="${pageContext.request.contextPath}/assets/images/profile-picture.png" class="img-responsive img-circle" />
+                    <a class="profile-picture">
+                        <img src="${pageContext.request.contextPath}/upload/${sessionScope.SYSTEM_USER.head_img}" class="img-responsive img-circle" />
                     </a>
 
                 </div>
@@ -310,32 +312,33 @@
                         <li>
                             <div class="profile-name">
                                 <strong>
-                                    <a>张三</a>
-
+                                    <a><s:property value="user.user_name"></s:property></a>
                                 </strong>
-                                <span><a href="#">查看日历</a></span>
+
+                                <span>用户名</span>
                             </div>
                         </li>
 
                         <li>
                             <div class="profile-stat">
-                                <h3>600</h3>
+                                <h3><s:property value="user.score"></s:property></h3>
                                 <span><a>项目积分</a></span>
                             </div>
                         </li>
 
-                        <li>
-                            <div class="profile-stat">
-                                <h3>10</h3>
-                                <span><a>通知总数</a></span>
-                            </div>
-                        </li>
                     </ul>
 
                 </div>
 
                 <div class="col-sm-3">
 
+                    <div class="profile-buttons">
+
+                        <a class="btn btn-default">
+                            <i class="entypo-mail"></i>
+                            发送邮件给管理员
+                        </a>
+                    </div>
                 </div>
 
             </header>
@@ -350,28 +353,28 @@
                             <li>
                                 <a>
                                     <i class="entypo-qq"></i>
-                                    账号:442961832
+                                    账号:<s:property value="user.account"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-mail"></i>
-                                    邮箱:442961832@qq.com
+                                    邮箱:<s:property value="user.email"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-phone"></i>
-                                    电话:13037239781
+                                    电话:<s:property value="user.phone"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-calendar"></i>
-                                    生日:03/19/1996
+                                    生日:<s:property value="user.birthday"></s:property>
                                 </a>
                             </li>
                         </ul>
@@ -379,9 +382,10 @@
 
                         <!-- tabs for the profile links -->
                         <ul class="nav nav-tabs">
-                            <li><a href="info.html">消息通知</a></li>
-                            <li  class="active"><a href="change_information.html">修改个人信息</a></li>
-                            <li><a href="prj_list.html">我的项目任务列表</a></li>
+                            <li><a href="${pageContext.request.contextPath}/front_user_info.action">消息通知</a></li>
+                            <li  class="active"><a href="${pageContext.request.contextPath}/front_user_change_information.action">修改个人信息</a></li>
+                            <li><a href="${pageContext.request.contextPath}/front_user_prj_list.action">我的项目任务列表</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -395,7 +399,7 @@
                 <div class="profile-stories">
 
                     <div class="title">
-                        <h3>个人信息列表</h3>
+                        <h3>个人信息修改</h3>
                     </div>
 
                     <table class="table table-bordered table-striped datatable" id="table-2">
@@ -416,16 +420,7 @@
                         <tbody>
 
                         <tr>
-                            <td>账号:442961832</td>
-
-                            <td>
-                                <a href="javascript:;" onclick="jQuery('#modal-1').modal('show', {backdrop: 'static'});" class="btn btn-default">修改</a>
-                            </td>
-
-
-                        </tr>
-                        <tr>
-                            <td>电话:12345678901</td>
+                            <td>电话</td>
 
                             <td>
                                 <a href="javascript:;" onclick="jQuery('#modal-2').modal('show', {backdrop: 'static'});" class="btn btn-default">修改</a>
@@ -434,7 +429,7 @@
 
                         </tr>
                         <tr>
-                            <td>邮箱:123456789@qq.com</td>
+                            <td>邮箱</td>
 
                             <td>
                                 <a href="javascript:;" onclick="jQuery('#modal-3').modal('show', {backdrop: 'static'});" class="btn btn-default">修改</a>
@@ -442,7 +437,7 @@
                         </tr>
 
                         <tr>
-                            <td>生日:03/19/1996</td>
+                            <td>生日</td>
 
                             <td>
                                 <a href="javascript:;" onclick="jQuery('#modal-4').modal('show', {backdrop: 'static'});" class="btn btn-default">修改</a>
@@ -450,7 +445,7 @@
                         </tr>
 
                         <tr>
-                            <td>密码:********</td>
+                            <td>密码</td>
 
                             <td>
                                 <a href="javascript:;" onclick="jQuery('#modal-5').modal('show', {backdrop: 'static'});" class="btn btn-default">修改</a>
@@ -481,54 +476,12 @@
         <br>
         <br>
 
-
-        <!-- Modal 1 修改账号-->
-        <div class="modal fade" id="modal-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <form action="#" method="post">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">修改账号</h4>
-                        </div>
-
-                        <div class="modal-body">
-
-
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="form-group no-margin">
-                                        <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="field-1" value="123456">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="submit" class="btn btn-info">提交</button>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-
-        <!--修改账号-->
-
         <!-- Modal 2 修改电话-->
         <div class="modal fade" id="modal-2">
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/front_user_change_phone.action" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">修改电话</h4>
@@ -542,7 +495,7 @@
 
                                     <div class="form-group no-margin">
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="field-2" value="123456">
+                                            <input name="phone" type="text" class="form-control" value="<s:property value="user.phone"></s:property>" id="field-2">
                                         </div>
                                     </div>
 
@@ -569,7 +522,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/front_user_change_email.action" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">修改邮箱</h4>
@@ -583,7 +536,7 @@
 
                                     <div class="form-group no-margin">
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="field-3" value="123456">
+                                            <input type="text" class="form-control" name="email" id="field-3" value="<s:property value="user.email"></s:property>">
                                         </div>
                                     </div>
 
@@ -610,7 +563,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/front_user_change_birthday.action" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">修改生日</h4>
@@ -624,7 +577,7 @@
 
                                     <div class="form-group no-margin">
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control datepicker" data-start-view="2">
+                                            <input type="text" name="birthday" class="form-control datepicker" value="<s:property value="user.birthday"></s:property>" data-start-view="2" readonly>
                                         </div>
                                     </div>
 
@@ -653,7 +606,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/front_user_change_password.action" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">修改密码</h4>
@@ -669,18 +622,15 @@
 
 
                                         <div class="col-sm-12">
-                                            <input type="password" class="form-control" id="field-6" value="123456">
+                                            <input type="password" name="password_one" class="form-control" id="pwd1">
                                         </div>
 
                                         <br>
 
                                         <div class="col-sm-12">
-
-
-                                            <input type="password" class="form-control" id="field-7" value="123456">
+                                            <input type="password" name="password" class="form-control" id="pwd2">
                                         </div>
-
-
+                                        
                                     </div>
 
                                 </div>
@@ -706,7 +656,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/front_user_change_headImg.action" method="post" enctype="multipart/form-data">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">修改头像</h4>
@@ -714,13 +664,12 @@
 
                         <div class="modal-body">
 
-
                             <div class="row">
                                 <div class="col-md-12">
 
                                     <div class="form-group no-margin">
                                         <div class="col-sm-12">
-                                            <input type="file" class="form-control" id="field-8">
+                                            <input type="file" name="headImg" class="form-control" id="field-8">
                                         </div>
                                     </div>
 
@@ -756,6 +705,7 @@
     </div>
 
     </div>
+
 
     <!-- Bottom scripts (common) -->
     <script src="${pageContext.request.contextPath}/assets/js/gsap/main-gsap.js"></script>

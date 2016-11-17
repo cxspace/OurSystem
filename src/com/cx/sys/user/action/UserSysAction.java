@@ -156,7 +156,7 @@ public class UserSysAction extends ActionSupport {
                 //设置好数据库中要存储的图像路径
                 user.setHead_img("user/"+fileName);
 
-           //     System.out.println(fileName);
+                System.out.println(fileName);
             }
 
         }catch (Exception e){

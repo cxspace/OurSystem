@@ -44,6 +44,11 @@ public class PrjTaskSysAction extends ActionSupport {
         return "editUI";
     }
 
+    public String verifyOK(){
+
+        return "list";
+    }
+
     public String edit(){
 
         if (prjTask!=null){

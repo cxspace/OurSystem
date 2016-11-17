@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -281,7 +282,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="../../index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -301,8 +302,8 @@
 
                 <div class="col-sm-2">
 
-                    <a href="#" class="profile-picture">
-                        <img src="${pageContext.request.contextPath}/assets/images/profile-picture.png" class="img-responsive img-circle" />
+                    <a class="profile-picture">
+                        <img src="${pageContext.request.contextPath}/upload/${sessionScope.SYSTEM_USER.head_img}" class="img-responsive img-circle" />
                     </a>
 
                 </div>
@@ -313,23 +314,23 @@
                         <li>
                             <div class="profile-name">
                                 <strong>
-                                    <a>张三</a>
+                                    <a><s:property value="user.user_name"></s:property></a>
+                                </strong>
 
-                                    </strong>
-                                <span><a href="#">查看日历</a></span>
+                                <span>用户名</span>
                             </div>
                         </li>
 
                         <li>
                             <div class="profile-stat">
-                                <h3>600</h3>
+                                <h3><s:property value="user.score"></s:property></h3>
                                 <span><a>项目积分</a></span>
                             </div>
                         </li>
 
                         <li>
                             <div class="profile-stat">
-                                <h3>10</h3>
+                                <h3><s:property value="pageResult.totalCount"/></h3>
                                 <span><a>通知总数</a></span>
                             </div>
                         </li>
@@ -341,9 +342,9 @@
 
                     <div class="profile-buttons">
 
-                        <a href="#" class="btn btn-default">
+                        <a class="btn btn-default">
                             <i class="entypo-mail"></i>
-                            发送通知给管理员
+                            发送邮件给管理员
                         </a>
                     </div>
                 </div>
@@ -360,28 +361,28 @@
                             <li>
                                 <a>
                                     <i class="entypo-qq"></i>
-                                    账号:442961832
+                                    账号:<s:property value="user.account"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-mail"></i>
-                                    邮箱:442961832@qq.com
+                                    邮箱:<s:property value="user.email"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-phone"></i>
-                                    电话:13037239781
+                                    电话:<s:property value="user.phone"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-calendar"></i>
-                                    生日:03/19/1996
+                                    生日:<s:property value="user.birthday"></s:property>
                                 </a>
                             </li>
                         </ul>
@@ -389,9 +390,10 @@
 
                         <!-- tabs for the profile links -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="info.html">消息通知</a></li>
-                            <li><a href="change_information.html">修改个人信息</a></li>
-                            <li><a href="prj_list.html">我的项目任务列表</a></li>
+                            <li class="active"><a href="${pageContext.request.contextPath}/front_user_info.action">消息通知</a></li>
+                            <li><a href="${pageContext.request.contextPath}/front_user_change_information.action">修改个人信息</a></li>
+                            <li><a href="${pageContext.request.contextPath}/front_user_prj_list.action">我的项目任务列表</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -408,6 +410,8 @@
                     <div class="title">
                         <h3>通知列表</h3>
                     </div>
+
+                    <form name="form1" action="" method="post">
 
                     <table class="table table-bordered table-striped datatable" id="table-2">
                         <thead>
@@ -429,70 +433,88 @@
 
                         <tbody>
 
-                        <tr>
-                            <td>参赛通知</td>
 
-                            <td>2016-12-10</td>
+                        <s:iterator value="pageResult.items" status="st">
+
+
+
+                        <tr>
+                            <td><s:property value="title"></s:property></td>
+
+                            <td><s:property value="createTime"></s:property></td>
 
                             <td>
-                                <a href="info_detail.html" class="btn btn-info btn-sm btn-icon icon-left">
+                                <a href="${pageContext.request.contextPath}/front_user_info_detail.action?inform.id=<s:property value="id"></s:property>" class="btn btn-info btn-sm btn-icon icon-left">
                                     <i class="entypo-search"></i>
                                     查看通知详细
                                 </a>
                             </td>
 
-
-                        </tr>
-                        <tr>
-                            <td>参赛通知</td>
-
-                            <td>2016-12-10</td>
-
-                            <td>
-                                <a href="info_detail.html" class="btn btn-info btn-sm btn-icon icon-left">
-                                    <i class="entypo-search"></i>
-                                    查看通知详细
-                                </a>
-                            </td>
-
-
-                        </tr>
-                        <tr>
-                            <td>参赛通知</td>
-
-                            <td>2016-12-10</td>
-
-                            <td>
-                                <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-                                    <i class="entypo-search"></i>
-                                    查看通知详细
-                                </a>
-                            </td>
-
-
                         </tr>
 
+
+
+                        </s:iterator>
 
                         </tbody>
                     </table>
 
-
+                    <s:if test="pageResult.totalCount > 0">
                     <ul class="pagination">
-                        <li><a href="#"><i class="entypo-left-open-mini"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li class="disabled"><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#"><i class="entypo-right-open-mini"></i></a></li>
+
+                        <s:if test="pageResult.pageNo > 1">
+
+                            <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo-1"></s:property>)"><i class="entypo-left-open-mini"></i> 上一页</a></li>
+
+                        </s:if>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <s:if test="pageResult.pageNo < pageResult.totalPageCount">
+
+
+                        <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo+1"></s:property>)"> 下一页<i class="entypo-right-open-mini"></i> </a></li>
+
+                        </s:if>
                     </ul>
+
+
+                        <hr>
+
+                            总共 <s:property value="pageResult.totalCount"/>条记录
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+
+                            当前<s:property value="pageResult.pageNo"/>页
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                            共<s:property value="pageResult.totalPageCount"></s:property>页
+
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                    </s:if>
+                    <s:else>暂无数据！</s:else>
+
+
+                    </form>
 
                 </div>
 
             </section>
         </div>
 
+        <script type="text/javascript">
+
+            function doGoPage(pageNo) {
+                document.forms[0].action = "${pageContext.request.contextPath}/front_user_info.action?pageNo="+pageNo;
+                document.forms[0].submit();
+            }
+
+        </script>
 
         <br>
         <br>
