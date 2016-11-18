@@ -30,13 +30,18 @@
         </action>
 
 
-        <!--<action name="front_inform_*" class="com.cx.sys.inform.action.InformFrontAction" method="{1}">-->
+        <action name="front_prj_hall_prjDoc_*" class="com.cx.sys.prj_doc.action.PrjDocFrontAction" method="{1}">
 
-            <!--<result name="infoList">-->
-                <!--/WEB-INF/jsp/front/personal/info.jsp-->
-            <!--</result>-->
+            <result name="{1}">
+                /WEB-INF/jsp/front/prj_hall/{1}.jsp
 
-        <!--</action>-->
+            </result>
+
+            <result name="doc_list">
+                /WEB-INF/jsp/front/prj_hall/doc_list.jsp
+            </result>
+
+        </action>
 
 
     </package>

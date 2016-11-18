@@ -58,7 +58,7 @@
 
                 <!-- logo -->
                 <div class="logo">
-                    <a href="${pageContext.request.contextPath}/index.html">
+                    <a href="${pageContext.request.contextPath}/">
                         <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
                     </a>
                 </div>
@@ -137,7 +137,7 @@
 
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front_share_hall_link_list.action">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_res_link_list.action">
                                 <span class="title">资料链接分享</span>
                             </a>
                         </li>
@@ -151,7 +151,7 @@
 
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/front/prj_hall/prj_list.html">
+                    <a href="${pageContext.request.contextPath}/front_prj_hall_prj_prj_list.action">
                         <i class="entypo-doc-text"></i>
                         <span class="title">项目大厅</span>
                     </a>
@@ -164,12 +164,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/our_note/note_class.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">查看笔记</span>
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/our_note/note_add.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">我要写笔记</span>
                             </a>
                         </li>
@@ -182,12 +182,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/competition/competition_list.html">
+                            <a href="${pageContext.request.contextPath}/front_competition_competition_list.action">
                                 <span class="title">相关竞赛介绍</span>
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/competition/cur_comp_list.html">
+                            <a href="${pageContext.request.contextPath}/front_current_competition_cur_comp_list.action">
                                 <span class="title">最近可申报的竞赛</span>
                             </a>
                         </li>

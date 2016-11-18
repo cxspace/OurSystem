@@ -1,10 +1,13 @@
 package com.cx.sys.prj_task.action;
 
+import com.cx.core.constant.Constant;
 import com.cx.sys.prj_task.entity.PrjTask;
 import com.cx.sys.prj_task.service.PrjTaskService;
 import com.cx.sys.project.entity.Project;
 import com.cx.sys.project.entity.ProjectTask;
 import com.cx.sys.project.service.ProjectService;
+import com.cx.sys.user.entity.User;
+import com.cx.sys.user.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,6 +25,9 @@ public class PrjTaskSysAction extends ActionSupport {
 
     @Resource
     private ProjectService projectService;
+
+    @Resource
+    private UserService userService;
 
     private PrjTask prjTask;
 
@@ -46,7 +52,46 @@ public class PrjTaskSysAction extends ActionSupport {
 
     public String verifyOK(){
 
-        return "list";
+        if (prjTask!=null){
+
+            if (prjTask.getId()!=null){
+                prjTask = prjTaskService.findObjectById(prjTask.getId());
+                prjTask.setState(3);
+
+                //加分
+                long task_score = prjTask.getScore();
+
+                User user = (User) ActionContext.getContext().getSession().get(Constant.USER);
+
+                long user_score = user.getScore();
+
+                user_score += task_score;
+
+                user.setScore(user_score);
+
+                userService.update(user);
+
+                prjTaskService.update(prjTask);
+            }
+
+        }
+
+        return "list_back";
+    }
+
+    public String reset(){
+
+        if (prjTask!=null){
+
+            if (prjTask.getId()!=null){
+                prjTask = prjTaskService.findObjectById(prjTask.getId());
+                prjTask.setState(0);
+                prjTaskService.update(prjTask);
+            }
+
+        }
+
+        return "list_back";
     }
 
     public String edit(){
@@ -139,6 +184,14 @@ public class PrjTaskSysAction extends ActionSupport {
         projectList = projectService.findObjects();
 
         return "prj_list";
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public PrjTask getPrjTask() {

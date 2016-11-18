@@ -11,7 +11,7 @@
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
 
-    <title>OUR_SYS | INDEX</title>
+    <title>添加文档</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
@@ -61,14 +61,14 @@
 
                 <!-- logo -->
                 <div class="logo">
-                    <a href="${pageContext.request.contextPath}/index.html">
+                    <a href="${pageContext.request.contextPath}/">
                         <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
                     </a>
                 </div>
 
                 <!-- logo collapse icon -->
                 <div class="sidebar-collapse">
-                    <a href="#" class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                    <a class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -76,7 +76,7 @@
 
                 <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
                 <div class="sidebar-mobile-menu visible-xs">
-                    <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+                    <a class="with-animation"><!-- add class "with-animation" to support animation -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -93,18 +93,21 @@
                         <span class="title">我的工作台</span>
                     </a>
                     <ul>
+
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/personal/info.html">
-                                <span class="title">我的个人信息</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a  href="${pageContext.request.contextPath}/front/personal/info.html">
+                            <a href="${pageContext.request.contextPath}/front_user_info.action">
                                 <span class="title">我收到的通知</span>
                             </a>
                         </li>
+
                         <li>
-                            <a  href="${pageContext.request.contextPath}/front/personal/prj_list.html">
+                            <a href="${pageContext.request.contextPath}/front_user_change_information.action">
+                                <span class="title">我的个人信息</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="${pageContext.request.contextPath}/front_user_prj_list.action">
                                 <span class="title">我的项目任务</span>
                             </a>
                         </li>
@@ -117,12 +120,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/learn_hall/route_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习路线</span>
                             </a>
                         </li>
                         <li>
-                            <a  href="${pageContext.request.contextPath}/front/learn_hall/site_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -137,12 +140,12 @@
 
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/share_hall/link_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_res_link_list.action">
                                 <span class="title">资料链接分享</span>
                             </a>
                         </li>
                         <li>
-                            <a  href="${pageContext.request.contextPath}/front/share_hall/experience_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_experience_list.action">
                                 <span class="title">学习经验分享</span>
                             </a>
                         </li>
@@ -151,25 +154,25 @@
 
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/front/prj_hall/prj_list.html">
+                    <a href="${pageContext.request.contextPath}/front_prj_hall_prj_prj_list.action">
                         <i class="entypo-doc-text"></i>
                         <span class="title">项目大厅</span>
                     </a>
 
                 </li>
                 <li>
-                    <a href="#">
+                    <a>
                         <i class="entypo-pencil"></i>
                         <span class="title">OUR NOTE</span>
                     </a>
                     <ul>
                         <li>
-                            <a  href="${pageContext.request.contextPath}/front/our_note/note_list.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">查看笔记</span>
                             </a>
                         </li>
                         <li>
-                            <a  href="${pageContext.request.contextPath}/front/our_note/note_add.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">我要写笔记</span>
                             </a>
                         </li>
@@ -182,12 +185,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/competition/competition_list.html">
+                            <a href="${pageContext.request.contextPath}/front_competition_competition_list.action">
                                 <span class="title">相关竞赛介绍</span>
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/competition/cur_comp_list.html">
+                            <a href="${pageContext.request.contextPath}/front_current_competition_cur_comp_list.action">
                                 <span class="title">最近可申报的竞赛</span>
                             </a>
                         </li>
@@ -282,7 +285,6 @@
                     </ul>
                 </li>
 
-
             </ul>
 
         </div>
@@ -293,6 +295,7 @@
 
         <div class="row">
 
+
             <!-- Profile Info and Notifications -->
             <div class="col-md-6 col-sm-8 clearfix">
 
@@ -302,8 +305,10 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="${pageContext.request.contextPath}/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
-                            张三
+                            <img src="${pageContext.request.contextPath}/upload/${sessionScope.SYSTEM_USER.head_img}" alt="" class="img-circle" width="44" />
+
+                            ${sessionScope.SYSTEM_USER.user_name}
+
                         </a>
 
                     </li>
@@ -320,22 +325,22 @@
 
 
                     <li>
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/front_user_info.action">
                             个人主页
                         </a>
                     </li>
 
-                    |
+
 
                     <li>
-                        <a href="login.html">
+                        <a href="${pageContext.request.contextPath}/user_loginOut.action">
                             注销 <i class="entypo-logout right"></i>
                         </a>
                     </li>
+
                 </ul>
 
             </div>
-
         </div>
 
         <script type="text/javascript">
@@ -436,15 +441,6 @@
 
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="prjDoc.create_person" placeholder="请输入您的姓名">
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
-
-                <div class="col-sm-3">
-                    <input type="text" name="prjDoc.createTime" class="form-control datepicker" data-start-view="2" readonly>
                 </div>
             </div>
 

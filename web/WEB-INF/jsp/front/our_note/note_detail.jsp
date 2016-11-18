@@ -1,3 +1,6 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,33 +11,23 @@
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
 
-    <title>OUR_SYS | INDEX</title>
+    <title>笔记详细内容</title>
 
-    <link rel="stylesheet" href="../../assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-    <link rel="stylesheet" href="../../assets/css/font-icons/entypo/css/entypo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/css/neon-core.css">
-    <link rel="stylesheet" href="../../assets/css/neon-theme.css">
-    <link rel="stylesheet" href="../../assets/css/neon-forms.css">
-    <link rel="stylesheet" href="../../assets/css/custom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-core.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
 
-    <link rel="stylesheet" href="../../assets/css/skins/white.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
-    <script src="../../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
     <script>$.noConflict();</script>
 
-
-    <script type="text/javascript" charset="utf-8" src="../../assets/js/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../assets/js/ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="../../assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
-
-    <script>
-        window.UEDITOR_HOME_URL = "../../assets/js/ueditor/";
-        var ue = UE.getEditor('editor');
-    </script>
-
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -57,14 +50,14 @@
 
                 <!-- logo -->
                 <div class="logo">
-                    <a href="../../index.html">
-                        <img src="../../assets/images/logo/LOGO.png" width="120" alt="" />
+                    <a href="${pageContext.request.contextPath}/">
+                        <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
                     </a>
                 </div>
 
                 <!-- logo collapse icon -->
                 <div class="sidebar-collapse">
-                    <a href="#" class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                    <a class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -72,7 +65,7 @@
 
                 <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
                 <div class="sidebar-mobile-menu visible-xs">
-                    <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+                    <a class="with-animation"><!-- add class "with-animation" to support animation -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -89,18 +82,21 @@
                         <span class="title">我的工作台</span>
                     </a>
                     <ul>
+
                         <li>
-                            <a href="../personal/info.html">
-                                <span class="title">我的个人信息</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../personal/info.html">
+                            <a href="${pageContext.request.contextPath}/front_user_info.action">
                                 <span class="title">我收到的通知</span>
                             </a>
                         </li>
+
                         <li>
-                            <a href="../personal/prj_list.html">
+                            <a href="${pageContext.request.contextPath}/front_user_change_information.action">
+                                <span class="title">我的个人信息</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="${pageContext.request.contextPath}/front_user_prj_list.action">
                                 <span class="title">我的项目任务</span>
                             </a>
                         </li>
@@ -113,12 +109,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../learn_hall/route_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习路线</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../learn_hall/site_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -133,12 +129,12 @@
 
                     <ul>
                         <li>
-                            <a href="../share_hall/link_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_res_link_list.action">
                                 <span class="title">资料链接分享</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../share_hall/experience_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_experience_list.action">
                                 <span class="title">学习经验分享</span>
                             </a>
                         </li>
@@ -147,7 +143,7 @@
 
                 </li>
                 <li>
-                    <a href="../prj_hall/prj_list.html">
+                    <a href="${pageContext.request.contextPath}/front_prj_hall_prj_prj_list.action">
                         <i class="entypo-doc-text"></i>
                         <span class="title">项目大厅</span>
                     </a>
@@ -160,12 +156,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="note_list.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">查看笔记</span>
                             </a>
                         </li>
                         <li>
-                            <a href="note_add.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_add.action">
                                 <span class="title">我要写笔记</span>
                             </a>
                         </li>
@@ -178,12 +174,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../competition/competition_list.html">
+                            <a href="${pageContext.request.contextPath}/front_competition_competition_list.action">
                                 <span class="title">相关竞赛介绍</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../competition/cur_comp_list.html">
+                            <a href="${pageContext.request.contextPath}/front_current_competition_cur_comp_list.action">
                                 <span class="title">最近可申报的竞赛</span>
                             </a>
                         </li>
@@ -198,85 +194,86 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../../sys/user/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_user_listUI.action">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../../sys/project/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_project_listUI.action">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/prj_task/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_prj_task_prj_list.action">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href=../../sys/prj_doc/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_prj_doc_prj_list.action">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href=../../sys/learn_route/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_learn_route_listUI.action">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/learn_site/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_learn_site_listUI.action">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/res_link/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_res_link_listUI.action">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/experience/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_experience_listUI.action">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/note_class/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_note_class_listUI.action">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/note/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_note_listUI.action">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="../../sys/competition/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_competition_listUI.action">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="../../sys/current_competion/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_current_competition_listUI.action">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/inform/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_inform_listUI.action">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+
             </ul>
 
         </div>
@@ -287,6 +284,7 @@
 
         <div class="row">
 
+
             <!-- Profile Info and Notifications -->
             <div class="col-md-6 col-sm-8 clearfix">
 
@@ -296,8 +294,10 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
-                            张三
+                            <img src="${pageContext.request.contextPath}/upload/${sessionScope.SYSTEM_USER.head_img}" alt="" class="img-circle" width="44" />
+
+                            ${sessionScope.SYSTEM_USER.user_name}
+
                         </a>
 
                     </li>
@@ -314,18 +314,19 @@
 
 
                     <li>
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/front_user_info.action">
                             个人主页
                         </a>
                     </li>
 
-                    |
+
 
                     <li>
-                        <a href="login.html">
+                        <a href="${pageContext.request.contextPath}/user_loginOut.action">
                             注销 <i class="entypo-logout right"></i>
                         </a>
                     </li>
+
                 </ul>
 
             </div>
@@ -356,7 +357,7 @@
                 }, 3000);
 
 
-            }
+            });
 
         </script>
 
@@ -392,103 +393,41 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="../../index.html"><i class="fa-home"></i>主页</a>
+                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
-                <a>系统管理</a>
+                <a>OUR_NOTE</a>
             </li>
 
 
             <li>
-                <a>笔记管理</a>
+                <a>笔记列表</a>
             </li>
             <li class="active">
 
-                <strong>新增</strong>
+                <strong>笔记内容详细</strong>
             </li>
         </ol>
 
-        <h3>新增笔记</h3>
 
+        <hr>
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="listUI.html">
+        <div class="mail-text">
 
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label">笔记标题</label>
+            <s:property value="note.content" escape="false"></s:property>
 
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="field-1" placeholder="请输入笔记标题">
-                </div>
-            </div>
+        </div>
 
-            <br>
-
-            <label class="control-label">笔记内容</label>
-
-            <br><br>
-
-            <textarea id="editor" style="width: 100%;height: 360px;">
-
-            </textarea>
-
-            <br>
-            <br>
-
-            <hr>
-
-
-
-            <label class="control-label">笔记类别</label>
-
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-5">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios1" id="optionsRadios3" value="option1" checked>java
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios1" id="optionsRadios4" value="option2">jsp
-                        </label>
-                    </div>
-
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios1" id="optionsRadios1" value="option1">mysql
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios1" id="optionsRadios2" value="option2">servlet
-                        </label>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="form-group">
-
-                <div class="col-sm-offset-5 col-sm-5">
-
-                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
-
-                    <button type="submit" class="btn btn-default">添加</button>
-
-                </div>
-            </div>
-
-
-
-        </form>
-
-
-
-
+        <hr>
 
         <br>
+        <div class="col-sm-offset-5 col-sm-5">
+
+            <button onclick="javascript:history.go(-1)" class="btn btn-default">返回笔记列表</button>
+            <br>
+
+        </div>
         <br>
         <br>
         <br>
@@ -519,37 +458,36 @@
 
 
 <!-- Imported styles on this page -->
-<link rel="stylesheet" href="../../assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
-<link rel="stylesheet" href="../../assets/js/rickshaw/rickshaw.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/rickshaw/rickshaw.min.css">
 
 <!-- Bottom scripts (common) -->
-<script src="../../assets/js/gsap/main-gsap.js"></script>
-<script src="../../assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-<script src="../../assets/js/bootstrap.js"></script>
-<script src="../../assets/js/joinable.js"></script>
-<script src="../../assets/js/resizeable.js"></script>
-<script src="../../assets/js/neon-api.js"></script>
-<script src="../../assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/gsap/main-gsap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/joinable.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/resizeable.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
-<script src="../../assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
-<script src="../../assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
-<script src="../../assets/js/jquery.sparkline.min.js"></script>
-<script src="../../assets/js/rickshaw/vendor/d3.v3.js"></script>
-<script src="../../assets/js/rickshaw/rickshaw.min.js"></script>
-<script src="../../assets/js/raphael-min.js"></script>
-<script src="../../assets/js/morris.min.js"></script>
-<script src="../../assets/js/toastr.js"></script>
-<script src="../../assets/js/neon-chat.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.sparkline.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/rickshaw/vendor/d3.v3.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/rickshaw/rickshaw.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/raphael-min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/morris.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/toastr.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-chat.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->
-<script src="../../assets/js/neon-custom.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-custom.js"></script>
 
 
 <!-- Demo Settings -->
-<script src="../../assets/js/neon-demo.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-demo.js"></script>
 
 </body>
 </html>

@@ -32,9 +32,14 @@
                 /WEB-INF/jsp/front/personal/{1}.jsp
             </result>
 
+
             <result name="change_information">/WEB-INF/jsp/front/personal/change_information.jsp</result>
 
             <result name="toLoginUI">/loginUI.jsp</result>
+
+            <result name="list" type="redirectAction">
+                <param name="actionName">front_user_prj_list</param>
+            </result>
 
         </action>
 

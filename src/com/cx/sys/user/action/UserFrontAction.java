@@ -7,7 +7,10 @@ import com.cx.core.utils.ImageHelper;
 import com.cx.core.utils.QueryHelper;
 import com.cx.sys.inform.entity.Inform;
 import com.cx.sys.inform.service.InformService;
+import com.cx.sys.prj_task.entity.PrjTask;
+import com.cx.sys.prj_task.service.PrjTaskService;
 import com.cx.sys.user.entity.User;
+import com.cx.sys.user.entity.UserTask;
 import com.cx.sys.user.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import javax.annotation.Resource;
@@ -29,13 +32,18 @@ public class UserFrontAction extends BaseAction {
 
     private List<Inform> informList = new ArrayList<>();
 
+    private PrjTask prjTask;
 
+    private List<PrjTask> prjTaskList = new ArrayList<>();
 
     @Resource
     private InformService informService;
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private PrjTaskService prjTaskService;
 
     //分页结果集合
 
@@ -70,17 +78,20 @@ public class UserFrontAction extends BaseAction {
 
         pageResult = informService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
-        user = (User) ActionContext.getContext().getSession().get(Constant.USER);
+        user = userService.findObjectById(((User) ActionContext.getContext().getSession().get(Constant.USER)).getId());
 
         return "info";
 
     }
 
 
+
+
     //修改信息页面
     public String change_information(){
 
-        user = (User) ActionContext.getContext().getSession().get(Constant.USER);
+        user = userService.findObjectById(((User) ActionContext.getContext().getSession().get(Constant.USER)).getId());
+
         return "change_information";
 
     }
@@ -196,10 +207,47 @@ public class UserFrontAction extends BaseAction {
         return "change_information";
     }
 
+    //查看用户项目任务列表
     public String prj_list(){
+
+        User user1 = (User) ActionContext.getContext().getSession().get(Constant.USER);
+
+        //要显示用户信息
+        user = userService.findObjectById(user1.getId());
+        //拿到用户项目任务关系集合
+        List<UserTask> list = userService.getUserTasksByUserId(user1.getId());
+
+        for (int i = 0 ; i < list.size() ; i++){
+
+            prjTaskList.add(list.get(i).getId().getPrjTask());
+
+        }
+
 
         return "prj_list";
     }
+
+    //提交任务
+    public String submit_task(){
+
+        if (prjTask!=null){
+
+            if (prjTask.getId()!=null){
+
+                prjTask = prjTaskService.findObjectById(prjTask.getId());
+
+                //状态改为提交
+                prjTask.setState(2);
+
+                prjTaskService.update(prjTask);
+
+            }
+
+        }
+
+        return "list";
+    }
+
 
     public String getPassword_old() {
         return password_old;
@@ -320,5 +368,29 @@ public class UserFrontAction extends BaseAction {
 
     public void setHeadImgFileName(String headImgFileName) {
         this.headImgFileName = headImgFileName;
+    }
+
+    public PrjTask getPrjTask() {
+        return prjTask;
+    }
+
+    public void setPrjTask(PrjTask prjTask) {
+        this.prjTask = prjTask;
+    }
+
+    public List<PrjTask> getPrjTaskList() {
+        return prjTaskList;
+    }
+
+    public void setPrjTaskList(List<PrjTask> prjTaskList) {
+        this.prjTaskList = prjTaskList;
+    }
+
+    public PrjTaskService getPrjTaskService() {
+        return prjTaskService;
+    }
+
+    public void setPrjTaskService(PrjTaskService prjTaskService) {
+        this.prjTaskService = prjTaskService;
     }
 }

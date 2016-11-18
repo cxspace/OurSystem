@@ -30,13 +30,24 @@
 
         </action>
 
-        <!--<action name="front_inform_*" class="com.cx.sys.inform.action.InformFrontAction" method="{1}">-->
+        <action name="front_prj_hall_prjTask_*" class="com.cx.sys.prj_task.action.PrjTaskFrontAction" method="{1}">
 
-            <!--<result name="infoList">-->
-                <!--/WEB-INF/jsp/front/personal/info.jsp-->
-            <!--</result>-->
+            <result name="{1}">
+                /WEB-INF/jsp/front/prj_hall/{1}.jsp
 
-        <!--</action>-->
+            </result>
+
+            <result name="task_list">
+                /WEB-INF/jsp/front/prj_hall/task_list.jsp
+
+            </result>
+
+            <result name="list_back" type="redirectAction">
+                <param name="actionName">front_prj_hall_prjTask_listBack</param>
+            </result>
+
+        </action>
+
 
     </package>
 

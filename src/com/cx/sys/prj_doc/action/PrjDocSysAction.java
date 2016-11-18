@@ -1,5 +1,6 @@
 package com.cx.sys.prj_doc.action;
 
+import com.cx.core.utils.DateTimeHelper;
 import com.cx.sys.prj_doc.entity.PrjDoc;
 import com.cx.sys.prj_doc.service.PrjDocService;
 import com.cx.sys.project.entity.Project;
@@ -38,6 +39,8 @@ public class PrjDocSysAction extends ActionSupport {
         if (prjDoc!=null){
 
                String prjId = (String)ActionContext.getContext().getSession().get("prjId");
+
+               prjDoc.setCreateTime(DateTimeHelper.getCurrentDateTime());
 
                prjDocService.save(prjDoc);
 
@@ -127,6 +130,7 @@ public class PrjDocSysAction extends ActionSupport {
         if (prjDoc!=null){
             if (prjDoc.getId()!=null) {
 
+                        prjDoc.setCreateTime(DateTimeHelper.getCurrentDateTime());
                         prjDocService.update(prjDoc);
 
             }

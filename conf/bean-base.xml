@@ -72,6 +72,7 @@
                 <value>classpath:com/cx/sys/current_competition/entity/CurrentCompetition.hbm.xml</value>
                 <value>classpath:com/cx/sys/note_class/entity/NoteClass.hbm.xml</value>
                 <value>classpath:com/cx/sys/note/entity/Note.hbm.xml</value>
+                <value>classpath:com/cx/sys/user/entity/UserTask.hbm.xml</value>
             </list>
         </property>
     </bean>

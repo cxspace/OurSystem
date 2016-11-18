@@ -55,4 +55,6 @@ public class ProjectServiceImpl extends BaseServiceImpl<Project> implements Proj
     public List<ProjectTask> getPrjTasksByPrjId(String prjId) {
         return projectDao.getPrjTasksByPrjId(prjId);
     }
+
+
 }

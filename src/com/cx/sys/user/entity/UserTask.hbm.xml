@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.cx.sys.user.entity.UserTask" table="t_r_user_task">
+
+        <composite-id name="id"  class="com.cx.sys.user.entity.UserTaskId">
+            <key-many-to-one name="prjTask"  lazy="false" class="com.cx.sys.prj_task.entity.PrjTask">
+                <column name="task_id"></column>
+            </key-many-to-one>
+
+            <key-property name="user_id" type="java.lang.String">
+                <column name="user_id" length="32"></column>
+            </key-property>
+
+        </composite-id>
+
+
+    </class>
+
+</hibernate-mapping>

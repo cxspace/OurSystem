@@ -2,6 +2,7 @@ package com.cx.sys.user.service;
 
 import com.cx.core.service.BaseService;
 import com.cx.sys.user.entity.User;
+import com.cx.sys.user.entity.UserTask;
 
 import java.util.List;
 
@@ -11,5 +12,10 @@ import java.util.List;
 public interface UserService extends BaseService<User>{
 
     public List<User> findUserByAccountAndPwd(String account , String pwd);
+
+    public void saveUserTask(String userId , String taskId );
+
+    public List<UserTask> getUserTasksByUserId(String userId);
+
 
 }

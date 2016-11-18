@@ -70,7 +70,6 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements Base
             for (int i = 0 ; i < parameters.size() ; i++){
                 query.setParameter(i,parameters.get(i));
             }
-
         }
 
         //防止分页数小于1
@@ -84,6 +83,7 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements Base
 
         //拿到总记录数
         Query queryCount = getSession().createQuery(queryHelper.getQueryCountHql());
+
 
         if (parameters!=null){
 

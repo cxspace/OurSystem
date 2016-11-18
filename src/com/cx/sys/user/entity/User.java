@@ -1,6 +1,10 @@
 package com.cx.sys.user.entity;
 
 
+import com.cx.sys.prj_task.entity.PrjTask;
+
+import java.util.List;
+
 /**
  * Created by cxspace on 16-11-11.
  */
@@ -27,6 +31,9 @@ public class User {
     private long score;
 
     private int role;
+
+    //一个人对应多个任务
+    private List<PrjTask> taskList;
 
     public String getAccount() {
         return account;
@@ -114,6 +121,14 @@ public class User {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public List<PrjTask> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<PrjTask> taskList) {
+        this.taskList = taskList;
     }
 
     public User(String account, String birthday, String email, int gender, String head_img, String id, String password, String phone, int role, long score, String user_name) {

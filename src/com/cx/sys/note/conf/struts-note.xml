@@ -23,6 +23,26 @@
 
         </action>
 
+        <action name="front_our_note_*" class="com.cx.sys.note.action.NoteFrontAction" method="{1}">
+
+            <result name="{1}">
+                /WEB-INF/jsp/front/our_note/{1}.jsp
+
+            </result>
+
+            <result name="note_list">
+
+                /WEB-INF/jsp/front/our_note/note_list.jsp
+
+            </result>
+
+            <!--重定向到列表-->
+            <result name="list" type="redirectAction">
+                <param name="actionName">front_our_note_note_list</param>
+            </result>
+
+        </action>
+
     </package>
 
 </struts>

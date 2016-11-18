@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -12,7 +13,7 @@
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
 
-    <title>Neon | Profile</title>
+    <title>我的项目任务</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
@@ -49,14 +50,14 @@
 
                 <!-- logo -->
                 <div class="logo">
-                    <a href="${pageContext.request.contextPath}/index.html">
+                    <a href="${pageContext.request.contextPath}/">
                         <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
                     </a>
                 </div>
 
                 <!-- logo collapse icon -->
                 <div class="sidebar-collapse">
-                    <a href="#" class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                    <a class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -64,7 +65,7 @@
 
                 <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
                 <div class="sidebar-mobile-menu visible-xs">
-                    <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
+                    <a class="with-animation"><!-- add class "with-animation" to support animation -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -81,18 +82,21 @@
                         <span class="title">我的工作台</span>
                     </a>
                     <ul>
+
                         <li>
-                            <a href="info.html">
-                                <span class="title">我的个人信息</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="info.html">
+                            <a href="${pageContext.request.contextPath}/front_user_info.action">
                                 <span class="title">我收到的通知</span>
                             </a>
                         </li>
+
                         <li>
-                            <a href="prj_list.html">
+                            <a href="${pageContext.request.contextPath}/front_user_change_information.action">
+                                <span class="title">我的个人信息</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="${pageContext.request.contextPath}/front_user_prj_list.action">
                                 <span class="title">我的项目任务</span>
                             </a>
                         </li>
@@ -105,12 +109,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../learn_hall/route_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习路线</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../learn_hall/site_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -125,12 +129,12 @@
 
                     <ul>
                         <li>
-                            <a href="../share_hall/link_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_res_link_list.action">
                                 <span class="title">资料链接分享</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../share_hall/experience_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_experience_list.action">
                                 <span class="title">学习经验分享</span>
                             </a>
                         </li>
@@ -139,7 +143,7 @@
 
                 </li>
                 <li>
-                    <a>
+                    <a href="${pageContext.request.contextPath}/front_prj_hall_prj_prj_list.action">
                         <i class="entypo-doc-text"></i>
                         <span class="title">项目大厅</span>
                     </a>
@@ -152,12 +156,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../our_note/note_list.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">查看笔记</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../our_note/note_add.html">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_add.action">
                                 <span class="title">我要写笔记</span>
                             </a>
                         </li>
@@ -170,12 +174,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../competition/competition_list.html">
+                            <a href="${pageContext.request.contextPath}/front_competition_competition_list.action">
                                 <span class="title">相关竞赛介绍</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../competition/cur_comp_list.html">
+                            <a href="${pageContext.request.contextPath}/front_current_competition_cur_comp_list.action">
                                 <span class="title">最近可申报的竞赛</span>
                             </a>
                         </li>
@@ -190,93 +194,128 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/user/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_user_listUI.action">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/project/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_project_listUI.action">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/prj_task/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_prj_task_prj_list.action">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href=${pageContext.request.contextPath}/sys/prj_doc/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_prj_doc_prj_list.action">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href=${pageContext.request.contextPath}/sys/learn_route/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_learn_route_listUI.action">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/learn_site/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_learn_site_listUI.action">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/res_link/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_res_link_listUI.action">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/experience/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_experience_listUI.action">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/note_class/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_note_class_listUI.action">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/note/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_note_listUI.action">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/competition/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_competition_listUI.action">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/current_competion/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_current_competition_listUI.action">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="${pageContext.request.contextPath}/sys/inform/listUI.html">
+                            <a href="${pageContext.request.contextPath}/system_inform_listUI.action">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+
             </ul>
 
         </div>
 
     </div>
-
     <div class="main-content">
 
+
+        <!-- Profile Info and Notifications -->
+        <div class="col-md-6 col-sm-8 clearfix">
+
+            <ul class="user-info pull-left pull-none-xsm">
+
+
+            </ul>
+
+        </div>
+
+
+        <!-- Raw Links -->
+        <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+
+            <ul class="list-inline links-list pull-right">
+
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/front_user_info.action">
+                        个人主页
+                    </a>
+                </li>
+
+
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/user_loginOut.action">
+                        注销 <i class="entypo-logout right"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
 
 
         <ol class="breadcrumb bc-3" >
@@ -293,7 +332,6 @@
             </li>
         </ol>
 
-        <hr />
 
         <div class="profile-env">
 
@@ -301,8 +339,8 @@
 
                 <div class="col-sm-2">
 
-                    <a href="#" class="profile-picture">
-                        <img src="${pageContext.request.contextPath}/assets/images/profile-picture.png" class="img-responsive img-circle" />
+                    <a class="profile-picture">
+                        <img src="${pageContext.request.contextPath}/upload/${sessionScope.SYSTEM_USER.head_img}" class="img-responsive img-circle" />
                     </a>
 
                 </div>
@@ -312,27 +350,20 @@
                     <ul class="profile-info-sections">
                         <li>
                             <div class="profile-name">
-                                <strong>
-                                    <a>张三</a>
-
-                                </strong>
-                                <span><a href="#">查看日历</a></span>
+                                <h1>
+                                    <a><s:property value="user.user_name"></s:property></a>
+                                </h1>
+                                <span>用户名</span>
                             </div>
                         </li>
 
                         <li>
                             <div class="profile-stat">
-                                <h3>600</h3>
+                                <h3><s:property value="user.score"></s:property></h3>
                                 <span><a>项目积分</a></span>
                             </div>
                         </li>
 
-                        <li>
-                            <div class="profile-stat">
-                                <h3>10</h3>
-                                <span><a>通知总数</a></span>
-                            </div>
-                        </li>
                     </ul>
 
                 </div>
@@ -354,28 +385,28 @@
                             <li>
                                 <a>
                                     <i class="entypo-qq"></i>
-                                    账号:442961832
+                                    账号:<s:property value="user.account"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-mail"></i>
-                                    邮箱:442961832@qq.com
+                                    邮箱:<s:property value="user.email"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-phone"></i>
-                                    电话:13037239781
+                                    电话:<s:property value="user.phone"></s:property>
                                 </a>
                             </li>
 
                             <li>
                                 <a>
                                     <i class="entypo-calendar"></i>
-                                    生日:03/19/1996
+                                    生日:<s:property value="user.birthday"></s:property>
                                 </a>
                             </li>
                         </ul>
@@ -399,7 +430,7 @@
                 <div class="profile-stories">
 
 
-                    <h3>我的任务列表</h3>
+                    <h3>我的未完成任务列表</h3>
 
                     <table class="table table-bordered table-striped datatable" id="table-2">
                         <thead>
@@ -426,40 +457,59 @@
 
                         <tbody>
 
+                        <s:iterator value="prjTaskList" status="st">
+
+                            <%--已完成和被重置的不出现--%>
+                            <s:if test="state!=3">
+                                <s:if test="state!=0">
+
                         <tr>
-
-                            <td>神通录前端页面制作</td>
-                            <td>2016-09-19</td>
-                            <td>2016-12-10</td>
-                            <td>100</td>
-
-                            <td>未完成/已提交/已完成</td>
+                            <td>
+                                <s:property value="name"></s:property>
+                            </td>
+                            <td>
+                                <s:property value="createTime"></s:property>
+                            </td>
+                            <td>
+                                <s:property value="deadline"></s:property>
+                            </td>
+                            <td>
+                                <s:property value="score"></s:property>
+                            </td>
 
                             <td>
-                                <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
-                                    <i class="entypo-right"></i>
-                                    提交任务
-                                </a>
+                                <s:if test="state==1">
+                                    未完成
+                                </s:if>
+                                <s:elseif test="state==2">
+                                    已提交
+                                </s:elseif>
+
+                            </td>
+
+                            <td>
+
+                                <s:if test="state==1">
+                                    <a href="${pageContext.request.contextPath}/front_user_submit_task.action?prjTask.id=<s:property value="id"></s:property>" class="btn btn-info btn-sm btn-icon icon-left">
+                                        <i class="entypo-right"></i>
+                                        提交任务
+                                    </a>
+                                </s:if>
+                                <s:else>
+                                    任务已提交,待管理员确定
+                                </s:else>
                             </td>
 
 
                         </tr>
+                                </s:if>
+                            </s:if>
 
+                        </s:iterator>
 
                         </tbody>
                     </table>
 
-
-                    <ul class="pagination">
-                        <li><a href="#"><i class="entypo-left-open-mini"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li class="disabled"><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#"><i class="entypo-right-open-mini"></i></a></li>
-                    </ul>
 
                 </div>
 

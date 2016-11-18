@@ -23,6 +23,15 @@
 
         </action>
 
+        <action name="front_competition_*" class="com.cx.sys.competition.action.CompetitionFrontAction" method="{1}">
+
+            <result name="{1}">
+                /WEB-INF/jsp/front/competition/{1}.jsp
+            </result>
+
+
+        </action>
+
     </package>
 
 </struts>

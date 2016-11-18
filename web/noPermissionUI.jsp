@@ -12,7 +12,7 @@
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
 
-    <title>Neon | Profile</title>
+    <title>没有权限</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
@@ -43,233 +43,241 @@
 
     <div class="sidebar-menu">
 
-        <div class="sidebar-menu-inner">
+        <div class="sidebar-menu">
 
-            <header class="logo-env">
+            <div class="sidebar-menu-inner">
 
-                <!-- logo -->
-                <div class="logo">
-                    <a href="${pageContext.request.contextPath}/index.html">
-                        <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
-                    </a>
-                </div>
+                <header class="logo-env">
 
-                <!-- logo collapse icon -->
-                <div class="sidebar-collapse">
-                    <a href="#" class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
-                        <i class="entypo-menu"></i>
-                    </a>
-                </div>
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="${pageContext.request.contextPath}/">
+                            <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
+                        </a>
+                    </div>
 
-
-                <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
-                <div class="sidebar-mobile-menu visible-xs">
-                    <a href="#" class="with-animation"><!-- add class "with-animation" to support animation -->
-                        <i class="entypo-menu"></i>
-                    </a>
-                </div>
-
-            </header>
+                    <!-- logo collapse icon -->
+                    <div class="sidebar-collapse">
+                        <a class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                            <i class="entypo-menu"></i>
+                        </a>
+                    </div>
 
 
-            <ul id="main-menu" class="main-menu">
-                <li>
-                    <a>
-                        <i class="entypo-user"></i>
-                        <span class="title">我的工作台</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="info.html">
-                                <span class="title">我的个人信息</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="info.html">
-                                <span class="title">我收到的通知</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="prj_list.html">
-                                <span class="title">我的项目任务</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a>
-                        <i class="entypo-bag"></i>
-                        <span class="title">学习大厅</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="../learn_hall/route_list.html">
-                                <span class="title">学习路线</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../learn_hall/site_list.html">
-                                <span class="title">学习站点推荐</span>
-                            </a>
-                        </li>
+                    <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+                    <div class="sidebar-mobile-menu visible-xs">
+                        <a class="with-animation"><!-- add class "with-animation" to support animation -->
+                            <i class="entypo-menu"></i>
+                        </a>
+                    </div>
 
-                    </ul>
-                </li>
-                <li>
-                    <a>
-                        <i class="entypo-attach"></i>
-                        <span class="title">分享大厅</span>
-                    </a>
-
-                    <ul>
-                        <li>
-                            <a href="../share_hall/link_list.html">
-                                <span class="title">资料链接分享</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../share_hall/experience_list.html">
-                                <span class="title">学习经验分享</span>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-                <li>
-                    <a>
-                        <i class="entypo-doc-text"></i>
-                        <span class="title">项目大厅</span>
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <i class="entypo-pencil"></i>
-                        <span class="title">OUR NOTE</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="../our_note/note_list.html">
-                                <span class="title">查看笔记</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../our_note/note_add.html">
-                                <span class="title">我要写笔记</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a>
-                        <i class="entypo-trophy"></i>
-                        <span class="title">竞赛专区</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="../competition/competition_list.html">
-                                <span class="title">相关竞赛介绍</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../competition/cur_comp_list.html">
-                                <span class="title">最近可申报的竞赛</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a>
-                        <i class="entypo-tools"></i>
-                        <span class="title">系统管理</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/user/listUI.html">
-                                <span class="title">用户管理</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/project/listUI.html">
-                                <span class="title">项目管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/prj_task/listUI.html">
-                                <span class="title">项目任务管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href=${pageContext.request.contextPath}/sys/prj_doc/listUI.html">
-                                <span class="title">项目文档管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href=${pageContext.request.contextPath}/sys/learn_route/listUI.html">
-                                <span class="title">学习路线管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/learn_site/listUI.html">
-                                <span class="title">学习站点管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/res_link/listUI.html">
-                                <span class="title">资料链接管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/experience/listUI.html">
-                                <span class="title">经验分享管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/note_class/listUI.html">
-                                <span class="title">笔记分类管理</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/note/listUI.html">
-                                <span class="title">笔记管理</span>
-                            </a>
-                        </li>
+                </header>
 
 
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/competition/listUI.html">
-                                <span class="title">竞赛介绍管理</span>
-                            </a>
-                        </li>
+                <ul id="main-menu" class="main-menu">
+                    <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+                    <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                    <li>
+                        <a>
+                            <i class="entypo-user"></i>
+                            <span class="title">我的工作台</span>
+                        </a>
+                        <ul>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_user_info.action">
+                                    <span class="title">我收到的通知</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_user_change_information.action">
+                                    <span class="title">我的个人信息</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_user_prj_list.action">
+                                    <span class="title">我的项目任务</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="entypo-bag"></i>
+                            <span class="title">学习大厅</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
+                                    <span class="title">学习路线</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
+                                    <span class="title">学习站点推荐</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="entypo-attach"></i>
+                            <span class="title">分享大厅</span>
+                        </a>
+
+                        <ul>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_share_hall_res_link_list.action">
+                                    <span class="title">资料链接分享</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_share_hall_experience_list.action">
+                                    <span class="title">学习经验分享</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/front_prj_hall_prj_prj_list.action">
+                            <i class="entypo-doc-text"></i>
+                            <span class="title">项目大厅</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a>
+                            <i class="entypo-pencil"></i>
+                            <span class="title">OUR NOTE</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
+                                    <span class="title">查看笔记</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
+                                    <span class="title">我要写笔记</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="entypo-trophy"></i>
+                            <span class="title">竞赛专区</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_competition_competition_list.action">
+                                    <span class="title">相关竞赛介绍</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/front_current_competition_cur_comp_list.action">
+                                    <span class="title">最近可申报的竞赛</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a>
+                            <i class="entypo-tools"></i>
+                            <span class="title">系统管理</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_user_listUI.action">
+                                    <span class="title">用户管理</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_project_listUI.action">
+                                    <span class="title">项目管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_prj_task_prj_list.action">
+                                    <span class="title">项目任务管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_prj_doc_prj_list.action">
+                                    <span class="title">项目文档管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_learn_route_listUI.action">
+                                    <span class="title">学习路线管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_learn_site_listUI.action">
+                                    <span class="title">学习站点管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_res_link_listUI.action">
+                                    <span class="title">资料链接管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_experience_listUI.action">
+                                    <span class="title">经验分享管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_note_class_listUI.action">
+                                    <span class="title">笔记分类管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_note_listUI.action">
+                                    <span class="title">笔记管理</span>
+                                </a>
+                            </li>
 
 
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/current_competion/listUI.html">
-                                <span class="title">最近比赛管理</span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_competition_listUI.action">
+                                    <span class="title">竞赛介绍管理</span>
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="${pageContext.request.contextPath}/sys/inform/listUI.html">
-                                <span class="title">通知公告管理</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
 
-        </div>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_current_competition_listUI.action">
+                                    <span class="title">最近比赛管理</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/system_inform_listUI.action">
+                                    <span class="title">通知公告管理</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
 
     </div>
 
