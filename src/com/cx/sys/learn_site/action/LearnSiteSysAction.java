@@ -1,5 +1,6 @@
 package com.cx.sys.learn_site.action;
 
+import com.cx.core.utils.DateTimeHelper;
 import com.cx.sys.learn_site.entity.LearnSite;
 import com.cx.sys.learn_site.service.LearnSiteService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -57,6 +58,8 @@ public class LearnSiteSysAction extends ActionSupport {
     public String add(){
 
         if (learnSite!=null) {
+
+            learnSite.setTime(DateTimeHelper.getCurrentDateTime());
             learnSiteService.save(learnSite);
         }
 
@@ -82,6 +85,7 @@ public class LearnSiteSysAction extends ActionSupport {
 
             if (learnSite.getId()!=null){
 
+                learnSite.setTime(DateTimeHelper.getCurrentDateTime());
                 learnSiteService.update(learnSite);
 
             }

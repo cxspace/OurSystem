@@ -16,7 +16,6 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-core.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-theme.css">
@@ -324,15 +323,15 @@
 
 
     <!-- Imported scripts on this page -->
-    <script src="${pageContext.request.contextPath}/assets/js/neon-chat.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/neon-chat.js"></script>--%>
 
 
     <!-- JavaScripts initializations and stuff -->
-    <script src="${pageContext.request.contextPath}/assets/js/neon-custom.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/neon-custom.js"></script>--%>
 
 
     <!-- Demo Settings -->
-    <script src="${pageContext.request.contextPath}/assets/js/neon-demo.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/neon-demo.js"></script>--%>
 
 </body>
 </html>

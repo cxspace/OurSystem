@@ -399,7 +399,7 @@
                 <div class="profile-stories">
 
                     <div class="title">
-                        <h3>个人信息修改</h3>
+                        <h3>个人信息修改<font color="red">&nbsp;&nbsp;&nbsp;<s:property value="Msg"></s:property></font></h3>
                     </div>
 
                     <table class="table table-bordered table-striped datatable" id="table-2">
@@ -445,7 +445,7 @@
                         </tr>
 
                         <tr>
-                            <td>密码</td>
+                            <td>密码 </td>
 
                             <td>
                                 <a href="javascript:;" onclick="jQuery('#modal-5').modal('show', {backdrop: 'static'});" class="btn btn-default">修改</a>
@@ -622,15 +622,15 @@
 
 
                                         <div class="col-sm-12">
-                                            <input type="password" name="password_one" class="form-control" id="pwd1">
+                                            <input type="password" placeholder="请输入新密码" name="password_old" class="form-control" id="pwd1">
                                         </div>
 
                                         <br>
 
                                         <div class="col-sm-12">
-                                            <input type="password" name="password" class="form-control" id="pwd2">
+                                            <input type="password" placeholder="请确认新密码" name="password" class="form-control" id="pwd2">
                                         </div>
-                                        
+
                                     </div>
 
                                 </div>

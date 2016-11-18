@@ -35,10 +35,11 @@ public class LoginFilter implements javax.servlet.Filter {
 
             if (request.getSession().getAttribute(Constant.USER)!=null){
                 //鉴定系统管理访问权限
-                if (uri.contains("/system_")){
+                if (uri.contains("system")){
 
                     User user = (User) request.getSession().getAttribute(Constant.USER);
 
+                    //管理员放行
                     if (user.getRole()==1){
                         filterChain.doFilter(request,response);
                     }else {

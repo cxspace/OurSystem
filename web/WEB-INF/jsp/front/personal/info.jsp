@@ -459,6 +459,8 @@
                         </tbody>
                     </table>
 
+
+                        <%--分页处理--%>
                     <s:if test="pageResult.totalCount > 0">
                     <ul class="pagination">
 
@@ -499,7 +501,7 @@
                     </s:if>
                     <s:else>暂无数据！</s:else>
 
-
+                        <%--分页处理--%>
                     </form>
 
                 </div>

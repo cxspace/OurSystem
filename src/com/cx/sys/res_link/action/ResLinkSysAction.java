@@ -1,6 +1,7 @@
 package com.cx.sys.res_link.action;
 
 import com.cx.core.constant.Constant;
+import com.cx.core.utils.DateTimeHelper;
 import com.cx.sys.res_link.entity.ResLink;
 import com.cx.sys.res_link.service.ResLinkService;
 import com.cx.sys.user.entity.User;
@@ -72,7 +73,7 @@ public class ResLinkSysAction extends ActionSupport {
 
             User user = (User) ActionContext.getContext().getSession().get(Constant.USER);
             resLink.setCreate_person(user.getUser_name());
-            resLink.setTime(new Timestamp(new Date().getTime()));
+            resLink.setTime(DateTimeHelper.getCurrentDateTime());
             resLinkService.save(resLink);
 
         }
@@ -85,7 +86,6 @@ public class ResLinkSysAction extends ActionSupport {
         if (resLink!=null){
 
             if (resLink.getId()!=null){
-
                 resLink = resLinkService.findObjectById(resLink.getId());
 
             }
@@ -98,9 +98,8 @@ public class ResLinkSysAction extends ActionSupport {
     public String edit(){
 
         if (resLink!=null){
-
+            resLink.setTime(DateTimeHelper.getCurrentDateTime());
             resLinkService.update(resLink);
-
         }
 
         return "list";

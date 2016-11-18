@@ -25,6 +25,19 @@
 
         </action>
 
+        <action name="front_learn_route_*" class="com.cx.sys.learn_route.action.LearnRouteFrontAction" method="{1}">
+
+            <result name="{1}">
+                /WEB-INF/jsp/front/learn_hall/{1}.jsp
+            </result>
+
+            <!--重定向到列表-->
+            <result name="list" type="redirectAction">
+                <param name="actionName">front_learn_route_route_list</param>
+            </result>
+
+        </action>
+
     </package>
 
 </struts>

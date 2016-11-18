@@ -3,6 +3,7 @@ package com.cx.sys.user.action;
 import com.cx.core.action.BaseAction;
 import com.cx.core.constant.Constant;
 import com.cx.core.page.PageResult;
+import com.cx.core.utils.ImageHelper;
 import com.cx.core.utils.QueryHelper;
 import com.cx.sys.inform.entity.Inform;
 import com.cx.sys.inform.service.InformService;
@@ -10,6 +11,8 @@ import com.cx.sys.user.entity.User;
 import com.cx.sys.user.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import javax.annotation.Resource;
+import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,14 +29,19 @@ public class UserFrontAction extends BaseAction {
 
     private List<Inform> informList = new ArrayList<>();
 
+
+
     @Resource
     private InformService informService;
 
     @Resource
     private UserService userService;
 
+    //分页结果集合
+
     private PageResult pageResult;
 
+    private String password_old;
 
     private String phone;
 
@@ -43,7 +51,13 @@ public class UserFrontAction extends BaseAction {
 
     private String password;
 
-    private String head_img;
+    private File headImg;
+
+    private String headImgContentType;
+
+    private String headImgFileName;
+
+    private String Msg;
 
     public String info(){
 
@@ -63,6 +77,7 @@ public class UserFrontAction extends BaseAction {
     }
 
 
+    //修改信息页面
     public String change_information(){
 
         user = (User) ActionContext.getContext().getSession().get(Constant.USER);
@@ -70,6 +85,7 @@ public class UserFrontAction extends BaseAction {
 
     }
 
+    //通知详细
     public String info_detail(){
 
         user = (User) ActionContext.getContext().getSession().get(Constant.USER);
@@ -87,6 +103,7 @@ public class UserFrontAction extends BaseAction {
         return "info_detail";
     }
 
+    //修改电话
     public String change_phone(){
 
         user = (User) ActionContext.getContext().getSession().get(Constant.USER);
@@ -94,11 +111,14 @@ public class UserFrontAction extends BaseAction {
         if (phone!=null) {
             user.setPhone(phone);
             userService.update(user);
+        }else {
+            Msg ="请填写新电话!";
         }
 
         return "change_information";
     }
 
+    //修改邮箱
     public String change_email(){
 
         user = (User) ActionContext.getContext().getSession().get(Constant.USER);
@@ -106,25 +126,54 @@ public class UserFrontAction extends BaseAction {
         if (email!=null){
             user.setEmail(email);
             userService.update(user);
+        }else {
+            Msg = "请填写新的邮箱号!";
         }
 
         return "change_information";
     }
 
 
+    //修改生日
     public String change_birthday(){
 
         user = (User) ActionContext.getContext().getSession().get(Constant.USER);
 
         if (birthday!=null){
-            user.setBirthday(new Date(birthday));
+            user.setBirthday(birthday);
+            userService.update(user);
+        }else {
+            Msg = "请选择日期!";
         }
 
         return "change_information";
     }
 
 
+    //修改密码
     public String change_password(){
+
+        if (password_old.equals("")||password.equals("")){
+             Msg="输入密码不能为空!";
+        }else {
+            if (password_old.equals(password)){
+
+                user = (User) ActionContext.getContext().getSession().get(Constant.USER);
+
+                user.setPassword(password);
+
+                userService.update(user);
+
+                 Msg = "修改密码成功,请用新密码登录";
+
+                return "toLoginUI";
+
+            }else {
+                 Msg = "两次输入密码不一致!";
+            }
+
+        }
+
 
         return "change_information";
     }
@@ -132,12 +181,32 @@ public class UserFrontAction extends BaseAction {
 
     public String change_headImg(){
 
+        if (headImg != null){
+
+            user = (User) ActionContext.getContext().getSession().get(Constant.USER);
+
+            ImageHelper.saveHeadImg(headImg,user,headImgFileName);
+
+            userService.update(user);
+
+        }else {
+            Msg = "请选择上传图片!";
+        }
+
         return "change_information";
     }
 
     public String prj_list(){
 
         return "prj_list";
+    }
+
+    public String getPassword_old() {
+        return password_old;
+    }
+
+    public void setPassword_old(String password_old) {
+        this.password_old = password_old;
     }
 
     public User getUser() {
@@ -162,6 +231,15 @@ public class UserFrontAction extends BaseAction {
 
     public void setInform(Inform inform) {
         this.inform = inform;
+    }
+
+
+    public String getMsg() {
+        return Msg;
+    }
+
+    public void setMsg(String msg) {
+        Msg = msg;
     }
 
     public List<Inform> getInformList() {
@@ -204,14 +282,6 @@ public class UserFrontAction extends BaseAction {
         this.email = email;
     }
 
-    public String getHead_img() {
-        return head_img;
-    }
-
-    public void setHead_img(String head_img) {
-        this.head_img = head_img;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -226,5 +296,29 @@ public class UserFrontAction extends BaseAction {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public File getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(File headImg) {
+        this.headImg = headImg;
+    }
+
+    public String getHeadImgContentType() {
+        return headImgContentType;
+    }
+
+    public void setHeadImgContentType(String headImgContentType) {
+        this.headImgContentType = headImgContentType;
+    }
+
+    public String getHeadImgFileName() {
+        return headImgFileName;
+    }
+
+    public void setHeadImgFileName(String headImgFileName) {
+        this.headImgFileName = headImgFileName;
     }
 }

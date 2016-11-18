@@ -117,12 +117,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/learn_hall/route_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习路线</span>
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/learn_hall/site_list.html">
+                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -137,12 +137,12 @@
 
                     <ul>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/share_hall/link_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_link_list.action">
                                 <span class="title">资料链接分享</span>
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front/share_hall/experience_list.html">
+                            <a href="${pageContext.request.contextPath}/front_share_hall_experience_list.action">
                                 <span class="title">学习经验分享</span>
                             </a>
                         </li>

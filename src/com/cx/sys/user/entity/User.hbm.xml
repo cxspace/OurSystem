@@ -36,8 +36,8 @@
             <column name="gender"/>
         </property>
 
-        <property name="birthday" type="java.util.Date">
-            <column name="birthday" length="10"/>
+        <property name="birthday" type="java.lang.String">
+            <column name="birthday" length="20"/>
         </property>
 
         <property name="score" type="java.lang.Long">

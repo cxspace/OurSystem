@@ -11,7 +11,7 @@ public class Experience {
 
     private String name;
 
-    private Timestamp time;
+    private String time;
 
     private String create_person;
 
@@ -49,15 +49,15 @@ public class Experience {
         this.name = name;
     }
 
-    public Timestamp getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public Experience(String content, String create_person, String id, String name, Timestamp time) {
+    public Experience(String content, String create_person, String id, String name, String time) {
         this.content = content;
         this.create_person = create_person;
         this.id = id;

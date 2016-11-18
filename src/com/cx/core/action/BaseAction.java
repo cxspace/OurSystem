@@ -1,6 +1,5 @@
 package com.cx.core.action;
 
-import com.cx.core.page.PageResult;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**

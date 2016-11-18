@@ -360,7 +360,7 @@
                 }, 3000);
 
 
-            }
+            });
 
         </script>
 
@@ -426,14 +426,6 @@
                 </div>
             </div>
 
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
-
-                <div class="col-sm-3">
-                    <input type="text" class="form-control datepicker" name="learnRoute.time" data-start-view="2" readonly>
-                </div>
-            </div>
 
 
             <br>

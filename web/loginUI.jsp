@@ -105,6 +105,9 @@ var baseurl = '';
 						<font color="red">
 							<s:property value="errorMessage"></s:property>
 						</font>
+						<font color="red">
+							<s:property value="Msg"></s:property>
+						</font>
 
 					</p>
 				

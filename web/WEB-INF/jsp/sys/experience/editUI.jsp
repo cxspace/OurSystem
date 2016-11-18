@@ -361,7 +361,7 @@
                 }, 3000);
 
 
-            }
+            });
 
         </script>
 
@@ -440,9 +440,6 @@
 
             </s:hidden>
 
-            <s:hidden value="%{experience.time}" name="experience.time">
-
-            </s:hidden>
 
             <s:hidden value="%{experience.create_person}" name="experience.create_person">
 

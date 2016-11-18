@@ -1,6 +1,5 @@
 package com.cx.sys.user.entity;
 
-import java.util.Date;
 
 /**
  * Created by cxspace on 16-11-11.
@@ -23,7 +22,7 @@ public class User {
 
     private int gender;
 
-    private Date birthday;
+    private String birthday;
 
     private long score;
 
@@ -37,11 +36,11 @@ public class User {
         this.account = account;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -117,7 +116,7 @@ public class User {
         this.user_name = user_name;
     }
 
-    public User(String account, Date birthday, String email, int gender, String head_img, String id, String password, String phone, int role, long score, String user_name) {
+    public User(String account, String birthday, String email, int gender, String head_img, String id, String password, String phone, int role, long score, String user_name) {
         this.account = account;
         this.birthday = birthday;
         this.email = email;

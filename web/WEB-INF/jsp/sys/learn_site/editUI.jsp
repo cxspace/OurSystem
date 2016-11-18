@@ -427,14 +427,7 @@
                     <input type="text" name="learnSite.name" value="<s:property value="learnSite.name"></s:property>" class="form-control" id="field-1" >
                 </div>
             </div>
-            
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
 
-                <div class="col-sm-3">
-                    <input type="text" name="learnSite.time" value="<s:property value="learnSite.time"></s:property>" class="form-control datepicker" data-start-view="2" readonly>
-                </div>
-            </div>
 
 
             <br>

@@ -1,5 +1,6 @@
 package com.cx.sys.learn_route.action;
 
+import com.cx.core.utils.DateTimeHelper;
 import com.cx.sys.learn_route.entity.LearnRoute;
 import com.cx.sys.learn_route.service.LearnRouteService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -33,6 +34,8 @@ public class LearnRouteSysAction extends ActionSupport {
     public String add(){
 
         if (learnRoute!=null) {
+
+            learnRoute.setTime(DateTimeHelper.getCurrentDateTime());
 
             learnRouteService.save(learnRoute);
 
@@ -79,6 +82,8 @@ public class LearnRouteSysAction extends ActionSupport {
         if (learnRoute!=null){
 
             if (learnRoute.getId()!=null){
+
+                learnRoute.setTime(DateTimeHelper.getCurrentDateTime());
                 learnRouteService.update(learnRoute);
             }
 

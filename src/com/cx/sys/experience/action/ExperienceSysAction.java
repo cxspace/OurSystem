@@ -1,6 +1,7 @@
 package com.cx.sys.experience.action;
 
 import com.cx.core.constant.Constant;
+import com.cx.core.utils.DateTimeHelper;
 import com.cx.sys.experience.entity.Experience;
 import com.cx.sys.experience.service.ExperienceService;
 import com.cx.sys.user.entity.User;
@@ -55,7 +56,7 @@ public class ExperienceSysAction extends ActionSupport{
 
             User user = (User) ActionContext.getContext().getSession().get(Constant.USER);
             experience.setCreate_person(user.getUser_name());
-            experience.setTime(new Timestamp(new Date().getTime()));
+            experience.setTime(DateTimeHelper.getCurrentDateTime());
 
             experienceService.save(experience);
 
@@ -68,6 +69,7 @@ public class ExperienceSysAction extends ActionSupport{
 
         if (experience!=null){
 
+            experience.setTime(DateTimeHelper.getCurrentDateTime());
             experienceService.update(experience);
 
         }

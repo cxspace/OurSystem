@@ -23,6 +23,19 @@
 
         </action>
 
+        <action name="front_share_hall_*" class="com.cx.sys.experience.action.ExperienceFrontAction" method="{1}">
+
+            <result name="{1}">
+                /WEB-INF/jsp/front/share_hall/{1}.jsp
+            </result>
+
+            <!--重定向到列表-->
+            <result name="list" type="redirectAction">
+                <param name="actionName">front_share_hall_experience_list</param>
+            </result>
+
+        </action>
+
     </package>
 
 </struts>

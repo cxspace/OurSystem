@@ -1,3 +1,6 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,21 +13,21 @@
 
     <title>OUR_SYS | INDEX</title>
 
-    <link rel="stylesheet" href="../../assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-    <link rel="stylesheet" href="../../assets/css/font-icons/entypo/css/entypo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/css/neon-core.css">
-    <link rel="stylesheet" href="../../assets/css/neon-theme.css">
-    <link rel="stylesheet" href="../../assets/css/neon-forms.css">
-    <link rel="stylesheet" href="../../assets/css/custom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-core.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
 
-    <link rel="stylesheet" href="../../assets/css/skins/white.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
-    <script src="../../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
     <script>$.noConflict();</script>
 
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,8 +50,8 @@
 
                 <!-- logo -->
                 <div class="logo">
-                    <a href="../../index.html">
-                        <img src="../../assets/images/logo/LOGO.png" width="120" alt="" />
+                    <a href="${pageContext.request.contextPath}/index.html">
+                        <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
                     </a>
                 </div>
 
@@ -103,12 +106,12 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="route_list.html">
+                            <a href="../learn_hall/route_list.html">
                                 <span class="title">学习路线</span>
                             </a>
                         </li>
                         <li>
-                            <a href="site_list.html">
+                            <a href="../learn_hall/site_list.html">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -123,12 +126,12 @@
 
                     <ul>
                         <li>
-                            <a href="../share_hall/link_list.html">
+                            <a href="link_list.html">
                                 <span class="title">资料链接分享</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../share_hall/experience_list.html">
+                            <a href="experience_list.html">
                                 <span class="title">学习经验分享</span>
                             </a>
                         </li>
@@ -180,7 +183,6 @@
 
                     </ul>
                 </li>
-
                 <li>
                     <a>
                         <i class="entypo-tools"></i>
@@ -188,85 +190,86 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="../../sys/user/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/user/listUI.html">
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="../../sys/project/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/project/listUI.html">
                                 <span class="title">项目管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/prj_task/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/prj_task/listUI.html">
                                 <span class="title">项目任务管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href=../../sys/prj_doc/listUI.html">
+                            <a href=${pageContext.request.contextPath}/sys/prj_doc/listUI.html">
                                 <span class="title">项目文档管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href=../../sys/learn_route/listUI.html">
+                            <a href=${pageContext.request.contextPath}/sys/learn_route/listUI.html">
                                 <span class="title">学习路线管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/learn_site/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/learn_site/listUI.html">
                                 <span class="title">学习站点管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/res_link/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/res_link/listUI.html">
                                 <span class="title">资料链接管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/experience/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/experience/listUI.html">
                                 <span class="title">经验分享管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/note_class/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/note_class/listUI.html">
                                 <span class="title">笔记分类管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/note/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/note/listUI.html">
                                 <span class="title">笔记管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="../../sys/competition/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/competition/listUI.html">
                                 <span class="title">竞赛介绍管理</span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="../../sys/current_competion/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/current_competion/listUI.html">
                                 <span class="title">最近比赛管理</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="../../sys/inform/listUI.html">
+                            <a href="${pageContext.request.contextPath}/sys/inform/listUI.html">
                                 <span class="title">通知公告管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+
             </ul>
 
         </div>
@@ -286,7 +289,7 @@
                     <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
+                            <img src="${pageContext.request.contextPath}/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
                             张三
                         </a>
 
@@ -382,7 +385,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="../../index.html"><i class="fa-home"></i>主页</a>
+                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -391,41 +394,123 @@
 
 
             <li>
-                <a>学习路线</a>
-            </li>
-            <li class="active">
-
-                <strong>路线详细</strong>
+                <a>学习经验</a>
             </li>
         </ol>
 
+        <h3>经验列表</h3>
 
-        <hr>
+        <form action="" name="form0" method="post">
 
-        <div class="mail-text">
+        <table class="table table-bordered table-striped datatable" id="table-2">
+            <thead>
+            <tr>
 
-            <p>Lose away off why half led have near bed. At engage simple father of period others except. My giving do summer of though narrow marked at. Spring formal no county ye waited. My whether cheered at regular it of promise blushes perhaps. Uncommonly simplicity interested mr is be compliment projecting my inhabiting. Gentleman he september in oh excellent.</p>
+                <th>经验主题</th>
+                <th>发布时间</th>
+                <th>发布人</th>
 
-            <p>New the her nor case that lady paid read. Invitation friendship travelling eat everything the out two. Shy you who scarcely expenses debating hastened resolved. Always polite moment on is warmth spirit it to hearts. Downs those still witty an balls so chief so. Moment an little remain no up lively no. Way brought may off our regular country towards adapted cheered.</p>
+                <th>
+                    <a href="${pageContext.request.contextPath}/front_share_hall_experience_add.action" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-info"></i>
+                         我要发布经验
+                    </a>
+                </th>
+            </tr>
+            </thead>
 
-            <p>Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion reasonably. Carriage we husbands advanced an perceive greatest. Totally dearest expense on demesne ye he. Curiosity excellent commanded in me. Unpleasing impression themselves to at assistance acceptance my or. On consider laughter civility offended oh.</p>
+            <tbody>
 
-            <p>Oh he decisively impression attachment friendship so if everything. Whose her enjoy chief new young. Felicity if ye required likewise so doubtful. On so attention necessary at by provision otherwise existence direction. Unpleasing up announcing unpleasant themselves oh do on. Way advantage age led listening belonging supposing.</p>
 
-            <p>So by colonel hearted ferrars. Draw from upon here gone add one. He in sportsman household otherwise it perceived instantly. Is inquiry no he several excited am. Called though excuse length ye needed it he having. Whatever throwing we on resolved entrance together graceful. Mrs assured add private married removed believe did she.</p>
+            <s:iterator value="pageResult.items" status="st">
 
-        </div>
+            <tr>
 
-        <hr>
+                <td>
+                    <s:property value="name"></s:property>
+                </td>
+
+                <td>
+                    <s:property value="time"></s:property>
+                </td>
+
+                <td>
+                    <s:property value="create_person"></s:property>
+                </td>
+
+                <td>
+
+                    <a href="${pageContext.request.contextPath}/front_share_hall_experience_detail.action?experience.id=<s:property value="id"></s:property>" class="btn btn-default btn-sm btn-icon icon-left">
+                        <i class="entypo-search"></i>
+                        查看内容
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </s:iterator>
+
+
+            </tbody>
+        </table>
+
+        </form>
+
+        <s:if test="pageResult.totalCount > 0">
+            <ul class="pagination">
+
+                <s:if test="pageResult.pageNo > 1">
+
+                    <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo-1"></s:property>)"><i class="entypo-left-open-mini"></i> 上一页</a></li>
+
+                </s:if>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <s:if test="pageResult.pageNo < pageResult.totalPageCount">
+
+
+                    <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo+1"></s:property>)"> 下一页<i class="entypo-right-open-mini"></i> </a></li>
+
+                </s:if>
+            </ul>
+
+
+            <hr>
+
+            总共 <s:property value="pageResult.totalCount"/>条记录
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            当前<s:property value="pageResult.pageNo"/>页
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            共<s:property value="pageResult.totalPageCount"></s:property>页
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+        </s:if>
+        <s:else>暂无数据！</s:else>
+
+
 
         <br>
-        <div class="col-sm-offset-5 col-sm-5">
-
-            <button onclick="javascript:history.go(-1)" class="btn btn-default">返回路线列表</button>
-            <br>
-
-        </div>
         <br>
+
+        <script type="text/javascript">
+
+            function doGoPage(pageNo) {
+                document.forms[0].action = "${pageContext.request.contextPath}/front_share_hall_experience_list.action?pageNo="+pageNo;
+                document.forms[0].submit();
+            }
+
+        </script>
+
         <br>
         <br>
         <br>
@@ -455,36 +540,36 @@
 
 
 <!-- Imported styles on this page -->
-<link rel="stylesheet" href="../../assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
-<link rel="stylesheet" href="../../assets/js/rickshaw/rickshaw.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/rickshaw/rickshaw.min.css">
 
 <!-- Bottom scripts (common) -->
-<script src="../../assets/js/gsap/main-gsap.js"></script>
-<script src="../../assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-<script src="../../assets/js/bootstrap.js"></script>
-<script src="../../assets/js/joinable.js"></script>
-<script src="../../assets/js/resizeable.js"></script>
-<script src="../../assets/js/neon-api.js"></script>
-<script src="../../assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/gsap/main-gsap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/joinable.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/resizeable.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
 
 <!-- Imported scripts on this page -->
-<script src="../../assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
-<script src="../../assets/js/jquery.sparkline.min.js"></script>
-<script src="../../assets/js/rickshaw/vendor/d3.v3.js"></script>
-<script src="../../assets/js/rickshaw/rickshaw.min.js"></script>
-<script src="../../assets/js/raphael-min.js"></script>
-<script src="../../assets/js/morris.min.js"></script>
-<script src="../../assets/js/toastr.js"></script>
-<script src="../../assets/js/neon-chat.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.sparkline.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/rickshaw/vendor/d3.v3.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/rickshaw/rickshaw.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/raphael-min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/morris.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/toastr.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-chat.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->
-<script src="../../assets/js/neon-custom.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-custom.js"></script>
 
 
 <!-- Demo Settings -->
-<script src="../../assets/js/neon-demo.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-demo.js"></script>
 
 </body>
 </html>

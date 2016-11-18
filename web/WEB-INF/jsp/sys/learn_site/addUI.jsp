@@ -429,13 +429,6 @@
             </div>
 
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发布日期</label>
-
-                <div class="col-sm-3">
-                    <input type="text" name="learnSite.time" class="form-control datepicker" data-start-view="2" readonly>
-                </div>
-            </div>
 
 
             <br>
