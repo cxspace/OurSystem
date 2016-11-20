@@ -1,5 +1,8 @@
 package com.cx.sys.inform.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.inform.entity.Inform;
 import com.cx.sys.inform.service.InformService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,7 +21,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-13.
  */
-public class InformSysAction extends ActionSupport {
+public class InformSysAction extends BaseAction {
 
     @Resource
     private InformService informService;
@@ -29,9 +32,19 @@ public class InformSysAction extends ActionSupport {
 
     private String [] selectedRow;
 
+    private PageResult pageResult;
+
     public String listUI() {
 
-        informList =  informService.findObjects();
+//        informList =  informService.findObjects();
+        //分页查询Inform中数据
+        QueryHelper queryHelper = new QueryHelper(Inform.class,"i");
+
+        queryHelper.addCondition("i.state = ? ",1);
+
+        queryHelper.addOrderByProperty("i.createTime",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = informService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -169,5 +182,13 @@ public class InformSysAction extends ActionSupport {
 
     public void setSelectedRow(String[] selectedRow) {
         this.selectedRow = selectedRow;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 }

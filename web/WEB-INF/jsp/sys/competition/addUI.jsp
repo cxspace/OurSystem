@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
+                            <a href="${pageContext.request.contextPath}/front_learn_site_site_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -422,7 +422,7 @@
         <h3>新增赛事介绍</h3>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_competition_add.action">
+        <form role="form" class="form-horizontal form-groups-bordered" method="post" action="${pageContext.request.contextPath}/system_competition_add.action">
 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label">赛事全名</label>

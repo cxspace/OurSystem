@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
+                            <a href="${pageContext.request.contextPath}/front_learn_site_site_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -373,17 +373,6 @@
                         </li>
                     </ul>
 
-                </div>
-
-                <div class="col-sm-3">
-
-                    <div class="profile-buttons">
-
-                        <a class="btn btn-default">
-                            <i class="entypo-mail"></i>
-                            发送邮件给管理员
-                        </a>
-                    </div>
                 </div>
 
             </header>

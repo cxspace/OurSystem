@@ -127,9 +127,9 @@ var baseurl = '';
 			
 			<div class="login-bottom-links">
 				
-				<a href="forgot-password.html" class="link">忘记你的密码?</a>
+				<a href="${pageContext.request.contextPath}/front_user_login_forgot_password.action" class="link">忘记你的密码?</a>
 				
-				<br />
+				<br/>
 				
 				<a href="#"></a>  <a href="#">Power By - cxspace</a>
 				

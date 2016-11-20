@@ -5,6 +5,8 @@ import com.cx.core.constant.Constant;
 import com.cx.core.page.PageResult;
 import com.cx.core.utils.ImageHelper;
 import com.cx.core.utils.QueryHelper;
+import com.cx.core.utils.RandomCodeUtils;
+import com.cx.core.utils.SendEmailHelper;
 import com.cx.sys.inform.entity.Inform;
 import com.cx.sys.inform.service.InformService;
 import com.cx.sys.prj_task.entity.PrjTask;
@@ -67,6 +69,8 @@ public class UserFrontAction extends BaseAction {
 
     private String Msg;
 
+    private String code;
+
     public String info(){
 
         //分页查询Inform中数据
@@ -95,6 +99,92 @@ public class UserFrontAction extends BaseAction {
         return "change_information";
 
     }
+
+    public String login_send_code(){
+
+        if (email!=null){
+
+            User user1 = userService.findUserByEmail(email);
+
+            if (user1!=null){
+                System.out.println(user1);
+                //用户信息带回页面
+                user = user1;
+                //产生随机验证码
+                String verify_code = RandomCodeUtils.getRadomCode(4);
+
+                //放到session中
+                ActionContext.getContext().getSession().put("code",verify_code);
+                ActionContext.getContext().getSession().put("email",user1.getEmail());
+                //发送给用户
+                SendEmailHelper.send(user.getEmail(),"our_sys修改密码验证","验证码："+verify_code+" ");
+
+                Msg = "验证码以发送,请登录查看。如未收到,点击可重发";
+            }else {
+                //
+                Msg = "没有这个用户";
+            }
+        }
+        return "forgot_password";
+    }
+
+    public String login_verify_code(){
+
+
+        String user_email = (String) ActionContext.getContext().getSession().get("email");
+
+        User user1 = userService.findUserByEmail(user_email);
+
+        user = userService.findObjectById(user1.getId());
+
+
+        if (code!=null){
+            if (code.equals((String) ActionContext.getContext().getSession().get("code"))){
+                return "reset_password";
+            }else {
+                Msg = "验证码错误";
+            }
+
+        }
+
+        return "forgot_password";
+    }
+
+    public String login_forgot_password(){
+
+        return "forgot_password";
+    }
+
+    public String login_reset_password(){
+
+        if (password_old.equals("")||password.equals("")){
+            Msg="输入密码不能为空!";
+        }else {
+            if (password_old.equals(password)){
+
+                String user_email = (String) ActionContext.getContext().getSession().get("email");
+
+                User user1 = userService.findUserByEmail(user_email);
+
+                user = userService.findObjectById(user1.getId());
+
+                user.setPassword(password);
+
+                userService.update(user);
+
+                Msg = "修改密码成功,请用新密码登录";
+
+                return "toLoginUI";
+
+            }else {
+                Msg = "两次输入密码不一致!";
+            }
+
+        }
+
+        return "reset_password";
+    }
+
 
     //通知详细
     public String info_detail(){
@@ -189,6 +279,11 @@ public class UserFrontAction extends BaseAction {
         return "change_information";
     }
 
+    public String login_change_password(){
+
+        return "toLoginUI";
+    }
+
 
     public String change_headImg(){
 
@@ -248,6 +343,13 @@ public class UserFrontAction extends BaseAction {
         return "list";
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getPassword_old() {
         return password_old;

@@ -127,7 +127,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
+                            <a href="${pageContext.request.contextPath}/front_learn_site_site_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>

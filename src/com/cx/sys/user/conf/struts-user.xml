@@ -32,6 +32,13 @@
                 /WEB-INF/jsp/front/personal/{1}.jsp
             </result>
 
+            <result name="forgot_password">
+                /forgot-password.jsp
+            </result>
+
+            <result name="reset_password">
+                /WEB-INF/jsp/reset-password.jsp
+            </result>
 
             <result name="change_information">/WEB-INF/jsp/front/personal/change_information.jsp</result>
 

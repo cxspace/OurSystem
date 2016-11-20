@@ -1,6 +1,9 @@
 package com.cx.sys.prj_task.action;
 
+import com.cx.core.action.BaseAction;
 import com.cx.core.constant.Constant;
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.prj_task.entity.PrjTask;
 import com.cx.sys.prj_task.service.PrjTaskService;
 import com.cx.sys.project.entity.Project;
@@ -18,7 +21,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-15.
  */
-public class PrjTaskSysAction extends ActionSupport {
+    public class PrjTaskSysAction extends BaseAction {
 
     @Resource
     private PrjTaskService prjTaskService;
@@ -38,6 +41,8 @@ public class PrjTaskSysAction extends ActionSupport {
     private Project project;
 
     private String [] selectedRow;
+
+    private PageResult pageResult;
 
     public String editUI(){
 
@@ -181,7 +186,13 @@ public class PrjTaskSysAction extends ActionSupport {
 
     public String prj_list(){
 
-        projectList = projectService.findObjects();
+//        projectList = projectService.findObjects();
+
+        QueryHelper queryHelper = new QueryHelper(Project.class,"i");
+
+        queryHelper.addOrderByProperty("i.createTime",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = projectService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "prj_list";
     }
@@ -240,6 +251,14 @@ public class PrjTaskSysAction extends ActionSupport {
 
     public void setProjectService(ProjectService projectService) {
         this.projectService = projectService;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 
     public String[] getSelectedRow() {

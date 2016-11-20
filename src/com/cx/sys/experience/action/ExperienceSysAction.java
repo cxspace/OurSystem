@@ -1,7 +1,10 @@
 package com.cx.sys.experience.action;
 
+import com.cx.core.action.BaseAction;
 import com.cx.core.constant.Constant;
+import com.cx.core.page.PageResult;
 import com.cx.core.utils.DateTimeHelper;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.experience.entity.Experience;
 import com.cx.sys.experience.service.ExperienceService;
 import com.cx.sys.user.entity.User;
@@ -16,7 +19,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-17.
  */
-public class ExperienceSysAction extends ActionSupport{
+public class ExperienceSysAction extends BaseAction{
 
     @Resource
     private ExperienceService experienceService;
@@ -26,6 +29,8 @@ public class ExperienceSysAction extends ActionSupport{
     private List<Experience> experienceList;
 
     private String [] selectedRow;
+
+    private PageResult pageResult;
 
     public String addUI(){
         return "addUI";
@@ -44,7 +49,11 @@ public class ExperienceSysAction extends ActionSupport{
 
     public String listUI(){
 
-        experienceList = experienceService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(Experience.class , "i");
+
+        queryHelper.addOrderByProperty("i.time",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = experienceService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -129,6 +138,14 @@ public class ExperienceSysAction extends ActionSupport{
 
     public void setExperienceService(ExperienceService experienceService) {
         this.experienceService = experienceService;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 
     public String[] getSelectedRow() {

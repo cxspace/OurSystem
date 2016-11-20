@@ -1,6 +1,9 @@
 package com.cx.sys.note.action;
 
+import com.cx.core.action.BaseAction;
 import com.cx.core.constant.Constant;
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.note.entity.Note;
 import com.cx.sys.note.service.NoteService;
 import com.cx.sys.note_class.entity.NoteClass;
@@ -17,7 +20,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-17.
  */
-public class NoteSysAction {
+public class NoteSysAction extends BaseAction {
 
     @Resource
     private NoteService noteService;
@@ -35,6 +38,8 @@ public class NoteSysAction {
 
     private String [] selectedRow;
 
+    private PageResult pageResult;
+
     public String addUI(){
 
         noteClassList = noteClassService.findObjects();
@@ -44,7 +49,11 @@ public class NoteSysAction {
 
     public String listUI(){
 
-        noteList = noteService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(Note.class,"i");
+
+        queryHelper.addOrderByProperty("i.time",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = noteService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -181,5 +190,11 @@ public class NoteSysAction {
         this.noteClassService = noteClassService;
     }
 
+    public PageResult getPageResult() {
+        return pageResult;
+    }
 
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
+    }
 }

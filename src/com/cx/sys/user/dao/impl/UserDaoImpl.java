@@ -1,6 +1,7 @@
 package com.cx.sys.user.dao.impl;
 
 import com.cx.core.dao.impl.BaseDaoImpl;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.user.dao.UserDao;
 import com.cx.sys.user.entity.User;
 import com.cx.sys.user.entity.UserTask;
@@ -37,5 +38,41 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
     @Override
     public void saveUserTask(UserTask userTask) {
         getHibernateTemplate().save(userTask);
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+
+        Query query = getSession().createQuery("FROM User WHERE email = ?");
+
+        query.setParameter(0,email);
+
+        List<User> list = query.list();
+
+        User user = null;
+
+        if (list.size()>0){
+             user = list.get(0);
+        }
+
+        return user;
+    }
+
+    @Override
+    public List<User> findUsersOrderByScore(QueryHelper queryHelper) {
+
+        Query query = getSession().createQuery(queryHelper.getQueryListHql());
+
+        List<Object> parameters = queryHelper.getParameters();
+
+        //设置查询参数条件
+        if (parameters != null){
+
+            for (int i = 0 ; i < parameters.size() ; i++){
+                query.setParameter(i,parameters.get(i));
+            }
+        }
+
+        return query.list();
     }
 }

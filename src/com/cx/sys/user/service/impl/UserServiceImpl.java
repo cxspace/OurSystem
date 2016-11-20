@@ -2,6 +2,7 @@ package com.cx.sys.user.service.impl;
 
 import com.cx.core.service.BaseService;
 import com.cx.core.service.impl.BaseServiceImpl;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.prj_task.entity.PrjTask;
 import com.cx.sys.user.dao.UserDao;
 import com.cx.sys.user.entity.User;
@@ -41,5 +42,15 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public void saveUserTask(String userId, String taskId) {
         userDao.saveUserTask(new UserTask(new UserTaskId(new PrjTask(taskId),userId)));
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userDao.findUserByEmail(email);
+    }
+
+    @Override
+    public List<User> findUsersOrderByScore(QueryHelper queryHelper) {
+        return userDao.findUsersOrderByScore(queryHelper);
     }
 }

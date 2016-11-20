@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,22 +15,19 @@
     <title>OurSys登录</title>
 
     <link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10fang'zhi.3.custom.min.css">
-    <link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
-    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-core.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
 
-
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/neon-core.css">
-    <link rel="stylesheet" href="assets/css/neon-theme.css">
-    <link rel="stylesheet" href="assets/css/neon-forms.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
     <script>$.noConflict();</script>
 
     <!--[if lt IE 9]>
-    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -51,7 +52,7 @@
         <div class="login-content">
 
             <a href="index.html" class="logo">
-                <img src="assets/images/logo/LOGO.png" width="120" alt="" />
+                <img src="${pageContext.request.contextPath}/assets/images/logo/LOGO.png" width="120" alt="" />
             </a>
 
             <p class="description">输入两次密码,确认修改</p>
@@ -75,7 +76,7 @@
 
             <!--id="form_login"-->
 
-            <form method="post" role="form" action="login.html">
+            <form method="post" role="form" action="${pageContext.request.contextPath}/front_user_login_reset_password.action">
 
                 <div class="form-group">
 
@@ -83,7 +84,7 @@
                         <div class="input-group-addon">
                             <i class="entypo-key"></i>
                         </div>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="输入新密码" autocomplete="off" />
+                        <input type="password" class="form-control" name="password_old" id="password" placeholder="输入新密码" autocomplete="off" />
                     </div>
 
                 </div>
@@ -114,9 +115,6 @@
 
             <div class="login-bottom-links">
 
-                <a href="forgot-password.html" class="link">忘记你的密码?</a>
-
-                <br />
 
                 <a href="#"></a>  <a href="#">Power By - cxspace</a>
 
@@ -130,22 +128,22 @@
 
 
 <!-- Bottom scripts (common) -->
-<script src="assets/js/gsap/main-gsap.js"></script>
-<script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
-<script src="assets/js/joinable.js"></script>
-<script src="assets/js/resizeable.js"></script>
-<script src="assets/js/neon-api.js"></script>
-<script src="assets/js/jquery.validate.min.js"></script>
-<script src="assets/js/neon-login.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/gsap/main-gsap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/joinable.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/resizeable.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.validate.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-login.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->
-<script src="assets/js/neon-custom.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-custom.js"></script>
 
 
 <!-- Demo Settings -->
-<script src="assets/js/neon-demo.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/neon-demo.js"></script>
 
 </body>
 </html>

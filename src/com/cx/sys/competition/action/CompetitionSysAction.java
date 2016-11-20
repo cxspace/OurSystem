@@ -1,5 +1,8 @@
 package com.cx.sys.competition.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.competition.entity.Competition;
 import com.cx.sys.competition.service.CompetitionService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -10,10 +13,12 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-17.
  */
-public class CompetitionSysAction extends ActionSupport {
+public class CompetitionSysAction extends BaseAction {
 
     @Resource
     private CompetitionService competitionService;
+
+    private PageResult pageResult;
 
     private Competition  competition;
 
@@ -53,7 +58,11 @@ public class CompetitionSysAction extends ActionSupport {
 
     public String listUI(){
 
-        competitionList = competitionService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(Competition.class , "i");
+
+        queryHelper.addOrderByProperty("i.name",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = competitionService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -113,6 +122,14 @@ public class CompetitionSysAction extends ActionSupport {
 
     public void setCompetitionService(CompetitionService competitionService) {
         this.competitionService = competitionService;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 
     public String[] getSelectedRow() {

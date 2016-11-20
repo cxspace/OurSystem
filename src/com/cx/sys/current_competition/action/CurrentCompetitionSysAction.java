@@ -1,4 +1,7 @@
 package com.cx.sys.current_competition.action;
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.current_competition.entity.CurrentCompetition;
 import com.cx.sys.current_competition.service.CurrentCompetitionService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -9,7 +12,9 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-17.
  */
-public class CurrentCompetitionSysAction extends ActionSupport {
+public class CurrentCompetitionSysAction extends BaseAction {
+
+    private PageResult pageResult;
 
     private CurrentCompetition currentCompetition;
 
@@ -51,7 +56,11 @@ public class CurrentCompetitionSysAction extends ActionSupport {
 
     public String listUI(){
 
-        currentCompetitionList = currentCompetitionService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(CurrentCompetition.class , "i");
+
+        queryHelper.addOrderByProperty("i.name",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = currentCompetitionService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -120,6 +129,14 @@ public class CurrentCompetitionSysAction extends ActionSupport {
 
     public void setCurrentCompetitionService(CurrentCompetitionService currentCompetitionService) {
         this.currentCompetitionService = currentCompetitionService;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 
     public String[] getSelectedRow() {

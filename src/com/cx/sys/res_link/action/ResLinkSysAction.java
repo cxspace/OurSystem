@@ -1,7 +1,10 @@
 package com.cx.sys.res_link.action;
 
+import com.cx.core.action.BaseAction;
 import com.cx.core.constant.Constant;
+import com.cx.core.page.PageResult;
 import com.cx.core.utils.DateTimeHelper;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.res_link.entity.ResLink;
 import com.cx.sys.res_link.service.ResLinkService;
 import com.cx.sys.user.entity.User;
@@ -16,7 +19,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-16.
  */
-public class ResLinkSysAction extends ActionSupport {
+public class ResLinkSysAction extends BaseAction {
 
     @Resource
     private ResLinkService resLinkService;
@@ -26,6 +29,8 @@ public class ResLinkSysAction extends ActionSupport {
     private String [] selectedRow;
 
     private List<ResLink> resLinkList;
+
+    private PageResult pageResult;
 
     public String delete(){
 
@@ -58,7 +63,11 @@ public class ResLinkSysAction extends ActionSupport {
 
     public String listUI() throws Exception {
 
-        resLinkList = resLinkService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(ResLink.class , "i");
+
+        queryHelper.addOrderByProperty("i.time",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = resLinkService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -127,6 +136,14 @@ public class ResLinkSysAction extends ActionSupport {
 
     public void setResLinkService(ResLinkService resLinkService) {
         this.resLinkService = resLinkService;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 
     public String[] getSelectedRow() {

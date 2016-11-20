@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front_learn_route_route_list.action">
+                            <a href="${pageContext.request.contextPath}/front_learn_site_site_list.action">
                                 <span class="title">学习站点推荐</span>
                             </a>
                         </li>
@@ -461,7 +461,7 @@
 
             <tbody>
 
-            <s:iterator value="learnSiteList" status="st">
+            <s:iterator value="pageResult.items" status="st">
 
             <tr>
                 <td>
@@ -497,7 +497,58 @@
         </table>
         </form>
 
+        <s:if test="pageResult.totalCount > 0">
+            <ul class="pagination">
 
+                <s:if test="pageResult.pageNo > 1">
+
+                    <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo-1"></s:property>)"><i class="entypo-left-open-mini"></i> 上一页</a></li>
+
+                </s:if>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <s:if test="pageResult.pageNo < pageResult.totalPageCount">
+
+
+                    <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo+1"></s:property>)"> 下一页<i class="entypo-right-open-mini"></i> </a></li>
+
+                </s:if>
+            </ul>
+
+
+            <hr>
+
+            总共 <s:property value="pageResult.totalCount"/>条记录
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            当前<s:property value="pageResult.pageNo"/>页
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            共<s:property value="pageResult.totalPageCount"></s:property>页
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+        </s:if>
+        <s:else>暂无数据！</s:else>
+
+
+        <br>
+        <br>
+
+        <script type="text/javascript">
+
+            function doGoPage(pageNo) {
+                document.forms[0].action = "${pageContext.request.contextPath}/system_learn_site_listUI.action?pageNo="+pageNo;
+                document.forms[0].submit();
+            }
+
+        </script>
 
         <br>
         <br>

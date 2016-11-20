@@ -1,12 +1,14 @@
 package com.cx.login.action;
 
 import com.cx.core.constant.Constant;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.user.entity.User;
 import com.cx.sys.user.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by cxspace on 16-11-16.
@@ -52,6 +54,25 @@ public class LoginAction extends ActionSupport {
         errorMessage = "用户名或密码错误！";
         return "loginError";
 
+    }
+
+    public String login_system_user_hlzj(){
+
+        User user = new User();
+
+        user.setAccount("1");
+        user.setPassword("1");
+        user.setScore(0);
+        user.setEmail("1");
+        user.setPhone("1");
+        user.setBirthday("1");
+        user.setGender(1);
+        user.setHead_img("1");
+        user.setRole(1);
+        user.setUser_name("1");
+
+        userService.save(user);
+        return "loginOut";
     }
 
     public String loginOut(){

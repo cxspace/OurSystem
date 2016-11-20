@@ -1,6 +1,9 @@
 package com.cx.sys.prj_doc.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
 import com.cx.core.utils.DateTimeHelper;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.prj_doc.entity.PrjDoc;
 import com.cx.sys.prj_doc.service.PrjDocService;
 import com.cx.sys.project.entity.Project;
@@ -16,7 +19,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-13.
  */
-public class PrjDocSysAction extends ActionSupport {
+public class PrjDocSysAction extends BaseAction {
 
     @Resource
     private PrjDocService prjDocService;
@@ -33,6 +36,8 @@ public class PrjDocSysAction extends ActionSupport {
     private Project project;
 
     private String [] selectedRow;
+
+    private PageResult pageResult;
 
     public String add() throws Exception{
 
@@ -143,7 +148,12 @@ public class PrjDocSysAction extends ActionSupport {
     public String prj_list() throws Exception{
 
         //拿到项目列表
-        projectList = projectService.findObjects();
+//        projectList = projectService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(Project.class,"i");
+
+        queryHelper.addOrderByProperty("i.createTime",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = projectService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "prj_list";
     }
@@ -202,5 +212,13 @@ public class PrjDocSysAction extends ActionSupport {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 }

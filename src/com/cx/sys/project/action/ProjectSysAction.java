@@ -1,5 +1,8 @@
 package com.cx.sys.project.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.project.entity.Project;
 import com.cx.sys.project.service.ProjectService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -10,7 +13,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-13.
  */
-public class ProjectSysAction extends ActionSupport {
+public class ProjectSysAction extends BaseAction {
 
     private Project project;
 
@@ -18,12 +21,18 @@ public class ProjectSysAction extends ActionSupport {
 
     private String [] selectedRow;
 
+    private PageResult pageResult;
+
     @Resource
     private ProjectService projectService;
 
     public String listUI() throws Exception {
 
-        projectList = projectService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(Project.class,"i");
+
+        queryHelper.addOrderByProperty("i.createTime",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = projectService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -127,4 +136,11 @@ public class ProjectSysAction extends ActionSupport {
         this.selectedRow = selectedRow;
     }
 
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
+    }
 }

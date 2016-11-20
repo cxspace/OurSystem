@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="com.cx.core.constant.Constant" %><%--
   Created by IntelliJ IDEA.
   User: cxspace
@@ -446,47 +447,39 @@
         <hr>
 
         <div class="jumbotron">
-            <h1>积分排行榜</h1>
+            <h1>最新动态</h1>
         </div>
 
         <div class="row">
 
+            <%--<s:iterator value="users" status="st" var="t">--%>
 
+            <%--<div class="col-sm-3 col-xs-6">--%>
 
-            <div class="col-sm-3 col-xs-6">
+                <%--<div class="tile-stats tile-aqua">--%>
+                    <%--<div class="icon"><i class="entypo-mail"></i></div>--%>
+                    <%--<div class="num" data-start="0" data-end="<s:property value="t.score"></s:property>" data-postfix="" data-duration="1500" data-delay="1200">0</div>--%>
 
-                <div class="tile-stats tile-aqua">
-                    <div class="icon"><i class="entypo-mail"></i></div>
-                    <div class="num" data-start="0" data-end="323" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <%--<h3>--%>
+                        <%--<s:property value="t.user_name"></s:property>--%>
+                    <%--</h3>--%>
+                    <%--<p>--%>
 
-                    <h3>张三</h3>
-                    <p>第1名</p>
-                </div>
+                    <%--</p>--%>
+                <%--</div>--%>
 
+            <%--</div>--%>
 
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-
-
-                <div class="tile-stats tile-aqua">
-                    <div class="icon"><i class="entypo-mail"></i></div>
-                    <div class="num" data-start="0" data-end="223" data-postfix="" data-duration="1500" data-delay="1200">0</div>
-
-                    <h3>李四</h3>
-                    <p>第2名</p>
-                </div>
-
-            </div>
+            <%--</s:iterator>--%>
 
             <div class="col-sm-3 col-xs-6">
 
+
                 <div class="tile-stats tile-aqua">
                     <div class="icon"><i class="entypo-mail"></i></div>
-                    <div class="num" data-start="0" data-end="123" data-postfix="" data-duration="1500" data-delay="1200">0</div>
-
-                    <h3>王五</h3>
-                    <p>第3名</p>
+                    <div class="num" data-start="0" data-end="1" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <h3>登录账户名为qq号</h3>
+                    <p></p>
                 </div>
 
             </div>
@@ -495,72 +488,33 @@
 
                 <div class="tile-stats tile-aqua">
                     <div class="icon"><i class="entypo-mail"></i></div>
-                    <div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <div class="num" data-start="0" data-end="2" data-postfix="" data-duration="1500" data-delay="1200">0</div>
 
-                    <h3>老六</h3>
-                    <p>第4名</p>
+                    <h3>选择完任务并完成后,请在工作台提交</h3>
+                    <p></p>
                 </div>
 
             </div>
+
+            <%--<div class="col-sm-3 col-xs-6">--%>
+
+                <%--<div class="tile-stats tile-aqua">--%>
+                    <%--<div class="icon"><i class="entypo-mail"></i></div>--%>
+                    <%--<div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>--%>
+
+                    <%--<h3>老六</h3>--%>
+                    <%--<p>第4名</p>--%>
+                <%--</div>--%>
+
+            <%--</div>--%>
 
 
         </div>
 
         <hr>
 
-        <div class="jumbotron">
-            <h1>访问次数排行榜</h1>
-        </div>
 
-        <div class="col-sm-3 col-xs-6">
-
-            <div class="tile-stats tile-green">
-                <div class="icon"><i class="entypo-chart-bar"></i></div>
-                <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
-
-                <h3>张三</h3>
-                <p>第1名</p>
-            </div>
-
-        </div>
-
-        <div class="col-sm-3 col-xs-6">
-
-            <div class="tile-stats tile-green">
-                <div class="icon"><i class="entypo-chart-bar"></i></div>
-                <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
-
-                <h3>李四</h3>
-                <p>第2名</p>
-            </div>
-
-        </div>
-
-        <div class="col-sm-3 col-xs-6">
-
-            <div class="tile-stats tile-green">
-                <div class="icon"><i class="entypo-chart-bar"></i></div>
-                <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
-
-                <h3>王五</h3>
-                <p>第3名</p>
-            </div>
-
-        </div>
-
-        <div class="col-sm-3 col-xs-6">
-
-            <div class="tile-stats tile-green">
-                <div class="icon"><i class="entypo-chart-bar"></i></div>
-                <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
-
-                <h3>老六</h3>
-                <p>第4名</p>
-            </div>
-
-        </div>
-
-        <br />
+        <br/>
 
 
         <script type="text/javascript">

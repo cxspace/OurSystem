@@ -1,6 +1,9 @@
 package com.cx.sys.learn_route.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
 import com.cx.core.utils.DateTimeHelper;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.learn_route.entity.LearnRoute;
 import com.cx.sys.learn_route.service.LearnRouteService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,7 +15,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-16.
  */
-public class LearnRouteSysAction extends ActionSupport {
+public class LearnRouteSysAction extends BaseAction {
 
     @Resource
     private LearnRouteService learnRouteService;
@@ -23,9 +26,15 @@ public class LearnRouteSysAction extends ActionSupport {
 
     private String [] selectedRow;
 
+    private PageResult pageResult;
+
     public String listUI() throws Exception {
 
-        learnRouteList = learnRouteService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(LearnRoute.class,"i");
+
+        queryHelper.addOrderByProperty("i.time",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = learnRouteService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -137,5 +146,13 @@ public class LearnRouteSysAction extends ActionSupport {
 
     public void setSelectedRow(String[] selectedRow) {
         this.selectedRow = selectedRow;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 }

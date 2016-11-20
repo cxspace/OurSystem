@@ -1,6 +1,7 @@
 package com.cx.sys.user.dao;
 
 import com.cx.core.dao.BaseDao;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.user.entity.User;
 import com.cx.sys.user.entity.UserTask;
 import org.hibernate.Query;
@@ -21,5 +22,9 @@ public interface UserDao extends BaseDao<User> {
 
     //通过项目id查到项目任务关系集合
     public List<UserTask> getUserTasksByUserId(String userId);
+
+    public User findUserByEmail(String email);
+
+    public List<User> findUsersOrderByScore(QueryHelper queryHelper);
 
 }

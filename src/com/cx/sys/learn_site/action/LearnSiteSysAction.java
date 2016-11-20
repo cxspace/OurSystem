@@ -1,6 +1,9 @@
 package com.cx.sys.learn_site.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
 import com.cx.core.utils.DateTimeHelper;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.learn_site.entity.LearnSite;
 import com.cx.sys.learn_site.service.LearnSiteService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,7 +15,7 @@ import java.util.List;
 /**
  * Created by cxspace on 16-11-16.
  */
-public class LearnSiteSysAction extends ActionSupport {
+public class LearnSiteSysAction extends BaseAction {
 
     @Resource
     private LearnSiteService learnSiteService;
@@ -23,10 +26,15 @@ public class LearnSiteSysAction extends ActionSupport {
 
     private String [] selectedRow;
 
+    private PageResult pageResult;
 
     public String listUI(){
 
-        learnSiteList = learnSiteService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(LearnSite.class,"i");
+
+        queryHelper.addOrderByProperty("i.time",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = learnSiteService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -124,5 +132,13 @@ public class LearnSiteSysAction extends ActionSupport {
 
     public void setSelectedRow(String[] selectedRow) {
         this.selectedRow = selectedRow;
+    }
+
+    public PageResult getPageResult() {
+        return pageResult;
+    }
+
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
     }
 }

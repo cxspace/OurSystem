@@ -1,6 +1,9 @@
 package com.cx.sys.user.action;
 
+import com.cx.core.action.BaseAction;
+import com.cx.core.page.PageResult;
 import com.cx.core.utils.ImageHelper;
+import com.cx.core.utils.QueryHelper;
 import com.cx.sys.user.entity.User;
 import com.cx.sys.user.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,27 +20,30 @@ import java.util.UUID;
 /**
  * Created by cxspace on 16-11-10.
  */
-public class UserSysAction extends ActionSupport {
+public class UserSysAction extends BaseAction {
 
     @Resource
     private UserService userService;
 
 
     private User user;
-
-
     private File headImg;
     private String headImgContentType;
     private String headImgFileName;
 
-
     private List<User> userList = new ArrayList<User>();
     public String[] selectedRow;
+
+    private PageResult pageResult;
 
 
     public String listUI(){
 
-        userList = userService.findObjects();
+        QueryHelper queryHelper = new QueryHelper(User.class,"i");
+
+        queryHelper.addOrderByProperty("i.score",QueryHelper.ORDER_BY_DESC);
+
+        pageResult = userService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
     }
@@ -140,33 +146,13 @@ public class UserSysAction extends ActionSupport {
     }
 
 
-//    //保存头像
-//    public void saveHeadImg(File headImg , User user ){
-//
-//        try {
-//
-//            //处理头像上传
-//            if (headImg != null){
-//                //1.保存头像文件到指定目录
-//                String filePath = ServletActionContext.getServletContext().getRealPath("upload/user");
-//
-//                String fileName = UUID.randomUUID().toString().replaceAll("-","")+headImgFileName.substring(headImgFileName.lastIndexOf("."));
-//
-//                FileUtils.copyFile(headImg,new File(filePath,fileName));
-//
-//                //设置好数据库中要存储的图像路径
-//                user.setHead_img("user/"+fileName);
-//
-//                System.out.println(fileName);
-//            }
-//
-//        }catch (Exception e){
-//            LOG.error(e.getMessage());
-//            e.printStackTrace();
-//        }
-//
-//    }
+    public PageResult getPageResult() {
+        return pageResult;
+    }
 
+    public void setPageResult(PageResult pageResult) {
+        this.pageResult = pageResult;
+    }
 
     public UserService getUserService() {
         return userService;
