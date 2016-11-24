@@ -3,6 +3,7 @@ package com.cx.sys.note.action;
 import com.cx.core.action.BaseAction;
 import com.cx.core.constant.Constant;
 import com.cx.core.page.PageResult;
+import com.cx.core.utils.DateTimeHelper;
 import com.cx.core.utils.QueryHelper;
 import com.cx.sys.note.entity.Note;
 import com.cx.sys.note.service.NoteService;
@@ -11,8 +12,12 @@ import com.cx.sys.note_class.service.NoteClassService;
 import com.cx.sys.user.entity.User;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.struts2.ServletActionContext;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +45,12 @@ public class NoteSysAction extends BaseAction {
 
     private PageResult pageResult;
 
+//    导入笔记数据文件处理
+    private File noteExcel;
+    private String noteExcelContentType;
+    private String noteExcelFileName;
+
+
     public String addUI(){
 
         noteClassList = noteClassService.findObjects();
@@ -56,6 +67,55 @@ public class NoteSysAction extends BaseAction {
         pageResult = noteService.getPageResult(queryHelper,getPageNo(),getPageSize());
 
         return "listUI";
+    }
+
+    public void ExportNoteExcel(){
+
+        //实现数据导出
+        noteList = noteService.findObjects();
+
+        try {
+
+            HttpServletResponse response = ServletActionContext.getResponse();
+
+            response.setContentType("application/x-excel");
+
+            String filename1 = "所有笔记数据"+DateTimeHelper.getCurrentDateTime()+".xls";
+
+            response.setHeader("Content-Disposition","attachment;filename="+new String(filename1.getBytes(),"ISO-8859-1"));
+
+            //拿到输出到浏览器的输出流
+            ServletOutputStream outputStream = response.getOutputStream();
+
+            noteService.exportExcel(noteList,outputStream);
+
+            if (outputStream != null){
+                outputStream.close();
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public String ImportNoteExcel(){
+
+        if (noteExcel != null){
+
+            String fileType = noteExcelFileName.substring(noteExcelFileName.lastIndexOf("."));
+
+            if (fileType.equals(".xls")||fileType.equals(".xlsx")){
+
+                noteService.importExcel(noteExcel,fileType);
+
+            }
+
+        }
+
+        return "list";
+
     }
 
 
@@ -196,5 +256,29 @@ public class NoteSysAction extends BaseAction {
 
     public void setPageResult(PageResult pageResult) {
         this.pageResult = pageResult;
+    }
+
+    public File getNoteExcel() {
+        return noteExcel;
+    }
+
+    public void setNoteExcel(File noteExcel) {
+        this.noteExcel = noteExcel;
+    }
+
+    public String getNoteExcelContentType() {
+        return noteExcelContentType;
+    }
+
+    public void setNoteExcelContentType(String noteExcelContentType) {
+        this.noteExcelContentType = noteExcelContentType;
+    }
+
+    public String getNoteExcelFileName() {
+        return noteExcelFileName;
+    }
+
+    public void setNoteExcelFileName(String noteExcelFileName) {
+        this.noteExcelFileName = noteExcelFileName;
     }
 }

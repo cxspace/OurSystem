@@ -403,7 +403,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -435,13 +435,13 @@
 
             <br>
 
-            <label class="control-label">笔记内容</label>
+            <%--<label class="control-label">笔记内容</label>--%>
 
-            <br><br>
+            <%--<br><br>--%>
 
-            <textarea id="editor" name="note.content" style="width: 100%;height: 660px;">
+            <%--<textarea id="editor" name="note.content" style="width: 100%;height: 660px;">--%>
 
-            </textarea>
+            <%--</textarea>--%>
 
             <br>
             <br>

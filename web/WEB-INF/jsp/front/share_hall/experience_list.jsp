@@ -392,7 +392,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -451,6 +451,16 @@
                         <i class="entypo-search"></i>
                         查看内容
                     </a>
+
+                    <s:if test="create_person eq #session.SYSTEM_USER.user_name">
+
+
+                    <a href="${pageContext.request.contextPath}/front_share_hall_experience_edit.action?experience.id=<s:property value="id"></s:property>" class="btn btn-default btn-sm btn-icon icon-left">
+                        <i class="entypo-pencil"></i>
+                        编辑
+                    </a>
+                    </s:if>
+
 
                 </td>
 

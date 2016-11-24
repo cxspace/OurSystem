@@ -11,7 +11,7 @@
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
 
-    <title>当前赛事详细</title>
+    <title>编辑笔记</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
@@ -27,6 +27,16 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
     <script>$.noConflict();</script>
 
+
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script>
+        window.UEDITOR_HOME_URL = "${pageContext.request.contextPath}/assets/js/ueditor/";
+        var ue = UE.getEditor('editor');
+    </script>
+
     <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,6 +44,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="${pageContext.request.contextPath}/assets/js/ajax.js"></script>
 
 
 </head>
@@ -161,7 +173,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/front_our_note_note_add.action">
+                            <a href="${pageContext.request.contextPath}/front_our_note_note_list.action">
                                 <span class="title">我要写笔记</span>
                             </a>
                         </li>
@@ -356,7 +368,7 @@
                 }, 3000);
 
 
-            });
+            })
 
         </script>
 
@@ -396,118 +408,66 @@
             </li>
 
             <li>
-                <a>竞赛专区</a>
+                <a>笔记管理</a>
             </li>
 
             <li class="active">
 
-                <strong>最近赛事</strong>
+                <strong>编辑</strong>
             </li>
         </ol>
 
-        <h3>最近赛事列表</h3>
+        <h3>编辑笔记</h3>
 
-        <form action="" name="form0" method="post">
+        <form role="form" method="post" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/front_our_note_edit_note.action">
 
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label">笔记标题</label>
 
-        <table class="table table-bordered table-striped datatable" id="table-2">
-            <thead>
-            <tr>
-                <th>赛事名</th>
-                <th>
-                    操作
-                </th>
-
-
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <s:iterator value="pageResult.items" status="st">
-
-            <tr>
-                <td>
-                    <s:property value="name"></s:property>
-                </td>
+                <div class="col-sm-5">
+                    <input type="text" name="note.name" value="<s:property value="note.name"></s:property>" class="form-control" id="field-1">
+                </div>
+            </div>
 
 
+            <br>
 
-                <td>
+            <label class="control-label">笔记内容</label>
 
-                    <a href="${pageContext.request.contextPath}/front_current_competition_cur_comp_detail.action?currentCompetition.id=<s:property value="id"></s:property>" class="btn btn-default btn-sm btn-icon icon-left">
-                        <i class="entypo-search"></i>
-                        查看详细
-                    </a>
+            <br><br>
 
+            <textarea id="editor" name="note.content" style="width: 100%;height: 660px;">
+                <s:property value="note.content"></s:property>
+            </textarea>
 
-                </td>
+            <s:hidden value="%{note.id}" name="note.id"></s:hidden>
 
+            <s:hidden value="%{note.create_person}" name="note.create_person"></s:hidden>
 
-            </tr>
+            <s:hidden value="%{note.time}" name="note.time"></s:hidden>
 
-            </s:iterator>
+            <s:hidden value="%{note.note_class}" name="note.note_class"></s:hidden>
 
-            </tbody>
-        </table>
+            <div class="form-group">
+
+                <div class="col-sm-offset-5 col-sm-5">
+
+                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
+
+                    <button type="submit" class="btn btn-default">提交</button>
+
+                </div>
+            </div>
+
 
 
         </form>
 
-        <s:if test="pageResult.totalCount > 0">
-            <ul class="pagination">
 
-                <s:if test="pageResult.pageNo > 1">
-
-                    <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo-1"></s:property>)"><i class="entypo-left-open-mini"></i> 上一页</a></li>
-
-                </s:if>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;
-
-                <s:if test="pageResult.pageNo < pageResult.totalPageCount">
-
-
-                    <li><a href="javascript:doGoPage(<s:property value="pageResult.pageNo+1"></s:property>)"> 下一页<i class="entypo-right-open-mini"></i> </a></li>
-
-                </s:if>
-            </ul>
-
-
-            <hr>
-
-            总共 <s:property value="pageResult.totalCount"/>条记录
-
-            &nbsp;&nbsp;&nbsp;&nbsp;
-
-            当前<s:property value="pageResult.pageNo"/>页
-
-            &nbsp;&nbsp;&nbsp;&nbsp;
-
-
-            共<s:property value="pageResult.totalPageCount"></s:property>页
-
-
-            &nbsp;&nbsp;&nbsp;&nbsp;
-
-
-        </s:if>
-        <s:else>暂无数据！</s:else>
 
 
 
         <br>
-        <br>
-
-        <script type="text/javascript">
-
-            function doGoPage(pageNo) {
-                document.forms[0].action = "${pageContext.request.contextPath}/front_current_competition_cur_comp_list.action?pageNo="+pageNo;
-                document.forms[0].submit();
-            }
-
-        </script>
-
         <br>
         <br>
         <br>
@@ -533,7 +493,47 @@
 
 </div>
 
+<script type="text/javascript">
 
+
+    function doAutoSave() {
+
+        var arr = [];
+        arr.push(UE.getEditor('editor').getContent());
+
+        var text = arr.join("\n");
+
+        //   alert(text);
+
+        var ajax = createAJAX();
+        var method = "POST";
+        var url = "${pageContext.request.contextPath}/front_our_note_autoSaveContent.action";
+
+        ajax.open(method,url);
+
+        ajax.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+        var content = "content="+text;
+
+        ajax.send(content);
+
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4){
+                if (ajax.status == 200){
+
+                    if (ajax.responseText == "ok"){
+                        //    alert("ok");
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    window.setInterval("doAutoSave()",8000);
+
+</script>
 
 
 
@@ -550,6 +550,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/neon-api.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="${pageContext.request.contextPath}/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>

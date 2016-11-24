@@ -7,4 +7,5 @@ import com.cx.sys.note.entity.Note;
  * Created by cxspace on 16-11-17.
  */
 public interface NoteDao extends BaseDao<Note> {
+//    public void updateNoteId(String oldId ,String newId);
 }

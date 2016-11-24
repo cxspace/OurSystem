@@ -12,7 +12,6 @@
     <meta name="author" content="" />
 
     <title>当前赛事详细</title>
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-icons/entypo/css/entypo.css">
 
@@ -393,7 +392,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>

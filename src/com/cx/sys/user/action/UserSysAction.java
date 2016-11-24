@@ -78,13 +78,20 @@ public class UserSysAction extends BaseAction {
             System.out.println("1");
 
             return "list";
+
         }else {
 
-            HttpServletRequest request = ServletActionContext.getRequest();
+             user.setPassword(user.getAccount());
 
-            request.setAttribute("errorMessage","添加失败,请选择头像文件！");
+             user.setHead_img("user/default_head_img.jpg");
 
-            return "addUI";
+             userService.save(user);
+
+//            HttpServletRequest request = ServletActionContext.getRequest();
+//
+//            request.setAttribute("errorMessage","添加失败,请选择头像文件！");
+
+            return "list";
         }
 
 

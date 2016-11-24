@@ -53,6 +53,16 @@
             document.forms[0].submit();
         }
 
+        function doExportExcel() {
+            document.forms[0].action="${pageContext.request.contextPath}/system_note_ExportNoteExcel.action";
+            document.forms[0].submit();
+        }
+        
+        function doImportExcel() {
+            document.forms[0].action="${pageContext.request.contextPath}/system_note_ImportNoteExcel.action";
+            document.forms[0].submit();
+        }
+
     </script>
 
 </head>
@@ -412,7 +422,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -432,7 +442,7 @@
         <h3>笔记列表</h3>
 
 
-        <form name="form1" action="" method="post">
+        <form name="form1" action="" method="post" type="" enctype="multipart/form-data">
 
         <table class="table table-bordered table-striped datatable" id="table-2">
             <thead>
@@ -455,6 +465,11 @@
                     <a href="${pageContext.request.contextPath}/system_note_addUI.action" class="btn btn-info btn-sm btn-icon icon-left">
                         <i class="entypo-info"></i>
                         新增
+                    </a>
+
+                    <a href="javascript:doExportExcel()" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-book-open"></i>
+                        导出数据表
                     </a>
 
                 </th>
@@ -504,8 +519,40 @@
 
             </s:iterator>
 
+
+            <tr>
+                
+                <td></td>
+
+                <td>
+                    <font color="red">每次恢复数据后,马上导出一份最新数据保存</font>
+                </td>
+
+                <td></td>
+
+                <td></td>
+
+                <td>
+                    <input name="noteExcel" type="file"/>
+                </td>
+
+                <td>
+                    <a href="javascript:doImportExcel()" class="btn btn-info btn-sm btn-icon icon-left">
+                        <i class="entypo-record"></i>
+                        恢复笔记数据
+                    </a>
+                </td>
+
+
+            </tr>
+            
             </tbody>
+
+            
         </table>
+
+
+
 
         </form>
 

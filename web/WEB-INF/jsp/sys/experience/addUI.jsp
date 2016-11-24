@@ -400,7 +400,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -420,7 +420,7 @@
         <h3>新增经验分享</h3>
 
 
-        <form role="form" class="form-horizontal form-groups-bordered" action="${pageContext.request.contextPath}/system_experience_add.action">
+        <form role="form" class="form-horizontal form-groups-bordered" method="post" action="${pageContext.request.contextPath}/system_experience_add.action">
 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label">文章标题</label>

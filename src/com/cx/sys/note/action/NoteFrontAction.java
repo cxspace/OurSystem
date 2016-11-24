@@ -12,8 +12,11 @@ import com.cx.sys.user.entity.User;
 import com.opensymphony.xwork2.ActionContext;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +28,8 @@ import java.util.List;
 public class NoteFrontAction extends BaseAction {
 
     private Note note;
+
+    private String content;
 
     private NoteClass noteClass;
 
@@ -64,6 +69,64 @@ public class NoteFrontAction extends BaseAction {
 
         return "list";
     }
+
+    public String edit_note(){
+
+        if (note!=null){
+
+            noteService.update(note);
+
+        }
+
+        return "list";
+    }
+
+    public String note_edit(){
+
+        if (note!=null){
+            note = noteService.findObjectById(note.getId());
+        }
+
+        ActionContext.getContext().getSession().put("noteId",note.getId());
+
+        return "note_edit";
+    }
+
+    public void autoSaveContent(){
+
+        try{
+
+            String noteId =  (String)ActionContext.getContext().getSession().get("noteId");
+
+            note = noteService.findObjectById(noteId);
+
+
+            if (content.length()>30) {
+
+                note.setContent(content);
+
+                noteService.update(note);
+            }
+           // System.out.println(content);
+
+            //输出结果到前台
+            HttpServletResponse response = ServletActionContext.getResponse();
+
+            response.setContentType("text/html;charset=utf-8");
+
+            PrintWriter pw = response.getWriter();
+            pw.write("ok");
+            pw.flush();
+            pw.close();
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+
+        }
+
+    }
+
 
     public String note_search(){
 
@@ -167,5 +230,13 @@ public class NoteFrontAction extends BaseAction {
 
     public void setPageResult(PageResult pageResult) {
         this.pageResult = pageResult;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

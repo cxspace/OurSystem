@@ -10,8 +10,11 @@ import com.cx.sys.experience.service.ExperienceService;
 import com.cx.sys.user.entity.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +34,8 @@ public class ExperienceSysAction extends BaseAction{
     private String [] selectedRow;
 
     private PageResult pageResult;
+
+
 
     public String addUI(){
         return "addUI";

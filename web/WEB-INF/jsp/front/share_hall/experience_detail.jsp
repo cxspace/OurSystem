@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/neon-forms.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/custom.css">
 
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/skins/white.css">
 
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.0.min.js"></script>
@@ -390,7 +391,7 @@
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>

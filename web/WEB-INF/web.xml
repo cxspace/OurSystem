@@ -48,7 +48,11 @@
         </listener-class>
 
     </listener>
-    
+
+    <!--设置session有效时间-->
+    <session-config>
+        <session-timeout>360</session-timeout>
+    </session-config>
 
     
 </web-app>

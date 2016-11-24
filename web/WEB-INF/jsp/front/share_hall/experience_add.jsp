@@ -3,14 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
+
 
     <title>添加经验</title>
 
@@ -30,12 +29,18 @@
 
 
     <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/ueditor.all.js"> </script>
     <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/assets/js/ueditor/lang/zh-cn/zh-cn.js"></script>
 
     <script>
+
         window.UEDITOR_HOME_URL = "${pageContext.request.contextPath}/assets/js/ueditor/";
         var ue = UE.getEditor('editor');
+
+
+
+
+
     </script>
 
     <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -44,12 +49,18 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
     <![endif]-->
+
+    <script src="${pageContext.request.contextPath}/assets/js/ajax.js"></script>
+
 
 
 </head>
 
 <body class="page-body  page-fade">
+
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
@@ -344,6 +355,9 @@
         </div>
 
         <script type="text/javascript">
+
+
+
             jQuery(document).ready(function($) {
                 // Sample Toastr Notification
                 setTimeout(function () {
@@ -367,43 +381,45 @@
                 }, 3000);
 
 
+
+
             });
 
         </script>
 
-        <hr />
+        <hr/>
 
 
         <script type="text/javascript">
-            // Code used to add Todo Tasks
-            jQuery(document).ready(function($)
-            {
-                var $todo_tasks = $("#todo_tasks");
-
-                $todo_tasks.find('input[type="text"]').on('keydown', function(ev)
-                {
-                    if(ev.keyCode == 13)
-                    {
-                        ev.preventDefault();
-
-                        if($.trim($(this).val()).length)
-                        {
-                            var $todo_entry = $('<li><div class="checkbox checkbox-replace color-white"><input type="checkbox" /><label>'+$(this).val()+'</label></div></li>');
-                            $(this).val('');
-
-                            $todo_entry.appendTo($todo_tasks.find('.todo-list'));
-                            $todo_entry.hide().slideDown('fast');
-                            replaceCheckboxes();
-                        }
-                    }
-                });
-            });
+//            // Code used to add Todo Tasks
+//            jQuery(document).ready(function($)
+//            {
+//                var $todo_tasks = $("#todo_tasks");
+//
+//                $todo_tasks.find('input[type="text"]').on('keydown', function(ev)
+//                {
+//                    if(ev.keyCode == 13)
+//                    {
+//                        ev.preventDefault();
+//
+//                        if($.trim($(this).val()).length)
+//                        {
+//                            var $todo_entry = $('<li><div class="checkbox checkbox-replace color-white"><input type="checkbox" /><label>'+$(this).val()+'</label></div></li>');
+//                            $(this).val('');
+//
+//                            $todo_entry.appendTo($todo_tasks.find('.todo-list'));
+//                            $todo_entry.hide().slideDown('fast');
+//                            replaceCheckboxes();
+//                        }
+//                    }
+//                });
+//            });
         </script>
 
 
         <ol class="breadcrumb bc-3" >
             <li>
-                <a href="${pageContext.request.contextPath}/index.html"><i class="fa-home"></i>主页</a>
+                <a><i class="fa-home"></i>主页</a>
             </li>
 
             <li>
@@ -434,15 +450,17 @@
             </div>
 
 
-            <br>
+            <%--<br>--%>
 
-            <label class="control-label">经验内容</label>
+            <%--<label class="control-label">经验内容</label>--%>
 
-            <br><br>
+            <%--<br><br>--%>
 
-            <textarea id="editor" name="experience.content" style="width: 100%;height: 360px;">
+            <%--<textarea id="editor" name="experience.content" class="text" style="width: 100%;height: 360px;">--%>
 
-            </textarea>
+            <%--</textarea>--%>
+
+
 
 
 
@@ -451,7 +469,7 @@
 
                 <div class="col-sm-offset-5 col-sm-5">
 
-                    <button onclick="javascript:history.go(-1)" class="btn btn-default">返回</button>
+                    <a href="${pageContext.request.contextPath}/front_share_hall_experience_list.action" class="btn btn-default">返回</a>
 
                     <button type="submit" class="btn btn-default">添加</button>
 
@@ -491,6 +509,8 @@
 
 
 </div>
+
+
 
 
 
